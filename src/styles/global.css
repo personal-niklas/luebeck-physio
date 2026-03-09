@@ -54,7 +54,7 @@
   --color-bg-dark: var(--color-black);
   --color-bg-light: var(--color-light-gray);
   --color-text-primary: var(--color-anthracite);
-  --color-text-light: var(--color-white);
+  --color-text-on-dark: var(--color-white);
   --color-cta: var(--color-accent);
   --color-cta-hover: var(--color-accent-hover);
 
@@ -186,13 +186,13 @@ img {
 
 .section--dark {
   background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
+  color: var(--color-text-on-dark);
 }
 
 .section--dark h2,
 .section--dark h3,
 .section--dark h4 {
-  color: var(--color-text-light);
+  color: var(--color-text-on-dark);
 }
 
 .section--light {
