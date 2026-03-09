@@ -1,0 +1,337 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const services = [
+  {
+    title: "Ergonomie-Check am Platz",
+    text: "Individuelle Analyse und Einstellung von Stuhl, Tisch und Bildschirmhöhe. Haltungskorrektur direkt am Schreibtisch.",
+  },
+  {
+    title: "Mobile Behandlung",
+    text: "Kurze Einheiten (15-20 Min.) auf der mobilen Behandlungsbank — akute Nacken- und Schulterverspannungen lösen, direkt im Büro.",
+  },
+  {
+    title: "Bewegte Pause",
+    text: "Geführte 15-30 Min. Workouts in Arbeitskleidung. Mobilisiert Teams und bekämpft das Mittagstief.",
+  },
+  {
+    title: "Zertifizierte Kurse",
+    text: "Rückenschul- und Faszienkurse — oft nach § 20 SGB V durch Krankenkassen bezuschussbar.",
+  },
+];
+
+const stats = [
+  { number: "2,70 \u20AC", label: "Return pro investiertem Euro", source: "iga.Report" },
+  { number: "15,7", label: "Fehltage pro Bandscheibenvorfall", source: "Durchschnitt" },
+  { number: "~400 \u20AC", label: "Kosten pro Fehltag", source: "Lohnfortzahlung + Ausfall" },
+];
+---
+
+<Base title="Betriebliches Gesundheitsmanagement | Physio One Lübeck" description="BGM für Lübecker Unternehmen: Mobile Physiotherapie, Ergonomie-Checks, Bewegte Pause. Ab 119 € netto/Stunde. Jetzt Erstgespräch vereinbaren.">
+  <Header />
+
+  <section class="section page-header">
+    <div class="container">
+      <p class="page-header__label">Für Unternehmen</p>
+      <h1>Mehr Gesundheit für<br /><span class="text-accent">Ihr Unternehmen</span></h1>
+      <p class="page-header__subtitle">Betriebliches Gesundheitsmanagement in Lübeck — wir kommen zu Ihnen.</p>
+      <a href="#kontakt-b2b" class="btn btn--primary" style="margin-top: var(--space-md);">Kostenloses Erstgespräch</a>
+    </div>
+  </section>
+
+  <!-- Warum BGM -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center">Warum BGM sich rechnet</h2>
+      <div class="stats-grid">
+        {stats.map(s => (
+          <div class="stat-card">
+            <span class="stat-card__number">{s.number}</span>
+            <p class="stat-card__label">{s.label}</p>
+            <span class="stat-card__source">{s.source}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section section--light">
+    <div class="container">
+      <h2 class="text-center">Ihre Vorteile</h2>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <h3>Weniger Fehltage</h3>
+          <p>Gezielte Physiotherapie reduziert krankheitsbedingte Ausfälle — besonders bei Rückenleiden, der Nr. 1 Ursache für Fehltage.</p>
+        </div>
+        <div class="benefit">
+          <h3>Stärkeres Employer Branding</h3>
+          <p>Positionieren Sie sich als moderner, fürsorglicher Arbeitgeber und gewinnen Sie Fachkräfte im Lübecker Markt.</p>
+        </div>
+        <div class="benefit">
+          <h3>Steuervorteile nutzen</h3>
+          <p>Bis zu 600 € pro Mitarbeiter/Jahr steuer- und sozialversicherungsfrei in Gesundheit investieren (§ 3 Nr. 34 EStG).</p>
+        </div>
+        <div class="benefit">
+          <h3>Mehr Produktivität</h3>
+          <p>Schmerzfreie Mitarbeiter sind konzentrierter, motivierter und leistungsfähiger im Arbeitsalltag.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center">Unsere BGM-Leistungen</h2>
+      <p class="section__subtitle text-center">Alles aus einer Hand — wir bringen das komplette Equipment mit.</p>
+      <div class="services-grid">
+        {services.map(s => (
+          <div class="service-card card">
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section--dark">
+    <div class="container text-center">
+      <h2>Transparente Kosten</h2>
+      <p class="section__subtitle" style="color: rgba(255,255,255,0.6);">
+        Festes Stunden-Kontingent statt komplizierter Abrechnung pro Mitarbeiter. Volle Flexibilität, keine versteckten Kosten.
+      </p>
+      <div class="price-highlight">
+        <span class="price-highlight__label">Ab</span>
+        <span class="price-highlight__amount">119 €</span>
+        <span class="price-highlight__unit">netto / Stunde</span>
+      </div>
+      <p style="color: rgba(255,255,255,0.4); font-size: var(--text-sm); margin-top: var(--space-sm);">Einfache Monatsrechnung. Minimaler Papierkram.</p>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center">So starten wir</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step__number">1</span>
+          <h3>Erstgespräch</h3>
+          <p>Wir checken Ihren Bedarf und die Räumlichkeiten. Kostenlos und unverbindlich.</p>
+        </div>
+        <div class="step">
+          <span class="step__number">2</span>
+          <h3>Angebot</h3>
+          <p>Sie erhalten ein klares Angebot basierend auf unserem Stundenmodell. Wir stellen Listen für Mitarbeiter-Eintragungen bereit.</p>
+        </div>
+        <div class="step">
+          <span class="step__number">3</span>
+          <h3>Start vor Ort</h3>
+          <p>Unser Therapeut kommt zum vereinbarten Termin mit allem Equipment in Ihre Firma.</p>
+        </div>
+        <div class="step">
+          <span class="step__number">4</span>
+          <h3>Rechnung</h3>
+          <p>Eine gesammelte Monatsrechnung für Ihre Unterlagen — ohne bürokratischen Aufwand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--accent" id="kontakt-b2b">
+    <div class="container text-center">
+      <h2>Kostenloses Erstgespräch vereinbaren</h2>
+      <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
+        Rufen Sie uns an oder schreiben Sie uns — wir melden uns innerhalb eines Werktags.
+      </p>
+      <div class="cta-actions">
+        <a href="tel:+4945116086640" class="btn btn--white">0451 160 866 40</a>
+        <a href="mailto:info@luebeck-physio.de" class="btn btn--outline" style="border-color: white; color: white;">E-Mail senden</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-2xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__label {
+    font-weight: 500;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+  }
+
+  .section__subtitle {
+    max-width: 640px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+  }
+
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--color-light-gray);
+    border-radius: var(--border-radius);
+  }
+
+  .stat-card__number {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: var(--text-5xl);
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+  }
+
+  .stat-card__label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-card__source {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  /* Benefits */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .benefit h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .service-card h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Pricing */
+  .price-highlight {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: var(--space-lg);
+  }
+
+  .price-highlight__label {
+    font-size: var(--text-xl);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .price-highlight__amount {
+    font-family: var(--font-headline);
+    font-size: var(--text-6xl);
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .price-highlight__unit {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Steps */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-family: var(--font-headline);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .step h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  /* CTA */
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid,
+    .benefits-grid,
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const team = [
+  {
+    name: "Tim S.",
+    role: "Praxisleitung & Sportphysiotherapeut",
+    description: "Tim leitet die therapeutische Arbeit bei Physio One. Als Sportphysiotherapeut verbindet er fundiertes Fachwissen mit einem klaren Fokus auf individuelle Betreuung — vom ersten Befund bis zur vollständigen Genesung.",
+  },
+  {
+    name: "Niklas Pape",
+    role: "Inhaber & Med. Personal Trainer",
+    description: "Niklas ist Gründer von Physio One und bringt über 5 Jahre Erfahrung im gesundheitsorientierten Personal Training mit. Er sorgt dafür, dass der Übergang von der Therapie zum eigenständigen Training nahtlos gelingt.",
+  },
+  {
+    name: "Marie T.",
+    role: "Trainerin",
+    description: "Marie unterstützt unsere Patienten beim gerätegestützten Training und begleitet den Aufbau von Kraft und Stabilität — mit Geduld, Fachkenntnis und einem Auge fürs Detail.",
+  },
+  {
+    name: "Laura S.",
+    role: "Backoffice & Empfang",
+    description: "Laura ist Ihre erste Ansprechpartnerin bei Physio One. Sie koordiniert Termine, kümmert sich um die Abrechnung und sorgt dafür, dass alles reibungslos läuft.",
+  },
+];
+---
+
+<Base title="Team | Physio One Lübeck" description="Lernen Sie das Physio One Team kennen: Sportphysiotherapeut, Personal Trainer und Backoffice — engagiert für Ihre Gesundheit.">
+  <Header />
+
+  <section class="section page-header">
+    <div class="container">
+      <h1>One Team</h1>
+      <p class="page-header__subtitle">Ihre Experten in Lübeck — Therapeuten und Trainer, die Hand in Hand arbeiten.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="team-grid">
+        {team.map(member => (
+          <div class="team-card card">
+            <div class="team-card__avatar">
+              <span class="team-card__initial">{member.name.charAt(0)}</span>
+            </div>
+            <h2 class="team-card__name">{member.name}</h2>
+            <p class="team-card__role">{member.role}</p>
+            <p class="team-card__bio">{member.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container text-center">
+      <h2>Unser Konzept</h2>
+      <p class="section__subtitle">
+        Im Jahr 2025 wurde Physio One mit einer klaren Vision gegründet: Physiotherapie und Personal Training nahtlos zu verbinden. Wir bieten Ihnen einen ganzheitlichen Weg zu nachhaltiger Gesundheit und körperlicher Stärke.
+      </p>
+      <a href="/leistungen/" class="btn btn--dark">Unsere Leistungen</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+  }
+
+  .section__subtitle {
+    max-width: 640px;
+    margin: 0 auto var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .team-card {
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .team-card__avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-md);
+  }
+
+  .team-card__initial {
+    font-family: var(--font-headline);
+    font-size: var(--text-4xl);
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .team-card__name {
+    font-size: var(--text-2xl);
+    margin-bottom: 0.25rem;
+  }
+
+  .team-card__role {
+    color: var(--color-accent);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .team-card__bio {
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

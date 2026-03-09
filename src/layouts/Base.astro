@@ -1,0 +1,197 @@
+---
+import CookieConsent from '../components/CookieConsent.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Physio One – Ihre Physiotherapie-Praxis in der Lübecker Innenstadt. Krankengymnastik, manuelle Therapie, Fango und mehr. Jetzt Termin buchen.",
+  ogImage = "/logo.svg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Breadcrumb generation
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbLabels: Record<string, string> = {
+  'leistungen': 'Leistungen',
+  'team': 'Team',
+  'kontakt': 'Kontakt',
+  'faq': 'FAQ',
+  'b2b': 'Für Unternehmen',
+  'impressum': 'Impressum',
+  'datenschutz': 'Datenschutz',
+};
+
+const breadcrumbs = [
+  { name: 'Startseite', url: 'https://luebeck-physio.de/' },
+  ...pathSegments.map((segment, i) => ({
+    name: breadcrumbLabels[segment] || segment,
+    url: `https://luebeck-physio.de/${pathSegments.slice(0, i + 1).join('/')}/`,
+  })),
+];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Physio One" />
+
+    <!-- Preconnect: Google Fonts (must come before font link) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preconnect: Cloudflare Analytics -->
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+
+    <!-- Fonts: Non-render-blocking via media="print" swap trick -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" />
+    </noscript>
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Google Consent Mode V2 – Default: alles verweigert (DSGVO) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      gtag('set', 'ads_data_redaction', true);
+    </script>
+
+    <!-- Structured Data: MedicalBusiness -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Physiotherapist",
+        "name": "Physio One – Physiotherapie Lübeck",
+        "description": "Physiotherapie-Praxis in der Lübecker Innenstadt. Krankengymnastik, manuelle Therapie, KGG, Fango, Lymphdrainage und mehr.",
+        "url": "https://luebeck-physio.de",
+        "telephone": "+4917640471528",
+        "email": "info@luebeck-physio.de",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Mengstraße 40",
+          "addressLocality": "Lübeck",
+          "postalCode": "23552",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 53.8655,
+          "longitude": 10.6866
+        },
+        "image": "https://luebeck-physio.de/logo.svg",
+        "sameAs": [
+          "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck",
+          "https://niklaspape.de",
+          "https://personaltrainingluebeck.de"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "20:00"
+          }
+        ],
+        "priceRange": "$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "9",
+          "bestRating": "5"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Behandlungen",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "MedicalTherapy",
+                "name": "Krankengymnastik",
+                "description": "Individuelle Krankengymnastik zur Wiederherstellung und Verbesserung der Beweglichkeit"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "MedicalTherapy",
+                "name": "Gerätegestützte Krankengymnastik (KGG)",
+                "description": "Krafttraining an medizinischen Geräten unter therapeutischer Anleitung"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "MedicalTherapy",
+                "name": "Manuelle Lymphdrainage",
+                "description": "Sanfte Entstauungstherapie zur Förderung des Lymphabflusses"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "MedicalTherapy",
+                "name": "Fango / Wärmetherapie",
+                "description": "Wärmebehandlung zur Schmerzlinderung und Muskelentspannung"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+
+    {pathSegments.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((crumb, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": crumb.name,
+          "item": crumb.url
+        }))
+      })} />
+    )}
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Cookie Consent Banner (DSGVO + Google Consent Mode V2) -->
+    <CookieConsent />
+
+    <!-- Cloudflare Web Analytics (DSGVO-konform, cookie-free, kein Consent nötig) -->
+    <!-- Token wird nach Cloudflare-Setup eingefügt -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "PLACEHOLDER"}' is:inline></script> -->
+  </body>
+</html>

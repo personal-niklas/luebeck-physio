@@ -1,0 +1,247 @@
+---
+const navItems = [
+  { label: "Leistungen", href: "/leistungen/" },
+  { label: "Team", href: "/team/" },
+  { label: "FAQ", href: "/faq/" },
+  { label: "Kontakt", href: "/kontakt/" },
+  { label: "B2B", href: "/b2b/" },
+];
+
+const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
+const ctaLabel = "Termin buchen";
+---
+
+<header class="header" id="header">
+  <div class="header__inner container">
+    <a href="/" class="header__logo" aria-label="Physio One - Startseite">
+      <img src="/logo.svg" alt="Physio One" class="header__logo-img" width="160" height="40" />
+    </a>
+
+    <nav class="header__nav" id="nav" aria-label="Hauptnavigation">
+      <ul class="header__nav-list">
+        {navItems.map((item) => (
+          <li class="header__nav-item">
+            <a href={item.href} class="header__nav-link">{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href={bookingUrl} target="_blank" rel="noopener" class="btn btn--primary btn--small header__cta">
+      {ctaLabel}
+    </a>
+
+    <button class="header__burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="header__mobile-menu" id="mobile-menu">
+    <nav aria-label="Mobile Navigation">
+      <ul class="header__mobile-list">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="header__mobile-link">{item.label}</a>
+          </li>
+        ))}
+        <li>
+          <a href={bookingUrl} target="_blank" rel="noopener" class="btn btn--primary" style="width: 100%; margin-top: 1rem;">
+            Termin buchen
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--color-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all var(--transition-base);
+  }
+
+  .header--scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+
+  .header__logo-img {
+    height: 36px;
+    width: auto;
+  }
+
+  .header__nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+  }
+
+  .header__nav-link {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .header__nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-cta);
+    transition: width var(--transition-base);
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-cta);
+  }
+
+  .header__nav-link:hover::after {
+    width: 100%;
+  }
+
+  .header__cta {
+    white-space: nowrap;
+  }
+
+  /* Burger Menu */
+  .header__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .header__burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  .header__burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .header__burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile Menu */
+  .header__mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-white);
+    padding: var(--space-lg) var(--space-md);
+    z-index: 999;
+  }
+
+  .header__mobile-menu.active {
+    display: block;
+  }
+
+  .header__mobile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .header__mobile-link {
+    display: block;
+    padding: var(--space-sm) 0;
+    font-family: var(--font-headline);
+    font-size: var(--text-3xl);
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+
+  .header__mobile-link:hover {
+    color: var(--color-cta);
+  }
+
+  @media (max-width: 768px) {
+    .header__nav,
+    .header__cta {
+      display: none;
+    }
+
+    .header__burger {
+      display: flex;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Scroll effect – throttled with rAF for performance
+  const header = document.getElementById('header');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        header.classList.toggle('header--scrolled', window.scrollY > 50);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Burger menu toggle
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    burger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.header__mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
+
+const treatments = [
+  {
+    title: "Krankengymnastik (KG)",
+    description: "Gezielte Bewegungstherapie zur Wiederherstellung und Verbesserung Ihrer Beweglichkeit und Kraft. Wir erstellen einen individuellen Behandlungsplan — abgestimmt auf Ihre Beschwerden und Ziele.",
+    ideal: ["Rückenschmerzen", "Nackenverspannungen", "Haltungsprobleme", "Nach Operationen", "Gelenkbeschwerden"],
+    badge: "Kassenleistung",
+  },
+  {
+    title: "Gerätegestützte Krankengymnastik (KGG)",
+    description: "Gezieltes Training an medizinischen Geräten unter therapeutischer Anleitung. Besonders effektiv für den Muskelaufbau nach Verletzungen und zur langfristigen Stabilisierung.",
+    ideal: ["Nach Kreuzbandriss", "Bandscheibenvorfall", "Schulter-OPs", "Muskelaufbau", "Prävention"],
+    badge: "Kassenleistung",
+  },
+  {
+    title: "Manuelle Lymphdrainage (MLD)",
+    description: "Sanfte, rhythmische Grifftechniken zur Entstauung und Förderung des Lymphabflusses. Lindert Schwellungen und unterstützt die Heilung nach Operationen.",
+    ideal: ["Lymphödeme", "Schwere Beine", "Schwellungen nach OPs", "Lipödeme", "Chronische Stauungen"],
+    badge: "Kassenleistung",
+  },
+  {
+    title: "Fango &amp; Wärme- / Kältetherapie",
+    description: "Wärme bei chronischen Schmerzen und Muskelverhärtungen — Kälte bei akuten Entzündungen und Sportverletzungen. Häufig als Ergänzung zur Krankengymnastik verordnet.",
+    ideal: ["Chronische Schmerzen", "Muskelverhärtungen", "Akute Entzündungen", "Sportverletzungen", "Gelenksteife"],
+    badge: "Kassenleistung",
+  },
+  {
+    title: "Elektrotherapie (ET)",
+    description: "Therapeutischer Strom zur Schmerzlinderung, Durchblutungsförderung und Heilungsunterstützung. Besonders wirksam bei Nervenreizungen und chronischen Beschwerden.",
+    ideal: ["Ischias", "Nervenschmerzen", "Durchblutungsstörungen", "Muskelschwäche", "Chronische Schmerzen"],
+    badge: "Kassenleistung",
+  },
+  {
+    title: "Klassische Massagetherapie",
+    description: "Wohltuende Massage gegen Verspannungen und stressbedingte Beschwerden. Löst Verhärtungen, fördert die Durchblutung und hilft oft bei spannungsbedingten Kopfschmerzen.",
+    ideal: ["Muskelverspannungen", "Stress", "Kopfschmerzen", "Verhärtungen", "Allgemeines Wohlbefinden"],
+    badge: "Kassenleistung",
+  },
+];
+
+const extras = [
+  {
+    title: "Personal Training",
+    description: "Über die Therapie hinaus: Individuelles 1:1 Training für Prävention, Muskelaufbau oder Gewichtsreduktion. Der nahtlose Übergang von der Reha zum eigenständigen Training.",
+    link: "https://personaltrainingluebeck.de",
+    linkText: "Mehr erfahren",
+  },
+  {
+    title: "Physio One+",
+    description: "Mehr Zeit für Ihre Behandlung: Optional können Sie Ihre Therapiesitzung verlängern — für intensivere Betreuung und bessere Ergebnisse. Sprechen Sie uns an.",
+    link: bookingUrl,
+    linkText: "Termin buchen",
+  },
+];
+---
+
+<Base title="Leistungen | Physio One Lübeck" description="Krankengymnastik, KGG, Lymphdrainage, Fango, Elektrotherapie, Massage und Personal Training. Alle Kassen. Physio One Lübeck.">
+  <Header />
+
+  <section class="section page-header">
+    <div class="container">
+      <h1>Unsere Leistungen</h1>
+      <p class="page-header__subtitle">Alles aus einer Hand — von der Therapie bis zum Training. Wir behandeln Patienten aller Krankenkassen.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {treatments.map((t, i) => (
+        <div class={`treatment ${i % 2 === 1 ? 'treatment--alt' : ''}`}>
+          <div class="treatment__content">
+            <div class="treatment__badge">{t.badge}</div>
+            <h2 set:html={t.title} />
+            <p class="treatment__desc" set:html={t.description} />
+            <div class="treatment__tags">
+              {t.ideal.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container">
+      <h2 class="text-center">Zusatzleistungen</h2>
+      <div class="extras-grid">
+        {extras.map(e => (
+          <div class="extra-card card">
+            <h3>{e.title}</h3>
+            <p>{e.description}</p>
+            <a href={e.link} target="_blank" rel="noopener" class="btn btn--primary btn--small">{e.linkText}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="container text-center">
+      <h2>Termin vereinbaren</h2>
+      <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
+        Bringen Sie Ihre ärztliche Verordnung mit — wir kümmern uns um den Rest.
+      </p>
+      <a href={bookingUrl} target="_blank" rel="noopener" class="btn btn--white">Jetzt Termin buchen</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+  }
+
+  .treatment {
+    padding: var(--space-xl) 0;
+    border-bottom: 1px solid var(--color-mid-gray);
+  }
+
+  .treatment:last-child {
+    border-bottom: none;
+  }
+
+  .treatment__badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .treatment h2 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .treatment__desc {
+    font-size: var(--text-lg);
+    max-width: 700px;
+    line-height: 1.8;
+  }
+
+  .treatment__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-md);
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--color-light-gray);
+    color: var(--color-text-primary);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: 0.375rem 0.875rem;
+    border-radius: 100px;
+  }
+
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .extra-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .extra-card h3 {
+    margin-bottom: 0;
+  }
+
+  .extra-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  @media (max-width: 768px) {
+    .extras-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

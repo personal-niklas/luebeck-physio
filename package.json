@@ -1,0 +1,1 @@
+{"name": "luebeck-physio","type": "module","version": "0.0.1","scripts": {"dev": "astro dev","build": "astro build","preview": "astro preview"},"dependencies": {"astro": "^5.18.0","@astrojs/sitemap": "^3.7.0","vanilla-cookieconsent": "^3.1.0"}}

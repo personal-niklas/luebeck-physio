@@ -1,0 +1,387 @@
+/* ============================================
+   PHYSIO ONE - Physiotherapie Lübeck
+   Global Styles & CSS Custom Properties
+   ============================================ */
+
+/* --- Fonts: Bebas Neue + Montserrat ---
+   Loaded via <link> in Base.astro for performance (preconnect + non-render-blocking)
+   DO NOT use @import here — it blocks rendering!
+--- */
+
+/* --- Brand Colors --- */
+:root {
+  --color-primary: #000000;
+  --color-accent: #fb8e28;
+  --color-accent-hover: #e67d1e;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-light-gray: #f5f5f5;
+  --color-mid-gray: #e8e8e8;
+  --color-anthracite: #333333;
+  --color-text-muted: #6b7280;
+
+  /* Functional Aliases */
+  --color-bg-primary: var(--color-white);
+  --color-bg-dark: var(--color-black);
+  --color-bg-light: var(--color-light-gray);
+  --color-text-primary: var(--color-anthracite);
+  --color-text-light: var(--color-white);
+  --color-cta: var(--color-accent);
+  --color-cta-hover: var(--color-accent-hover);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+
+  /* Typography Scale */
+  --font-headline: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.5rem;
+  --text-6xl: 4.5rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 80px;
+  --border-radius: 8px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--text-6xl);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--text-3xl);
+  font-weight: 400;
+}
+
+h4 {
+  font-size: var(--text-2xl);
+  font-weight: 400;
+}
+
+p {
+  margin-bottom: var(--space-sm);
+  font-weight: 300;
+}
+
+a {
+  color: var(--color-cta);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-cta-hover);
+}
+
+strong {
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Utility Classes --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+.section--dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+}
+
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--color-text-light);
+}
+
+.section--light {
+  background-color: var(--color-bg-light);
+}
+
+.section--accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.section--accent h2,
+.section--accent h3,
+.section--accent h4 {
+  color: var(--color-white);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--color-cta);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-headline);
+  font-size: var(--text-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn--primary {
+  background-color: var(--color-cta);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-cta-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(251, 142, 40, 0.3);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-cta);
+  border: 2px solid var(--color-cta);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn--white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.btn--white:hover {
+  background-color: var(--color-light-gray);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.btn--dark {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn--dark:hover {
+  background-color: var(--color-anthracite);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn--small {
+  padding: 0.625rem 1.5rem;
+  font-size: var(--text-base);
+}
+
+/* --- Cards --- */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Grid --- */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  :root {
+    --text-6xl: 3.5rem;
+    --text-5xl: 2.75rem;
+    --text-4xl: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-6xl: 2.75rem;
+    --text-5xl: 2.25rem;
+    --text-4xl: 1.75rem;
+    --text-3xl: 1.5rem;
+    --space-3xl: 5rem;
+    --space-2xl: 3.5rem;
+  }
+
+  .grid--2,
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --text-6xl: 2.25rem;
+    --text-5xl: 1.75rem;
+    --text-4xl: 1.5rem;
+  }
+
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* --- Floating CTA Button (Doctolib) --- */
+.floating-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+.floating-cta.btn--booking {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.875rem 1.5rem;
+  border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(251, 142, 40, 0.35);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.floating-cta.btn--booking:hover {
+  background: var(--color-black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.floating-cta.btn--booking svg {
+  flex-shrink: 0;
+}

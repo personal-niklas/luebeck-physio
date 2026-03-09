@@ -1,0 +1,201 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
+
+const faqs = [
+  {
+    category: "Termin & Ablauf",
+    items: [
+      {
+        q: "Wie kann ich einen Termin vereinbaren?",
+        a: "Am einfachsten online über unseren Doctolib-Kalender — rund um die Uhr. Alternativ telefonisch unter 0451 160 866 40 während unserer Öffnungszeiten (Mo-Sa 7:30-19:00 Uhr).",
+      },
+      {
+        q: "Was soll ich zum ersten Termin mitbringen?",
+        a: "Bitte bringen Sie Ihre ärztliche Verordnung (falls vorhanden), relevante medizinische Unterlagen (Arztbriefe, MRT- oder Röntgenbilder), ein Handtuch und bequeme Kleidung mit.",
+      },
+      {
+        q: "Innerhalb welcher Frist muss ich mit der Behandlung beginnen?",
+        a: "Für gesetzliche Kassenrezepte gilt: Die Behandlung muss innerhalb von 28 Kalendertagen nach Ausstellungsdatum beginnen, sonst verliert das Rezept seine Gültigkeit. Bei Privatrezepten liegt die Frist meist bei 3-6 Monaten. Wir empfehlen, zeitnah einen Termin zu vereinbaren.",
+      },
+    ],
+  },
+  {
+    category: "Kosten & Krankenkasse",
+    items: [
+      {
+        q: "Brauche ich eine ärztliche Verordnung?",
+        a: "Ja, für Behandlungen auf Kosten Ihrer Krankenkasse benötigen Sie eine gültige ärztliche Verordnung. Sie können uns auch als Selbstzahler aufsuchen — in diesem Fall ist keine Verordnung nötig.",
+      },
+      {
+        q: "Werden die Kosten von meiner Krankenkasse übernommen?",
+        a: "Wir behandeln Patienten aller Krankenkassen. Gesetzliche Kassen übernehmen den Großteil der Kosten, wobei ein gesetzlicher Eigenanteil anfällt. Private Kassen und Beihilfe übernehmen je nach Tarif.",
+      },
+      {
+        q: "Was kostet Physio One+ (Zusatzzeit)?",
+        a: "Wir schenken Ihnen pro Sitzung 5 Minuten dazu (20 statt 15 Min.). Wenn Sie mehr Zeit benötigen, können Sie +10, +20 oder +30 Minuten hinzubuchen. Sprechen Sie uns vor der ersten Behandlung an.",
+      },
+    ],
+  },
+  {
+    category: "Behandlung & Leistungen",
+    items: [
+      {
+        q: "Welche Therapieformen bieten Sie an?",
+        a: "Wir bieten Krankengymnastik, gerätegestützte KG (KGG), manuelle Lymphdrainage, klassische Massage, Elektrotherapie und Wärme-/Kältetherapie. Alle Details finden Sie auf unserer Leistungsseite.",
+      },
+      {
+        q: "Was unterscheidet Physio One von anderen Praxen?",
+        a: "Unser One-Konzept verbindet Physiotherapie nahtlos mit Personal Training. Ihr Therapeut und Trainer arbeiten Hand in Hand — so endet Ihre Betreuung nicht, wenn der Schmerz nachlässt, sondern erst, wenn Sie wieder voll belastbar sind.",
+      },
+      {
+        q: "Bieten Sie auch Personal Training an?",
+        a: "Ja, über unseren Partner Niklas Pape Personal Training. Der Übergang von der Physiotherapie zum eigenständigen Training erfolgt nahtlos und individuell abgestimmt.",
+      },
+    ],
+  },
+  {
+    category: "Anfahrt & Praxis",
+    items: [
+      {
+        q: "Wo finde ich Parkplätze?",
+        a: "Direkt an der Praxis stehen Parkplätze zur Verfügung (Navi: Blockquerstraße 28). Alternativ: Marienparkhaus (2 Min. Fußweg) oder MUK-Parkplätze (5 Min. Fußweg).",
+      },
+      {
+        q: "Wann hat die Praxis geöffnet?",
+        a: "Montag bis Samstag von 7:30 bis 19:00 Uhr. Online-Terminbuchung ist rund um die Uhr möglich.",
+      },
+    ],
+  },
+];
+---
+
+<Base title="FAQ | Physio One Lübeck" description="Häufige Fragen zu Physiotherapie, Kosten, Terminen und Behandlungen bei Physio One in Lübeck.">
+  <Header />
+
+  <section class="section page-header">
+    <div class="container">
+      <h1>Häufige Fragen</h1>
+      <p class="page-header__subtitle">Alles, was Sie vor Ihrem ersten Termin wissen sollten.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="faq-container">
+        {faqs.map(cat => (
+          <div class="faq-category">
+            <h2>{cat.category}</h2>
+            {cat.items.map(f => (
+              <details class="faq-item">
+                <summary class="faq-item__question">{f.q}</summary>
+                <p class="faq-item__answer">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="container text-center">
+      <h2>Noch Fragen?</h2>
+      <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
+        Schreiben Sie uns oder rufen Sie an — wir helfen gerne.
+      </p>
+      <div class="cta-actions">
+        <a href={bookingUrl} target="_blank" rel="noopener" class="btn btn--white">Termin buchen</a>
+        <a href="/kontakt/" class="btn btn--outline" style="border-color: white; color: white;">Kontakt</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+  }
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-category {
+    margin-bottom: var(--space-xl);
+  }
+
+  .faq-category h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-accent);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-mid-gray);
+    padding: var(--space-md) 0;
+  }
+
+  .faq-item__question {
+    font-family: var(--font-headline);
+    font-size: var(--text-xl);
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .faq-item__question::after {
+    content: '+';
+    font-size: var(--text-2xl);
+    color: var(--color-accent);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+  }
+
+  .faq-item[open] .faq-item__question::after {
+    content: '\2212';
+  }
+
+  .faq-item__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__answer {
+    padding-top: var(--space-sm);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

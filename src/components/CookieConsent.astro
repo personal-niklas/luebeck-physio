@@ -1,0 +1,243 @@
+---
+/**
+ * DSGVO-konformer Cookie-Banner mit Google Consent Mode V2
+ *
+ * Architektur:
+ * 1. Consent Default Script setzt alle Signale auf 'denied' (in Base.astro <head>)
+ * 2. Cookie-Banner zeigt sich dem User
+ * 3. Erst nach explizitem Consent wird GTM geladen
+ * 4. Ohne Consent: Kein GTM, kein Google, keine Cookies
+ *
+ * Cloudflare Web Analytics braucht KEINEN Consent (cookie-free, DSGVO-konform)
+ */
+---
+
+<script>
+  // Lazy-load CookieConsent after page is interactive (reduces TBT)
+  async function initCookieConsent() {
+    await import('vanilla-cookieconsent/dist/cookieconsent.css');
+    const CookieConsent = await import('vanilla-cookieconsent');
+
+    // GTM ID wird nach Setup eingefügt
+    const GTM_ID = '';
+
+    /**
+     * GTM dynamisch laden – nur nach Consent
+     */
+    function loadGTM() {
+      if (!GTM_ID) return;
+      if (document.querySelector(`script[src*="googletagmanager.com/gtm.js?id=${GTM_ID}"]`)) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+      document.head.appendChild(script);
+    }
+
+    /**
+     * Google Consent Mode V2 Signale updaten
+     */
+    function updateConsentSignals(granted: boolean) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(...args: any[]) { window.dataLayer.push(arguments); }
+
+      if (granted) {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+        });
+      } else {
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied',
+        });
+      }
+    }
+
+    CookieConsent.run({
+      guiOptions: {
+        consentModal: {
+          layout: 'box inline',
+          position: 'bottom left',
+        },
+        preferencesModal: {
+          layout: 'box',
+        },
+      },
+
+      categories: {
+        necessary: {
+          enabled: true,
+          readOnly: true,
+        },
+        analytics: {
+          autoClear: {
+            cookies: [
+              { name: /^_ga/ },
+              { name: '_gid' },
+            ],
+          },
+        },
+        marketing: {
+          autoClear: {
+            cookies: [
+              { name: /^_gc/ },
+              { name: '_fbp' },
+            ],
+          },
+        },
+      },
+
+      onFirstConsent: ({ cookie }) => {
+        const analyticsAccepted = cookie.categories.includes('analytics');
+        const marketingAccepted = cookie.categories.includes('marketing');
+
+        if (analyticsAccepted || marketingAccepted) {
+          updateConsentSignals(true);
+          loadGTM();
+        }
+      },
+
+      onChange: ({ cookie }) => {
+        const analyticsAccepted = cookie.categories.includes('analytics');
+        const marketingAccepted = cookie.categories.includes('marketing');
+
+        if (analyticsAccepted || marketingAccepted) {
+          updateConsentSignals(true);
+          loadGTM();
+        } else {
+          updateConsentSignals(false);
+        }
+      },
+
+      onConsent: ({ cookie }) => {
+        const analyticsAccepted = cookie.categories.includes('analytics');
+        const marketingAccepted = cookie.categories.includes('marketing');
+
+        if (analyticsAccepted || marketingAccepted) {
+          updateConsentSignals(true);
+          loadGTM();
+        }
+      },
+
+      language: {
+        default: 'de',
+        translations: {
+          de: {
+            consentModal: {
+              title: 'Wir respektieren Ihre Privatsphäre',
+              description: 'Wir nutzen Cookies für Analyse und Marketing. Cloudflare Web Analytics läuft ohne Cookies und ist immer aktiv. <a href="/datenschutz/" class="cc-link">Mehr erfahren</a>',
+              acceptAllBtn: 'Alle akzeptieren',
+              acceptNecessaryBtn: 'Nur notwendige',
+              showPreferencesBtn: 'Einstellungen',
+            },
+            preferencesModal: {
+              title: 'Cookie-Einstellungen',
+              acceptAllBtn: 'Alle akzeptieren',
+              acceptNecessaryBtn: 'Nur notwendige',
+              savePreferencesBtn: 'Auswahl speichern',
+              sections: [
+                {
+                  title: 'Cookie-Nutzung',
+                  description: 'Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung zu bieten. Sie können selbst entscheiden, welche Kategorien Sie zulassen möchten.',
+                },
+                {
+                  title: 'Notwendige Cookies',
+                  description: 'Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.',
+                  linkedCategory: 'necessary',
+                },
+                {
+                  title: 'Analyse-Cookies',
+                  description: 'Helfen uns zu verstehen, wie Besucher unsere Website nutzen.',
+                  linkedCategory: 'analytics',
+                },
+                {
+                  title: 'Marketing-Cookies',
+                  description: 'Werden verwendet, um Werbung relevanter zu gestalten.',
+                  linkedCategory: 'marketing',
+                },
+                {
+                  title: 'Weitere Informationen',
+                  description: 'Bei Fragen kontaktieren Sie uns unter <a class="cc-link" href="mailto:info@luebeck-physio.de">info@luebeck-physio.de</a>. Datenschutzerklärung <a class="cc-link" href="/datenschutz/">hier</a>.',
+                },
+              ],
+            },
+          },
+        },
+      },
+    });
+  } // end initCookieConsent
+
+  // Defer cookie consent initialization to reduce TBT
+  if (document.readyState === 'complete') {
+    setTimeout(initCookieConsent, 0);
+  } else {
+    window.addEventListener('load', () => setTimeout(initCookieConsent, 0));
+  }
+</script>
+
+<style is:global>
+  /* Cookie Consent Styling – Physio One Brand */
+  :root {
+    --cc-bg: #fff;
+    --cc-primary-color: #333333;
+    --cc-secondary-color: #6b7280;
+    --cc-btn-primary-bg: #fb8e28;
+    --cc-btn-primary-color: #fff;
+    --cc-btn-primary-hover-bg: #e67d1e;
+    --cc-btn-secondary-bg: #f5f5f5;
+    --cc-btn-secondary-color: #333333;
+    --cc-btn-secondary-hover-bg: #e8e8e8;
+    --cc-separator-border-color: rgba(0, 0, 0, 0.06);
+    --cc-toggle-on-bg: #fb8e28;
+    --cc-toggle-off-bg: #d1d5db;
+    --cc-toggle-readonly-bg: #9ca3af;
+    --cc-cookie-category-block-bg: #f9fafb;
+    --cc-cookie-category-block-border: rgba(0, 0, 0, 0.06);
+  }
+
+  #cc-main {
+    font-family: 'Montserrat', sans-serif;
+    z-index: 10000;
+  }
+
+  #cc-main .cm__title {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  #cc-main .cm__desc,
+  #cc-main .pm__body {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  #cc-main .cm__btn,
+  #cc-main .pm__btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 6px;
+    padding: 0.625rem 1.25rem;
+  }
+
+  #cc-main .cc-link {
+    color: #fb8e28;
+    font-weight: 500;
+  }
+
+  #cc-main .cc-link:hover {
+    color: #000;
+  }
+</style>

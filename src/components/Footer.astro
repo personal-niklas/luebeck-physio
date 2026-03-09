@@ -1,0 +1,181 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer section--dark">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <img src="/logo-white.svg" alt="Physio One" class="footer__logo" width="160" height="36" />
+        <p class="footer__tagline">Physiotherapie in der Lübecker Innenstadt</p>
+      </div>
+
+      <!-- Behandlungen -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Behandlungen</h4>
+        <ul class="footer__list">
+          <li><a href="/leistungen/">Krankengymnastik</a></li>
+          <li><a href="/leistungen/">Gerätegestützte KG</a></li>
+          <li><a href="/leistungen/">Manuelle Lymphdrainage</a></li>
+          <li><a href="/leistungen/">Fango & Wärmetherapie</a></li>
+          <li><a href="/leistungen/">Massage</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Kontakt</h4>
+        <ul class="footer__list">
+          <li>
+            <a href="tel:+4917640471528">0176 404 715 28</a>
+          </li>
+          <li>
+            <a href="mailto:info@luebeck-physio.de">info@luebeck-physio.de</a>
+          </li>
+          <li>
+            <span>Mengstraße 40<br />23552 Lübeck</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Netzwerk -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Netzwerk</h4>
+        <ul class="footer__list">
+          <li>
+            <a href="https://niklaspape.de" target="_blank" rel="noopener">
+              Niklas Pape – BGM-Beratung
+            </a>
+          </li>
+          <li>
+            <a href="https://personaltrainingluebeck.de" target="_blank" rel="noopener">
+              Personal Training Lübeck
+            </a>
+          </li>
+          <li>
+            <a href="https://www.doctolib.de/praxis/luebeck/physio-one-luebeck" target="_blank" rel="noopener">
+              Doctolib – Termin buchen
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__legal">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </div>
+      <p class="footer__copy">&copy; {currentYear} Physio One – Niklas Pape</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--space-2xl) 0 var(--space-lg);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer__logo {
+    height: 32px;
+    width: auto;
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer__tagline {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-sm);
+    font-weight: 300;
+  }
+
+  .footer__heading {
+    font-size: var(--text-lg);
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.05em;
+  }
+
+  .footer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer__list a,
+  .footer__list span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-sm);
+    font-weight: 300;
+    transition: color var(--transition-fast);
+  }
+
+  .footer__list a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-md);
+  }
+
+  .footer__legal {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .footer__legal a {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: var(--text-sm);
+    font-weight: 300;
+  }
+
+  .footer__legal a:hover {
+    color: var(--color-white);
+  }
+
+  .footer__copy {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: var(--text-sm);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .footer__brand {
+      grid-column: span 2;
+    }
+
+    .footer__bottom {
+      flex-direction: column-reverse;
+      gap: var(--space-sm);
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__brand {
+      grid-column: span 1;
+    }
+  }
+</style>
