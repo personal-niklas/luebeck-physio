@@ -31,7 +31,7 @@ const articles = [
 
   <section class="section page-header">
     <div class="container">
-      <h1>Ratgeber Physiotherapie</h1>
+      <h1>Ratgeber <span class="text-accent">Physiotherapie</span></h1>
       <p class="page-header__subtitle">Expertenwissen aus unserer Praxis — für Ihre Gesundheit.</p>
     </div>
   </section>
@@ -65,6 +65,10 @@ const articles = [
   .page-header h1 {
     color: var(--color-white);
     margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
   }
 
   .page-header__subtitle {

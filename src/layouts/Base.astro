@@ -216,7 +216,11 @@ const breadcrumbs = [
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <!-- GTM noscript fallback -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRMXS648" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <main>
+      <slot />
+    </main>
 
     <!-- Cookie Consent Banner (DSGVO + Google Consent Mode V2) -->
     <CookieConsent />

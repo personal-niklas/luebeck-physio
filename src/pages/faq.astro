@@ -90,7 +90,7 @@ const faqs = [
 
   <section class="section page-header">
     <div class="container">
-      <h1>Häufige Fragen</h1>
+      <h1>Häufige <span class="text-accent">Fragen</span></h1>
       <p class="page-header__subtitle">Alles, was Sie vor Ihrem ersten Termin wissen sollten.</p>
     </div>
   </section>
@@ -140,6 +140,10 @@ const faqs = [
   .page-header h1 {
     color: var(--color-white);
     margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
   }
 
   .page-header__subtitle {

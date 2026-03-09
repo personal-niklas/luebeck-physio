@@ -12,7 +12,7 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
 
   <section class="section page-header">
     <div class="container">
-      <h1>Krankenkassen & Kosten</h1>
+      <h1>Krankenkassen & <span class="text-accent">Kosten</span></h1>
       <p class="page-header__subtitle">Wir behandeln Patienten aller Krankenkassen — gesetzlich, privat und Selbstzahler.</p>
     </div>
   </section>
@@ -145,6 +145,10 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
   .page-header h1 {
     color: var(--color-white);
     margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
   }
 
   .page-header__subtitle {

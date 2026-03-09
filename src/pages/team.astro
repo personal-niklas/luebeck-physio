@@ -34,7 +34,7 @@ const team = [
 
   <section class="section page-header">
     <div class="container">
-      <h1>One Team</h1>
+      <h1><span class="text-accent">One</span> Team</h1>
       <p class="page-header__subtitle">Ihre Experten in Lübeck — Therapeuten und Trainer, die Hand in Hand arbeiten.</p>
     </div>
   </section>
@@ -64,7 +64,7 @@ const team = [
 
   <section class="section section--light">
     <div class="container text-center">
-      <h2>Unser Konzept</h2>
+      <h2>Unser <span class="text-accent">Konzept</span></h2>
       <p class="section__subtitle">
         Im Jahr 2025 wurde Physio One mit einer klaren Vision gegründet: Physiotherapie und Personal Training nahtlos zu verbinden. Wir bieten Ihnen einen ganzheitlichen Weg zu nachhaltiger Gesundheit und körperlicher Stärke.
       </p>
@@ -86,6 +86,10 @@ const team = [
   .page-header h1 {
     color: var(--color-white);
     margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
   }
 
   .page-header__subtitle {

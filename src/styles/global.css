@@ -47,7 +47,7 @@
   --color-light-gray: #f5f5f5;
   --color-mid-gray: #e8e8e8;
   --color-anthracite: #333333;
-  --color-text-muted: #6b7280;
+  --color-text-muted: #555555;
 
   /* Functional Aliases */
   --color-bg-primary: var(--color-white);
@@ -216,6 +216,10 @@ img {
 
 .text-accent {
   color: var(--color-cta);
+}
+
+.section--dark .text-accent {
+  color: var(--color-accent);
 }
 
 .text-muted {

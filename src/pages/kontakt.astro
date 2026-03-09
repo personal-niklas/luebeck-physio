@@ -12,7 +12,7 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
 
   <section class="section page-header">
     <div class="container">
-      <h1>Kontakt &amp; Anfahrt</h1>
+      <h1>Kontakt & <span class="text-accent">Anfahrt</span></h1>
       <p class="page-header__subtitle">So finden und erreichen Sie uns in der Lübecker Innenstadt.</p>
     </div>
   </section>
@@ -205,6 +205,10 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
   .page-header h1 {
     color: var(--color-white);
     margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
   }
 
   .page-header__subtitle {
