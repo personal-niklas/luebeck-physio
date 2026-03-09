@@ -4,62 +4,116 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 
+const tags = ["Alle", "Rücken", "Knie", "Schulter", "Nacken", "Kopf", "Hüfte", "Ellenbogen", "Reha"];
+
 const articles = [
   {
-    title: "Nackenverspannungen durch Büroarbeit — 5 Tipps vom Physiotherapeuten",
-    excerpt: "Langes Sitzen, Monitor-Arbeit und Stress — die häufigsten Auslöser für Nackenschmerzen. Unsere Therapeuten zeigen, was wirklich hilft.",
+    title: "Bandscheibenvorfall — Symptome, Behandlung & Übungen",
+    excerpt: "90 % aller Bandscheibenvorfälle heilen ohne OP. Symptome erkennen, Übungen für zuhause und wann Physiotherapie hilft.",
+    slug: "bandscheibenvorfall-symptome-behandlung",
+    date: "2026-03-09",
+    image: "/images/ratgeber-bandscheibenvorfall.webp",
+    imageAlt: "Anatomisches Wirbelsäulenmodell in einer Physiotherapie-Praxis",
+    tags: ["Rücken"],
+  },
+  {
+    title: "ISG-Blockade — Übungen & Behandlung",
+    excerpt: "ISG-Blockade erkennen, selbst lösen und vorbeugen. 3 effektive Übungen und wann Physiotherapie sinnvoll ist.",
+    slug: "isg-blockade-uebungen-behandlung",
+    date: "2026-03-09",
+    image: "/images/ratgeber-isg-blockade.webp",
+    imageAlt: "Physiotherapeut behandelt das Iliosakralgelenk",
+    tags: ["Rücken", "Hüfte"],
+  },
+  {
+    title: "Frozen Shoulder — Phasen, Behandlung & Übungen",
+    excerpt: "Schultersteife verstehen: Die 3 Phasen, warum Physiotherapie entscheidend ist und welche Übungen helfen.",
+    slug: "frozen-shoulder-behandlung-uebungen",
+    date: "2026-03-09",
+    image: "/images/ratgeber-frozen-shoulder.webp",
+    imageAlt: "Physiotherapeut mobilisiert die Schulter eines Patienten",
+    tags: ["Schulter"],
+  },
+  {
+    title: "Tennisarm — Ursachen, Behandlung & Übungen",
+    excerpt: "Warum Schonung beim Tennisarm schadet und exzentrisches Training der Gold-Standard ist.",
+    slug: "tennisarm-epicondylitis-behandlung",
+    date: "2026-03-09",
+    image: "/images/ratgeber-tennisarm.webp",
+    imageAlt: "Person hält sich den schmerzenden Ellenbogen",
+    tags: ["Ellenbogen"],
+  },
+  {
+    title: "Hüftschmerzen — Ursachen & Übungen",
+    excerpt: "Hüftschmerzen verstehen: Häufige Ursachen, 3 Übungen die helfen und wann Sie zum Therapeuten sollten.",
+    slug: "hueftschmerzen-ursachen-uebungen",
+    date: "2026-03-09",
+    image: "/images/ratgeber-hueftschmerzen.webp",
+    imageAlt: "Physiotherapeut mobilisiert das Hüftgelenk",
+    tags: ["Hüfte"],
+  },
+  {
+    title: "Nackenverspannungen durch Büroarbeit — 5 Tipps",
+    excerpt: "Langes Sitzen, Monitor-Arbeit und Stress — die häufigsten Auslöser für Nackenschmerzen und was wirklich hilft.",
     slug: "nackenverspannungen-bueroarbeit-tipps",
     date: "2026-03-15",
     image: "/images/ratgeber-nackenverspannungen.webp",
     imageAlt: "Frau am Schreibtisch fasst sich an den verspannten Nacken",
+    tags: ["Nacken"],
   },
   {
-    title: "Nach der Kreuzband-OP — Rehabilitation und Trainingsaufbau",
-    excerpt: "Ein Kreuzbandriss ist eine der häufigsten Sportverletzungen. So läuft die Reha ab — von der ersten Krankengymnastik bis zum Wiedereinstieg ins Training.",
+    title: "Nach der Kreuzband-OP — Rehabilitation & Training",
+    excerpt: "Kreuzbandriss-Reha: Von der ersten Krankengymnastik bis zum Wiedereinstieg ins Training.",
     slug: "kreuzband-op-rehabilitation-training",
     date: "2026-03-08",
     image: "/images/ratgeber-kreuzband.webp",
-    imageAlt: "Physiotherapeut unterstützt Patienten bei Knie-Rehabilitationsübungen",
+    imageAlt: "Physiotherapeut unterstützt Patienten bei Knie-Rehabilitation",
+    tags: ["Knie", "Reha"],
   },
   {
     title: "Rückenschmerzen — Ursachen, Übungen & Physiotherapie",
-    excerpt: "Rückenschmerzen sind Volkskrankheit Nr. 1 in Deutschland. Erfahren Sie, welche Ursachen dahinterstecken, welche Übungen helfen und wann Physiotherapie sinnvoll ist.",
+    excerpt: "Rückenschmerzen sind Volkskrankheit Nr. 1. Ursachen, Übungen und wann Physiotherapie sinnvoll ist.",
     slug: "rueckenschmerzen-uebungen-physiotherapie",
     date: "2026-03-01",
     image: "/images/ratgeber-rueckenschmerzen.webp",
     imageAlt: "Physiotherapeut behandelt den unteren Rücken eines Patienten",
+    tags: ["Rücken"],
   },
   {
-    title: "Morgens Rückenschmerzen? 2 Übungen für den Start in den Tag",
-    excerpt: "Steifer Rücken am Morgen? 2 einfache Übungen mobilisieren Ihre Wirbelsäule in 5 Minuten — vom Physiotherapeuten erklärt.",
+    title: "Morgens Rückenschmerzen? 2 Übungen für den Start",
+    excerpt: "Steifer Rücken am Morgen? 2 einfache Übungen mobilisieren Ihre Wirbelsäule in 5 Minuten.",
     slug: "morgens-rueckenschmerzen-uebungen",
     date: "2025-12-10",
     image: "/images/ratgeber-morgens-ruecken.webp",
-    imageAlt: "Person macht Mobilisierungsübungen auf einer Yogamatte am Morgen",
+    imageAlt: "Person macht Mobilisierungsübungen auf einer Yogamatte",
+    tags: ["Rücken"],
   },
   {
-    title: "Spondylolisthesis — 3 Übungen für die Lendenwirbelsäule",
-    excerpt: "Wirbelgleiten stabilisieren: 3 gezielte Übungen zur Kräftigung der Tiefenmuskulatur. Vom Physiotherapeuten erklärt.",
+    title: "Spondylolisthesis — 3 Übungen für die LWS",
+    excerpt: "Wirbelgleiten stabilisieren: 3 gezielte Übungen zur Kräftigung der Tiefenmuskulatur.",
     slug: "spondylolisthesis-uebungen",
     date: "2025-12-10",
     image: "/images/ratgeber-spondylolisthesis.webp",
-    imageAlt: "Patient macht Stabilisierungsübungen unter Anleitung eines Therapeuten",
+    imageAlt: "Patient macht Stabilisierungsübungen unter Anleitung",
+    tags: ["Rücken"],
   },
   {
     title: "Knieschmerzen — 3 Übungen vom Physiotherapeuten",
-    excerpt: "Knieschmerzen loswerden: 3 effektive Übungen für mehr Beweglichkeit und weniger Schmerz im Knie.",
+    excerpt: "Knieschmerzen loswerden: 3 effektive Übungen für mehr Beweglichkeit und weniger Schmerz.",
     slug: "knieschmerzen-uebungen-physiotherapie",
     date: "2025-09-15",
     image: "/images/ratgeber-knieschmerzen.webp",
     imageAlt: "Physiotherapeut untersucht das Knie eines Patienten",
+    tags: ["Knie"],
   },
   {
     title: "Spannungskopfschmerzen — Ursachen & Physiotherapie",
-    excerpt: "Spannungskopfschmerzen effektiv behandeln. Was wirklich dahintersteckt und wie Physiotherapie langfristig hilft.",
+    excerpt: "Spannungskopfschmerzen effektiv behandeln. Was dahintersteckt und wie Physiotherapie hilft.",
     slug: "spannungskopfschmerzen-physiotherapie",
     date: "2025-09-15",
     image: "/images/ratgeber-kopfschmerzen.webp",
     imageAlt: "Person fasst sich an die schmerzenden Schläfen",
+    tags: ["Kopf", "Nacken"],
   },
 ];
 ---
@@ -76,14 +130,25 @@ const articles = [
 
   <section class="section">
     <div class="container">
-      <div class="articles-grid">
+      <div class="filter-bar" id="filter-bar">
+        {tags.map(tag => (
+          <button class={`filter-tag ${tag === 'Alle' ? 'filter-tag--active' : ''}`} data-tag={tag}>{tag}</button>
+        ))}
+      </div>
+
+      <div class="articles-grid" id="articles-grid">
         {articles.map(a => (
-          <a href={`/ratgeber/${a.slug}/`} class="article-card card">
+          <a href={`/ratgeber/${a.slug}/`} class="article-card card" data-tags={a.tags.join(',')}>
             <div class="article-card__image">
               <img src={a.image} alt={a.imageAlt} width="600" height="338" loading="lazy" />
             </div>
             <div class="article-card__body">
-              <time class="article-card__date" datetime={a.date}>{new Date(a.date).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+              <div class="article-card__meta">
+                <time class="article-card__date" datetime={a.date}>{new Date(a.date).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+                <div class="article-card__tags">
+                  {a.tags.map(t => <span class="tag">{t}</span>)}
+                </div>
+              </div>
               <h2 class="article-card__title">{a.title}</h2>
               <p class="article-card__excerpt">{a.excerpt}</p>
               <span class="article-card__link">Weiterlesen &rarr;</span>
@@ -96,6 +161,31 @@ const articles = [
 
   <Footer />
 </Base>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.filter-tag');
+    const cards = document.querySelectorAll('.article-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.tag;
+
+        buttons.forEach(b => b.classList.remove('filter-tag--active'));
+        btn.classList.add('filter-tag--active');
+
+        cards.forEach(card => {
+          if (tag === 'Alle') {
+            card.style.display = '';
+          } else {
+            const cardTags = card.dataset.tags.split(',');
+            card.style.display = cardTags.includes(tag) ? '' : 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
 
 <style>
   .page-header {
@@ -118,6 +208,36 @@ const articles = [
     color: rgba(255, 255, 255, 0.6);
     font-size: var(--text-lg);
     max-width: 600px;
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xl);
+  }
+
+  .filter-tag {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-mid-gray, #ddd);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-tag:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .filter-tag--active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
   }
 
   .articles-grid {
@@ -160,17 +280,40 @@ const articles = [
     flex-grow: 1;
   }
 
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
   .article-card__date {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-sm);
+  }
+
+  .article-card__tags {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    background: rgba(234, 93, 28, 0.1);
+    color: var(--color-accent);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .article-card__title {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-sm);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-xs);
     line-height: 1.2;
   }
 
@@ -184,7 +327,7 @@ const articles = [
 
   .article-card__link {
     font-family: var(--font-headline);
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--color-accent);
@@ -195,7 +338,13 @@ const articles = [
     color: var(--color-accent-hover);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .articles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
     .articles-grid {
       grid-template-columns: 1fr;
     }

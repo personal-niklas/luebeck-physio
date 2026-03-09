@@ -44,9 +44,8 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
             <h2>Öffnungszeiten</h2>
             <table class="hours-table">
               <tr><td>Montag &ndash; Freitag</td><td>7:30 &ndash; 19:00 Uhr</td></tr>
-              <tr><td>Samstag</td><td>7:30 &ndash; 19:00 Uhr</td></tr>
-              <tr><td>Sonntag</td><td>Geschlossen</td></tr>
             </table>
+            <p class="hours-note">Telefonische Sprechzeiten können abweichen. Hinterlassen Sie gerne eine Nachricht — wir rufen zeitnah zurück.</p>
           </div>
 
           <div class="info-block">
@@ -255,6 +254,14 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
     text-align: right;
     font-weight: 500;
     color: var(--color-text-primary);
+  }
+
+  .hours-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+    font-weight: 300;
+    line-height: 1.6;
   }
 
   .contact-map {
