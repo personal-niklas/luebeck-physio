@@ -1,0 +1,272 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
+---
+
+<Base title="Krankenkassen & Kosten | Physiotherapie Lübeck | Physio One" description="Alle Krankenkassen willkommen: Physiotherapie-Kosten, Zuzahlung, Privatversicherung & Selbstzahler bei Physio One Lübeck. Jetzt informieren!">
+  <Header />
+
+  <section class="section page-header">
+    <div class="container">
+      <h1>Krankenkassen & Kosten</h1>
+      <p class="page-header__subtitle">Wir behandeln Patienten aller Krankenkassen — gesetzlich, privat und Selbstzahler.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content">
+      <div class="content__inner">
+
+        <h2>Physiotherapie auf Rezept — so funktioniert es</h2>
+        <p>
+          Für Physiotherapie auf Kosten Ihrer Krankenkasse benötigen Sie eine <strong>ärztliche Verordnung</strong> (Rezept). Diese erhalten Sie von Ihrem Hausarzt, Orthopäden oder jedem anderen Facharzt. Auf dem Rezept stehen die verordnete Behandlung (z. B. Krankengymnastik, KGG, Lymphdrainage), die Anzahl der Sitzungen und die Diagnose.
+        </p>
+        <p>
+          Bei Physio One in Lübeck nehmen wir Patienten <strong>aller gesetzlichen und privaten Krankenkassen</strong> an. Sie müssen sich bei uns nicht vorab als Patient registrieren — bringen Sie einfach Ihr Rezept zum ersten Termin mit.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card card">
+            <h3>Gesetzliche Krankenkasse</h3>
+            <p>Wir behandeln Versicherte aller gesetzlichen Kassen, darunter:</p>
+            <ul>
+              <li>AOK</li>
+              <li>Techniker Krankenkasse (TK)</li>
+              <li>BARMER</li>
+              <li>DAK-Gesundheit</li>
+              <li>IKK</li>
+              <li>KKH</li>
+              <li>BKK</li>
+              <li>Knappschaft</li>
+              <li>Und alle weiteren GKV-Kassen</li>
+            </ul>
+          </div>
+
+          <div class="info-card card">
+            <h3>Private Krankenversicherung</h3>
+            <p>Wir behandeln auch Privatversicherte und Beihilfeberechtigte:</p>
+            <ul>
+              <li>Alle privaten Krankenversicherungen</li>
+              <li>Beihilfe (Beamte)</li>
+              <li>Berufsgenossenschaften (BG)</li>
+              <li>Unfallversicherungen</li>
+              <li>Zusatzversicherungen</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Kosten und Zuzahlung</h2>
+
+        <h3>Gesetzlich Versicherte</h3>
+        <p>
+          Ihre Krankenkasse übernimmt den Großteil der Behandlungskosten. Als gesetzlich Versicherter tragen Sie einen <strong>Eigenanteil</strong>:
+        </p>
+        <ul>
+          <li><strong>10 % der Behandlungskosten</strong> pro Sitzung</li>
+          <li><strong>10 € Verordnungsgebühr</strong> pro Rezept (einmalig, nicht bei Folgeverordnung)</li>
+        </ul>
+        <p>
+          <strong>Zuzahlungsbefreiung:</strong> Kinder und Jugendliche unter 18 Jahren sind von der Zuzahlung befreit. Auch Erwachsene können sich bei ihrer Kasse von der Zuzahlung befreien lassen, wenn die jährliche Belastungsgrenze (2 % bzw. 1 % bei chronisch Kranken des Bruttohaushaltseinkommens) überschritten ist.
+        </p>
+
+        <h3>Privat Versicherte & Beihilfe</h3>
+        <p>
+          Die Kostenübernahme richtet sich nach Ihrem individuellen Tarif. In der Regel erstatten private Krankenversicherungen Physiotherapie vollständig oder zu einem großen Teil. Wir stellen Ihnen eine Rechnung nach der <strong>Gebührenordnung für Therapeuten</strong>, die Sie bei Ihrer Versicherung einreichen.
+        </p>
+
+        <h3>Selbstzahler</h3>
+        <p>
+          Sie können unsere Leistungen auch ohne ärztliches Rezept als Selbstzahler in Anspruch nehmen. Sprechen Sie uns an — wir beraten Sie gerne zu den Kosten und erstellen Ihnen ein individuelles Angebot.
+        </p>
+
+        <h2>Physio One+ — mehr Behandlungszeit</h2>
+        <p>
+          Bei Physio One schenken wir Ihnen standardmäßig <strong>5 Minuten zusätzliche Behandlungszeit</strong> — Sie erhalten 20 statt der üblichen 15 Minuten pro Sitzung. Für noch intensivere Betreuung können Sie optional weitere Zeit hinzubuchen:
+        </p>
+        <ul>
+          <li><strong>+10 Minuten</strong> — für gründlichere Behandlung</li>
+          <li><strong>+20 Minuten</strong> — für komplexe Befunde</li>
+          <li><strong>+30 Minuten</strong> — maximale Behandlungszeit</li>
+        </ul>
+        <p>Die Kosten für die Zusatzzeit werden direkt mit Ihnen abgerechnet und sind nicht erstattungsfähig.</p>
+
+        <h2>Wichtige Fristen</h2>
+        <ul>
+          <li><strong>28 Tage</strong> — Innerhalb dieses Zeitraums muss die Behandlung nach Ausstellung des Kassenrezepts begonnen werden.</li>
+          <li><strong>14 Tage</strong> — Maximale Unterbrechung zwischen zwei Behandlungsterminen auf demselben Rezept.</li>
+          <li><strong>Folgeverordnung</strong> — Bei Bedarf kann Ihr Arzt ein Folgerezept ausstellen. Sprechen Sie ihn rechtzeitig an.</li>
+        </ul>
+
+        <h2>Häufige Fragen zu Kosten und Kassen</h2>
+        <details class="faq-item">
+          <summary class="faq-item__question">Muss ich in Vorleistung treten?</summary>
+          <p class="faq-item__answer">Nein, bei gesetzlicher Versicherung rechnen wir direkt mit Ihrer Kasse ab. Sie zahlen nur den Eigenanteil. Bei privater Versicherung erhalten Sie eine Rechnung zur Einreichung bei Ihrem Versicherer.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">Kann ich die Zuzahlung steuerlich absetzen?</summary>
+          <p class="faq-item__answer">Ja, Zuzahlungen für Physiotherapie können als außergewöhnliche Belastung in Ihrer Steuererklärung geltend gemacht werden.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__question">Was passiert, wenn mein Rezept abläuft?</summary>
+          <p class="faq-item__answer">Ein Kassenrezept verliert nach 28 Tagen seine Gültigkeit, wenn die Behandlung nicht begonnen wurde. In diesem Fall benötigen Sie ein neues Rezept von Ihrem Arzt. Buchen Sie Ihren ersten Termin deshalb zeitnah nach Erhalt des Rezepts.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="container text-center">
+      <h2>Termin vereinbaren</h2>
+      <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
+        Bringen Sie einfach Ihr Rezept mit — wir kümmern uns um den Rest.
+      </p>
+      <div class="cta-actions">
+        <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="btn btn--white">Termin buchen</a>
+        <a href="tel:+4945116086640" class="btn btn--outline" style="border-color: white; color: white;">0451 160 866 40</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+  }
+
+  .content__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content__inner h2 {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .content__inner h3 {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .content__inner p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .content__inner ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0;
+  }
+
+  .content__inner ul li {
+    padding: var(--space-xs) 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .content__inner ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+  }
+
+  .info-card h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+    margin-top: 0;
+  }
+
+  .info-card ul {
+    margin: var(--space-sm) 0 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-mid-gray);
+    padding: var(--space-md) 0;
+  }
+
+  .faq-item__question {
+    font-family: var(--font-headline);
+    font-size: var(--text-xl);
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .faq-item__question::after {
+    content: '+';
+    font-size: var(--text-2xl);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-item__question::after {
+    content: '\2212';
+  }
+
+  .faq-item__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__answer {
+    padding-top: var(--space-sm);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

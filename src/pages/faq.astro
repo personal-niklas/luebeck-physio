@@ -77,6 +77,17 @@ const faqs = [
 <Base title="Häufige Fragen zur Physiotherapie | Physio One Lübeck" description="Antworten auf häufige Fragen: Verordnung, Krankenkasse, Kosten, Termine & Behandlungen bei Physio One in Lübeck.">
   <Header />
 
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.flatMap(cat => cat.items.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    })))
+  })} />
+
   <section class="section page-header">
     <div class="container">
       <h1>Häufige Fragen</h1>

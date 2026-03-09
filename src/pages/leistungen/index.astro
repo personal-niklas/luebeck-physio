@@ -1,8 +1,8 @@
 ---
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
 
 const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
 
@@ -14,6 +14,7 @@ const treatments = [
     badge: "Kassenleistung",
     image: "/images/krankengymnastik.webp",
     imageAlt: "Physiotherapeut behandelt den Arm einer Patientin bei Krankengymnastik",
+    link: "/leistungen/krankengymnastik-luebeck/",
   },
   {
     title: "Gerätegestützte Krankengymnastik (KGG)",
@@ -22,6 +23,7 @@ const treatments = [
     badge: "Kassenleistung",
     image: "/images/geraetegestuetzte-kg.webp",
     imageAlt: "Patientin trainiert mit Langhantel unter Anleitung des Therapeuten",
+    link: "/leistungen/geraetegestuetzte-krankengymnastik-luebeck/",
   },
   {
     title: "Manuelle Lymphdrainage (MLD)",
@@ -30,6 +32,7 @@ const treatments = [
     badge: "Kassenleistung",
     image: "/images/nackenbehandlung.webp",
     imageAlt: "Physiotherapeut behandelt den Nackenbereich einer Patientin",
+    link: "/leistungen/manuelle-lymphdrainage-luebeck/",
   },
   {
     title: "Fango &amp; Wärme- / Kältetherapie",
@@ -38,6 +41,7 @@ const treatments = [
     badge: "Kassenleistung",
     image: "/images/behandlung-praxis.webp",
     imageAlt: "Therapeut bei der Behandlung eines Patienten in der Praxis",
+    link: "/leistungen/fango-waermetherapie-luebeck/",
   },
   {
     title: "Elektrotherapie (ET)",
@@ -46,6 +50,7 @@ const treatments = [
     badge: "Kassenleistung",
     image: "/images/elektrotherapie.webp",
     imageAlt: "Therapeut bringt Elektroden am Arm einer Patientin an",
+    link: "/leistungen/elektrotherapie-luebeck/",
   },
   {
     title: "Klassische Massagetherapie",
@@ -54,6 +59,7 @@ const treatments = [
     badge: "Kassenleistung",
     image: "/images/manuelle-therapie.webp",
     imageAlt: "Therapeut behandelt Hüfte und unteren Rücken eines Patienten",
+    link: "/leistungen/massage-luebeck/",
   },
 ];
 
@@ -99,6 +105,7 @@ const extras = [
                 <span class="tag">{tag}</span>
               ))}
             </div>
+            <a href={t.link} class="treatment__link">Mehr erfahren &rarr;</a>
           </div>
         </div>
       ))}
@@ -248,6 +255,21 @@ const extras = [
   .extra-card .btn {
     align-self: flex-start;
     margin-top: auto;
+  }
+
+  .treatment__link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-family: var(--font-headline);
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    font-weight: 400;
+  }
+
+  .treatment__link:hover {
+    color: var(--color-accent-hover);
   }
 
   @media (max-width: 768px) {

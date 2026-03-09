@@ -1,0 +1,145 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
+---
+
+<Base title="Elektrotherapie Lübeck | Schmerztherapie bei Physio One" description="Elektrotherapie in Lübeck: Schmerzlinderung, Muskelstimulation & Heilungsförderung bei Ischias, Nervenschmerzen & mehr. Kassenleistung. Jetzt Termin buchen!">
+  <Header />
+
+  <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalTherapy",
+      "name": "Elektrotherapie in Lübeck",
+      "description": "Therapeutische Strombehandlung zur Schmerzlinderung, Muskelstimulation und Heilungsunterstützung bei neurologischen und orthopädischen Beschwerden.",
+      "provider": {
+        "@type": "Physiotherapist",
+        "name": "Physio One Lübeck",
+        "url": "https://luebeck-physio.de",
+        "telephone": "+4945116086640"
+      }
+    }
+  </script>
+
+  <section class="section page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Startseite</a> / <a href="/leistungen/">Leistungen</a> / Elektrotherapie
+      </nav>
+      <h1>Elektrotherapie in Lübeck</h1>
+      <p class="page-header__subtitle">Therapeutischer Strom zur Schmerzlinderung, Muskelstimulation und Heilungsförderung.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container service-detail">
+      <div class="service-detail__content">
+        <div class="service-detail__image">
+          <img src="/images/elektrotherapie.webp" alt="Therapeut bringt Elektroden zur Elektrotherapie am Arm einer Patientin an" width="800" height="533" loading="lazy" />
+        </div>
+
+        <h2>Was ist Elektrotherapie?</h2>
+        <p>
+          Bei der Elektrotherapie werden kontrollierte elektrische Ströme therapeutisch eingesetzt. Über Elektroden, die auf der Haut platziert werden, fließen schwache Stromimpulse durch das Gewebe. Je nach Stromform und Frequenz lassen sich unterschiedliche Wirkungen erzielen: Schmerzlinderung, Muskelstimulation, Durchblutungsförderung oder Entzündungshemmung.
+        </p>
+        <p>
+          Bei Physio One in Lübeck setzen wir verschiedene Stromformen ein — von TENS (Transkutane Elektrische Nervenstimulation) über Interferenzstrom bis hin zu Mikrostrom. Ihr Therapeut wählt die geeignete Form basierend auf Ihrer Diagnose und Ihren Beschwerden.
+        </p>
+
+        <h2>Wann wird Elektrotherapie eingesetzt?</h2>
+        <p>Elektrotherapie ist bei zahlreichen Beschwerden und Diagnosen wirksam:</p>
+        <ul>
+          <li><strong>Ischias und Nervenschmerzen</strong> — TENS kann die Schmerzweiterleitung blockieren und Ischias-Beschwerden deutlich lindern.</li>
+          <li><strong>Chronische Schmerzen</strong> — Langanhaltende Schmerzen im Rücken, Nacken oder Gelenken, die auf konventionelle Therapie nicht ausreichend ansprechen.</li>
+          <li><strong>Muskelschwäche</strong> — Elektrische Muskelstimulation (EMS) bei Muskelatrophie nach Operationen oder längerer Immobilisation.</li>
+          <li><strong>Durchblutungsstörungen</strong> — Niederfrequenter Strom fördert die lokale Durchblutung und beschleunigt Heilungsprozesse.</li>
+          <li><strong>Sehnenentzündungen</strong> — Tennisellenbogen, Achillessehnenreizung, Patellaspitzensyndrom und andere Enthesiopathien.</li>
+          <li><strong>Nervenschädigungen</strong> — Unterstützung der Nervenregeneration nach Verletzungen oder Operationen.</li>
+          <li><strong>Wundheilung</strong> — Mikrostromtherapie kann Heilungsprozesse nach Operationen oder Verletzungen beschleunigen.</li>
+        </ul>
+
+        <h2>Stromformen im Überblick</h2>
+        <p>Je nach Beschwerden setzen wir verschiedene Stromformen ein:</p>
+        <ul>
+          <li><strong>TENS (Transkutane Elektrische Nervenstimulation)</strong> — Die am häufigsten angewandte Form. Blockiert Schmerzsignale und regt die Endorphin-Ausschüttung an.</li>
+          <li><strong>Interferenzstrom</strong> — Zwei sich überlagernde Ströme dringen tief ins Gewebe ein. Besonders bei tiefliegenden Schmerzen und Gelenkentzündungen.</li>
+          <li><strong>Diadynamische Ströme</strong> — Niederfrequente Impulsströme mit stark durchblutungsfördernder und schmerzlindernder Wirkung.</li>
+          <li><strong>Hochvolt-Therapie</strong> — Gepulster Strom mit hoher Spannung, aber niedrigem Ampere. Wirksam bei akuten Schmerzen und Schwellungen.</li>
+        </ul>
+
+        <h2>Wie läuft eine Behandlung ab?</h2>
+        <p>
+          Ihr Therapeut platziert Elektroden auf Ihrer Haut im Bereich der Beschwerden. Die Stromstärke wird langsam erhöht, bis Sie ein leichtes Kribbeln oder Pulsieren spüren — die Behandlung ist schmerzfrei. Eine Sitzung dauert in der Regel 15-20 Minuten und wird häufig in Kombination mit Krankengymnastik verordnet.
+        </p>
+
+        <h2>Kosten und Verordnung</h2>
+        <p>
+          Elektrotherapie ist eine Kassenleistung und wird bei entsprechender ärztlicher Verordnung von allen gesetzlichen und privaten Krankenkassen übernommen. Sie wird häufig als ergänzendes Heilmittel zur Krankengymnastik verordnet.
+        </p>
+
+        <div class="service-detail__tags">
+          <h3>Ideal bei</h3>
+          <div class="tags">
+            <span class="tag">Ischias</span>
+            <span class="tag">Nervenschmerzen</span>
+            <span class="tag">Chronische Schmerzen</span>
+            <span class="tag">Muskelschwäche</span>
+            <span class="tag">Durchblutungsstörungen</span>
+            <span class="tag">Sehnenentzündungen</span>
+          </div>
+        </div>
+
+        <div class="service-detail__related">
+          <h3>Verwandte Leistungen</h3>
+          <ul>
+            <li><a href="/leistungen/krankengymnastik-luebeck/">Krankengymnastik</a> — Hauptbehandlung, ergänzt durch Elektrotherapie</li>
+            <li><a href="/leistungen/fango-waermetherapie-luebeck/">Fango & Wärmetherapie</a> — Alternative physikalische Therapie</li>
+            <li><a href="/leistungen/geraetegestuetzte-krankengymnastik-luebeck/">Gerätegestützte KG (KGG)</a> — Bei Muskelschwäche und Aufbautraining</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent">
+    <div class="container text-center">
+      <h2>Termin vereinbaren</h2>
+      <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
+        Buchen Sie jetzt Ihren Termin — online über Doctolib oder telefonisch.
+      </p>
+      <div class="cta-actions">
+        <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="btn btn--white">Termin buchen</a>
+        <a href="tel:+4945116086640" class="btn btn--outline" style="border-color: white; color: white;">0451 160 866 40</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header { padding-top: calc(var(--header-height) + var(--space-2xl)); padding-bottom: var(--space-xl); background: var(--color-black); color: var(--color-white); }
+  .page-header h1 { color: var(--color-white); margin-bottom: var(--space-sm); }
+  .page-header__subtitle { color: rgba(255, 255, 255, 0.6); font-size: var(--text-lg); max-width: 600px; }
+  .breadcrumb { font-size: var(--text-sm); margin-bottom: var(--space-md); }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb a:hover { color: var(--color-accent); }
+  .service-detail__content { max-width: 800px; margin: 0 auto; }
+  .service-detail__content h2 { font-size: var(--text-3xl); margin-top: var(--space-xl); margin-bottom: var(--space-md); }
+  .service-detail__content h3 { font-size: var(--text-2xl); margin-top: var(--space-lg); margin-bottom: var(--space-sm); }
+  .service-detail__content p { font-size: var(--text-lg); line-height: 1.8; color: var(--color-text-primary); font-weight: 300; }
+  .service-detail__content ul { list-style: none; padding: 0; margin: var(--space-md) 0; }
+  .service-detail__content ul li { padding: var(--space-xs) 0; padding-left: 1.5rem; position: relative; font-weight: 300; line-height: 1.7; }
+  .service-detail__content ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; }
+  .service-detail__image { border-radius: var(--border-radius); overflow: hidden; margin-bottom: var(--space-lg); }
+  .service-detail__image img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: var(--space-sm); }
+  .tag { display: inline-block; background: var(--color-light-gray); color: var(--color-text-primary); font-size: var(--text-xs); font-weight: 500; padding: 0.375rem 0.875rem; border-radius: 100px; }
+  .service-detail__related { margin-top: var(--space-xl); padding: var(--space-lg); background: var(--color-light-gray); border-radius: var(--border-radius); }
+  .service-detail__related a { font-weight: 500; }
+  .cta-actions { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+</style>

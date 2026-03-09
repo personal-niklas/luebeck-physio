@@ -1,0 +1,128 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+const articles = [
+  {
+    title: "Rückenschmerzen — Ursachen, Übungen und wann Sie zum Physiotherapeuten sollten",
+    excerpt: "Rückenschmerzen sind Volkskrankheit Nr. 1 in Deutschland. Erfahren Sie, welche Ursachen dahinterstecken, welche Übungen helfen und wann Physiotherapie sinnvoll ist.",
+    slug: "rueckenschmerzen-uebungen-physiotherapie",
+    date: "2026-03-01",
+  },
+  {
+    title: "Nach der Kreuzband-OP — Rehabilitation und Trainingsaufbau",
+    excerpt: "Ein Kreuzbandriss ist eine der häufigsten Sportverletzungen. So läuft die Reha ab — von der ersten Krankengymnastik bis zum Wiedereinstieg ins Training.",
+    slug: "kreuzband-op-rehabilitation-training",
+    date: "2026-03-08",
+  },
+  {
+    title: "Nackenverspannungen durch Büroarbeit — 5 Tipps vom Physiotherapeuten",
+    excerpt: "Langes Sitzen, Monitor-Arbeit und Stress — die häufigsten Auslöser für Nackenschmerzen. Unsere Therapeuten zeigen, was wirklich hilft.",
+    slug: "nackenverspannungen-bueroarbeit-tipps",
+    date: "2026-03-15",
+  },
+];
+---
+
+<Base title="Ratgeber Physiotherapie | Tipps & Wissen | Physio One Lübeck" description="Ratgeber rund um Physiotherapie, Rückenschmerzen, Rehabilitation und Prävention. Expertenwissen von Ihrem Therapeuten-Team in Lübeck.">
+  <Header />
+
+  <section class="section page-header">
+    <div class="container">
+      <h1>Ratgeber Physiotherapie</h1>
+      <p class="page-header__subtitle">Expertenwissen aus unserer Praxis — für Ihre Gesundheit.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="articles-grid">
+        {articles.map(a => (
+          <a href={`/ratgeber/${a.slug}/`} class="article-card card">
+            <time class="article-card__date" datetime={a.date}>{new Date(a.date).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+            <h2 class="article-card__title">{a.title}</h2>
+            <p class="article-card__excerpt">{a.excerpt}</p>
+            <span class="article-card__link">Weiterlesen &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .article-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-card__date {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .article-card__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+  }
+
+  .article-card__excerpt {
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    flex-grow: 1;
+  }
+
+  .article-card__link {
+    font-family: var(--font-headline);
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    margin-top: var(--space-sm);
+  }
+
+  .article-card:hover .article-card__link {
+    color: var(--color-accent-hover);
+  }
+
+  @media (max-width: 768px) {
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

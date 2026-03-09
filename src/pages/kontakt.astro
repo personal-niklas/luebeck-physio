@@ -66,7 +66,47 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
     </div>
   </section>
 
-  <section class="section section--light">
+  <section class="section section--light" id="kontaktformular">
+    <div class="container">
+      <h2 class="text-center">Nachricht schreiben</h2>
+      <p class="form-subtitle text-center">Sie haben eine Frage oder möchten einen Termin anfragen? Schreiben Sie uns — wir melden uns zeitnah.</p>
+      <form class="contact-form" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Ihr Name" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" required placeholder="ihre@email.de" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="Optional" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Betreff</label>
+            <select id="subject" name="subject">
+              <option value="Terminanfrage">Terminanfrage</option>
+              <option value="Allgemeine Frage">Allgemeine Frage</option>
+              <option value="Rezept-Frage">Frage zu Rezept / Verordnung</option>
+              <option value="Feedback">Feedback</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Nachricht *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht an uns..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Nachricht senden</button>
+        <p class="form-hint">* Pflichtfelder. Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet. <a href="/datenschutz/">Datenschutz</a></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <h2 class="text-center">Anfahrt &amp; Parken</h2>
       <div class="parking-grid">
@@ -90,6 +130,27 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
 </Base>
 
 <script is:inline>
+  // Contact form handler
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
+
+    var body = 'Name: ' + name + '\n';
+    if (phone) body += 'Telefon: ' + phone + '\n';
+    body += 'E-Mail: ' + email + '\n\n';
+    body += message;
+
+    var mailto = 'mailto:info@luebeck-physio.de'
+      + '?subject=' + encodeURIComponent(subject + ' — ' + name)
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+  });
+
   function initMap() {
     if (!document.querySelector('link[href*="leaflet.css"]')) {
       var link = document.createElement('link');
@@ -226,12 +287,86 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one-luebeck";
     margin-bottom: var(--space-xs);
   }
 
+  .form-subtitle {
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    font-weight: 300;
+  }
+
+  .contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 300;
+    border: 1px solid var(--color-mid-gray);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contact-form .btn {
+    width: 100%;
+  }
+
+  .form-hint {
+    margin-top: var(--space-sm);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
     .contact-grid {
       grid-template-columns: 1fr;
     }
 
     .parking-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
       grid-template-columns: 1fr;
     }
   }

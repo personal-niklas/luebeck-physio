@@ -21,10 +21,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
 const breadcrumbLabels: Record<string, string> = {
   'leistungen': 'Leistungen',
+  'krankengymnastik-luebeck': 'Krankengymnastik',
+  'geraetegestuetzte-krankengymnastik-luebeck': 'Gerätegestützte KG',
+  'manuelle-lymphdrainage-luebeck': 'Manuelle Lymphdrainage',
+  'fango-waermetherapie-luebeck': 'Fango & Wärmetherapie',
+  'elektrotherapie-luebeck': 'Elektrotherapie',
+  'massage-luebeck': 'Massage',
   'team': 'Team',
   'kontakt': 'Kontakt',
   'faq': 'FAQ',
   'b2b': 'Für Unternehmen',
+  'krankenkassen': 'Krankenkassen',
+  'ratgeber': 'Ratgeber',
   'impressum': 'Impressum',
   'datenschutz': 'Datenschutz',
 };

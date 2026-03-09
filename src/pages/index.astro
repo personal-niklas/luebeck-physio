@@ -11,31 +11,37 @@ const services = [
     icon: "01",
     title: "Krankengymnastik",
     text: "Gezielte Bewegungstherapie bei Rückenschmerzen, Nackenverspannungen und Haltungsproblemen.",
+    link: "/leistungen/krankengymnastik-luebeck/",
   },
   {
     icon: "02",
     title: "Gerätegestützte KG",
     text: "Training an medizinischen Geräten — ideal nach Verletzungen, Operationen oder zum gezielten Muskelaufbau.",
+    link: "/leistungen/geraetegestuetzte-krankengymnastik-luebeck/",
   },
   {
     icon: "03",
     title: "Manuelle Lymphdrainage",
     text: "Sanfte Entstauungstherapie bei Lymphödemen, Schwellungen nach OPs oder schweren Beinen.",
+    link: "/leistungen/manuelle-lymphdrainage-luebeck/",
   },
   {
     icon: "04",
     title: "Fango &amp; Wärmetherapie",
     text: "Tiefenwärme gegen chronische Schmerzen und Muskelverhärtungen. Kältetherapie bei akuten Entzündungen.",
+    link: "/leistungen/fango-waermetherapie-luebeck/",
   },
   {
     icon: "05",
     title: "Elektrotherapie",
     text: "Therapeutischer Strom zur Schmerzlinderung und Heilungsunterstützung — z.\u00A0B. bei Ischias oder Nervenschmerzen.",
+    link: "/leistungen/elektrotherapie-luebeck/",
   },
   {
     icon: "06",
     title: "Massage",
     text: "Klassische Massagetherapie gegen Muskelverspannungen, stressbedingte Beschwerden und Kopfschmerzen.",
+    link: "/leistungen/massage-luebeck/",
   },
 ];
 
@@ -60,14 +66,17 @@ const principles = [
 const reviews = [
   {
     text: "Ich war wegen eines Kapselrisses in Behandlung und habe mich von Anfang an gut aufgehoben gefühlt.",
+    name: "Patient bei Google",
     stars: 5,
   },
   {
     text: "Das Team ist sehr freundlich, kompetent und nimmt sich viel Zeit.",
+    name: "Patient bei Google",
     stars: 5,
   },
   {
     text: "Tolles Konzept mit Fachwissen auf dem besten und aktuellsten Stand.",
+    name: "Patient bei Google",
     stars: 5,
   },
 ];
@@ -158,11 +167,12 @@ const faqs = [
       <p class="section__subtitle text-center">Alles aus einer Hand — von der Therapie bis zum Training.</p>
       <div class="services-grid">
         {services.map(s => (
-          <div class="service-card card">
+          <a href={s.link} class="service-card card">
             <span class="service-card__number">{s.icon}</span>
             <h3>{s.title}</h3>
             <p set:html={s.text} />
-          </div>
+            <span class="service-card__link">Mehr erfahren &rarr;</span>
+          </a>
         ))}
       </div>
       <div class="text-center" style="margin-top: var(--space-xl);">
@@ -179,11 +189,15 @@ const faqs = [
         <span class="rating__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span class="rating__text">5.0 von 5 &mdash; basierend auf Google-Bewertungen</span>
       </div>
+      <a href="https://www.google.com/maps/place/Physio+One" target="_blank" rel="noopener noreferrer" class="reviews-link">Alle 9 Bewertungen auf Google ansehen &rarr;</a>
       <div class="reviews-grid">
         {reviews.map(r => (
           <blockquote class="review-card">
             <p>&bdquo;{r.text}&ldquo;</p>
-            <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="review-card__footer">
+              <div class="review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <cite class="review-card__name">{r.name}</cite>
+            </div>
           </blockquote>
         ))}
       </div>
@@ -365,8 +379,29 @@ const faqs = [
     margin-bottom: var(--space-sm);
   }
 
+  .service-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
   .service-card h3 {
     margin-bottom: var(--space-xs);
+  }
+
+  .service-card__link {
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    font-family: var(--font-headline);
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+  }
+
+  .service-card:hover .service-card__link {
+    color: var(--color-accent-hover);
   }
 
   /* --- Rating --- */
@@ -409,10 +444,33 @@ const faqs = [
     margin-bottom: var(--space-sm);
   }
 
+  .reviews-link {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .reviews-link:hover {
+    color: var(--color-accent);
+  }
+
+  .review-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .review-card__stars {
     color: var(--color-accent);
     font-size: var(--text-sm);
     letter-spacing: 0.05em;
+  }
+
+  .review-card__name {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: var(--text-xs);
+    font-style: normal;
   }
 
   /* --- FAQ --- */
