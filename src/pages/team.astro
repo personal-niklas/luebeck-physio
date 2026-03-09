@@ -9,11 +9,13 @@ const team = [
     name: "Tim S.",
     role: "Praxisleitung & Sportphysiotherapeut",
     description: "Tim leitet die therapeutische Arbeit bei Physio One. Als Sportphysiotherapeut verbindet er fundiertes Fachwissen mit einem klaren Fokus auf individuelle Betreuung — vom ersten Befund bis zur vollständigen Genesung.",
+    image: "/images/team-tim.jpg",
   },
   {
     name: "Niklas Pape",
     role: "Inhaber & Med. Personal Trainer",
     description: "Niklas ist Gründer von Physio One und bringt über 5 Jahre Erfahrung im gesundheitsorientierten Personal Training mit. Er sorgt dafür, dass der Übergang von der Therapie zum eigenständigen Training nahtlos gelingt.",
+    image: "/images/team-niklas.jpg",
   },
   {
     name: "Marie T.",
@@ -43,9 +45,15 @@ const team = [
       <div class="team-grid">
         {team.map(member => (
           <div class="team-card card">
-            <div class="team-card__avatar">
-              <span class="team-card__initial">{member.name.charAt(0)}</span>
-            </div>
+            {member.image ? (
+              <div class="team-card__avatar team-card__avatar--photo">
+                <img src={member.image} alt={member.name} width="96" height="96" loading="lazy" />
+              </div>
+            ) : (
+              <div class="team-card__avatar">
+                <span class="team-card__initial">{member.name.charAt(0)}</span>
+              </div>
+            )}
             <h3 class="team-card__name">{member.name}</h3>
             <p class="team-card__role">{member.role}</p>
             <p class="team-card__bio">{member.description}</p>
@@ -122,6 +130,13 @@ const team = [
     font-size: var(--text-4xl);
     color: var(--color-accent);
     line-height: 1;
+  }
+
+  .team-card__avatar--photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   .team-card__name {

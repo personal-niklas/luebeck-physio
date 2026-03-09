@@ -12,36 +12,48 @@ const treatments = [
     description: "Gezielte Bewegungstherapie zur Wiederherstellung und Verbesserung Ihrer Beweglichkeit und Kraft. Wir erstellen einen individuellen Behandlungsplan — abgestimmt auf Ihre Beschwerden und Ziele.",
     ideal: ["Rückenschmerzen", "Nackenverspannungen", "Haltungsprobleme", "Nach Operationen", "Gelenkbeschwerden"],
     badge: "Kassenleistung",
+    image: "/images/krankengymnastik.jpg",
+    imageAlt: "Physiotherapeut behandelt den Arm einer Patientin bei Krankengymnastik",
   },
   {
     title: "Gerätegestützte Krankengymnastik (KGG)",
     description: "Gezieltes Training an medizinischen Geräten unter therapeutischer Anleitung. Besonders effektiv für den Muskelaufbau nach Verletzungen und zur langfristigen Stabilisierung.",
     ideal: ["Nach Kreuzbandriss", "Bandscheibenvorfall", "Schulter-OPs", "Muskelaufbau", "Prävention"],
     badge: "Kassenleistung",
+    image: "/images/geraetegestuetzte-kg.jpg",
+    imageAlt: "Patientin trainiert mit Langhantel unter Anleitung des Therapeuten",
   },
   {
     title: "Manuelle Lymphdrainage (MLD)",
     description: "Sanfte, rhythmische Grifftechniken zur Entstauung und Förderung des Lymphabflusses. Lindert Schwellungen und unterstützt die Heilung nach Operationen.",
     ideal: ["Lymphödeme", "Schwere Beine", "Schwellungen nach OPs", "Lipödeme", "Chronische Stauungen"],
     badge: "Kassenleistung",
+    image: "/images/nackenbehandlung.jpg",
+    imageAlt: "Physiotherapeut behandelt den Nackenbereich einer Patientin",
   },
   {
     title: "Fango &amp; Wärme- / Kältetherapie",
     description: "Wärme bei chronischen Schmerzen und Muskelverhärtungen — Kälte bei akuten Entzündungen und Sportverletzungen. Häufig als Ergänzung zur Krankengymnastik verordnet.",
     ideal: ["Chronische Schmerzen", "Muskelverhärtungen", "Akute Entzündungen", "Sportverletzungen", "Gelenksteife"],
     badge: "Kassenleistung",
+    image: "/images/behandlung-praxis.jpg",
+    imageAlt: "Therapeut bei der Behandlung eines Patienten in der Praxis",
   },
   {
     title: "Elektrotherapie (ET)",
     description: "Therapeutischer Strom zur Schmerzlinderung, Durchblutungsförderung und Heilungsunterstützung. Besonders wirksam bei Nervenreizungen und chronischen Beschwerden.",
     ideal: ["Ischias", "Nervenschmerzen", "Durchblutungsstörungen", "Muskelschwäche", "Chronische Schmerzen"],
     badge: "Kassenleistung",
+    image: "/images/elektrotherapie.jpg",
+    imageAlt: "Therapeut bringt Elektroden am Arm einer Patientin an",
   },
   {
     title: "Klassische Massagetherapie",
     description: "Wohltuende Massage gegen Verspannungen und stressbedingte Beschwerden. Löst Verhärtungen, fördert die Durchblutung und hilft oft bei spannungsbedingten Kopfschmerzen.",
     ideal: ["Muskelverspannungen", "Stress", "Kopfschmerzen", "Verhärtungen", "Allgemeines Wohlbefinden"],
     badge: "Kassenleistung",
+    image: "/images/manuelle-therapie.jpg",
+    imageAlt: "Therapeut behandelt Hüfte und unteren Rücken eines Patienten",
   },
 ];
 
@@ -75,6 +87,9 @@ const extras = [
     <div class="container">
       {treatments.map((t, i) => (
         <div class={`treatment ${i % 2 === 1 ? 'treatment--alt' : ''}`}>
+          <div class="treatment__image">
+            <img src={t.image} alt={t.imageAlt} width="800" height="533" loading="lazy" />
+          </div>
           <div class="treatment__content">
             <div class="treatment__badge">{t.badge}</div>
             <h2 set:html={t.title} />
@@ -138,12 +153,37 @@ const extras = [
   }
 
   .treatment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
     padding: var(--space-xl) 0;
     border-bottom: 1px solid var(--color-mid-gray);
   }
 
+  .treatment--alt {
+    direction: rtl;
+  }
+
+  .treatment--alt > * {
+    direction: ltr;
+  }
+
   .treatment:last-child {
     border-bottom: none;
+  }
+
+  .treatment__image {
+    border-radius: var(--radius-lg, 12px);
+    overflow: hidden;
+  }
+
+  .treatment__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+    display: block;
   }
 
   .treatment__badge {
@@ -211,6 +251,14 @@ const extras = [
   }
 
   @media (max-width: 768px) {
+    .treatment {
+      grid-template-columns: 1fr;
+    }
+
+    .treatment--alt {
+      direction: ltr;
+    }
+
     .extras-grid {
       grid-template-columns: 1fr;
     }

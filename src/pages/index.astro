@@ -108,6 +108,7 @@ const faqs = [
 
   <!-- HERO -->
   <section class="hero">
+    <img src="/images/hero-behandlung.jpg" alt="Physiotherapeut behandelt Patientin in der Physio One Praxis in Lübeck" class="hero__bg" width="1920" height="1280" loading="eager" fetchpriority="high" />
     <div class="container hero__inner">
       <div class="hero__content">
         <p class="hero__label">One Way To Physical Health</p>
@@ -240,23 +241,21 @@ const faqs = [
     display: flex;
     align-items: center;
     padding-top: var(--header-height);
-    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    background: #000;
     color: var(--color-white);
     position: relative;
     overflow: hidden;
   }
 
-  .hero::after {
-    content: '';
+  .hero__bg {
     position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 60%;
-    height: 200%;
-    background: var(--color-accent);
-    opacity: 0.05;
-    border-radius: 50%;
-    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.35;
+    z-index: 0;
   }
 
   .hero__content {
