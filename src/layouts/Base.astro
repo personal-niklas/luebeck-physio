@@ -5,12 +5,14 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "Physio One – Ihre Physiotherapie-Praxis in der Lübecker Innenstadt. Krankengymnastik, manuelle Therapie, Fango und mehr. Jetzt Termin buchen.",
-  ogImage = "/logo.svg"
+  description = "Physio One – Ihre Physiotherapie in Lübeck. Krankengymnastik, KGG, Lymphdrainage, Fango & mehr. Alle Kassen. Jetzt Termin buchen!",
+  ogImage = "https://luebeck-physio.de/images/og-default.png",
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -28,10 +30,10 @@ const breadcrumbLabels: Record<string, string> = {
 };
 
 const breadcrumbs = [
-  { name: 'Startseite', url: 'https://luebeck-physio.de/' },
+  { name: 'Startseite', url: new URL('/', Astro.site).href },
   ...pathSegments.map((segment, i) => ({
     name: breadcrumbLabels[segment] || segment,
-    url: `https://luebeck-physio.de/${pathSegments.slice(0, i + 1).join('/')}/`,
+    url: new URL(`/${pathSegments.slice(0, i + 1).join('/')}/`, Astro.site).href,
   })),
 ];
 ---
@@ -43,19 +45,15 @@ const breadcrumbs = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Physio One" />
-
-    <!-- Preconnect: Google Fonts (must come before font link) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+    <link rel="alternate" hreflang="de" href={canonicalURL} />
 
     <!-- Preconnect: Cloudflare Analytics -->
     <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
 
-    <!-- Fonts: Non-render-blocking via media="print" swap trick -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" />
-    </noscript>
+    <!-- Font Preload (self-hosted, DSGVO-konform) -->
+    <link rel="preload" href="/fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
@@ -70,6 +68,13 @@ const breadcrumbs = [
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Physio One Lübeck" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Google Consent Mode V2 – Default: alles verweigert (DSGVO) -->
     <script is:inline>
@@ -122,12 +127,6 @@ const breadcrumbs = [
           }
         ],
         "priceRange": "$$",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "reviewCount": "9",
-          "bestRating": "5"
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Behandlungen",
@@ -137,7 +136,7 @@ const breadcrumbs = [
               "itemOffered": {
                 "@type": "MedicalTherapy",
                 "name": "Krankengymnastik",
-                "description": "Individuelle Krankengymnastik zur Wiederherstellung und Verbesserung der Beweglichkeit"
+                "description": "Gezielte Bewegungstherapie bei Rückenschmerzen, Nackenverspannungen und Haltungsproblemen in Lübeck"
               }
             },
             {
@@ -145,7 +144,7 @@ const breadcrumbs = [
               "itemOffered": {
                 "@type": "MedicalTherapy",
                 "name": "Gerätegestützte Krankengymnastik (KGG)",
-                "description": "Krafttraining an medizinischen Geräten unter therapeutischer Anleitung"
+                "description": "Training an medizinischen Geräten nach Verletzungen oder Operationen"
               }
             },
             {
@@ -153,15 +152,31 @@ const breadcrumbs = [
               "itemOffered": {
                 "@type": "MedicalTherapy",
                 "name": "Manuelle Lymphdrainage",
-                "description": "Sanfte Entstauungstherapie zur Förderung des Lymphabflusses"
+                "description": "Sanfte Entstauungstherapie bei Lymphödemen und Schwellungen"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "MedicalTherapy",
-                "name": "Fango / Wärmetherapie",
+                "name": "Fango & Wärmetherapie",
                 "description": "Wärmebehandlung zur Schmerzlinderung und Muskelentspannung"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "MedicalTherapy",
+                "name": "Elektrotherapie",
+                "description": "Stromtherapie zur Schmerzlinderung und Muskelstimulation"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "MedicalTherapy",
+                "name": "Klassische Massagetherapie",
+                "description": "Therapeutische Massage zur Lösung von Verspannungen und Förderung der Durchblutung"
               }
             }
           ]
