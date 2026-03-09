@@ -43,6 +43,9 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
 
   <section class="section">
     <div class="container article">
+      <div class="article__hero">
+        <img src="/images/ratgeber-rueckenschmerzen.webp" alt="Physiotherapeut behandelt den unteren Rücken eines Patienten auf der Behandlungsliege" width="1200" height="675" loading="eager" />
+      </div>
       <div class="article__content">
         <p class="article__intro">
           Rückenschmerzen sind die häufigste Ursache für Arbeitsunfähigkeit in Deutschland. Rund 85 % aller Menschen erleben mindestens einmal im Leben Rückenbeschwerden. Doch die gute Nachricht: In den meisten Fällen sind Rückenschmerzen gut behandelbar — und Physiotherapie gehört zu den wirksamsten Therapieformen.
@@ -161,6 +164,19 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
 
   .breadcrumb a:hover {
     color: var(--color-accent);
+  }
+
+  .article__hero {
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+    border-radius: var(--radius-lg, 12px);
+    overflow: hidden;
+  }
+
+  .article__hero img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .article__content {

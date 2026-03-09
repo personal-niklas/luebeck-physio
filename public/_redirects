@@ -1,0 +1,19 @@
+# Old WordPress blog posts → new Ratgeber articles
+/blog/rueckenschmerzen/ /ratgeber/rueckenschmerzen-uebungen-physiotherapie/ 301
+/blog/knieschmerzen-mit-diesen-3-uebungen-kannst-du-sie-loswerden/ /ratgeber/knieschmerzen-uebungen-physiotherapie/ 301
+/blog/spannungskopfschmerzen/ /ratgeber/spannungskopfschmerzen-physiotherapie/ 301
+/blog/spondylolisthesis/ /ratgeber/spondylolisthesis-uebungen/ 301
+/blog/firmen-physio/ /b2b/ 301
+/uncategorized/morgens-rueckenschmerzen/ /ratgeber/morgens-rueckenschmerzen-uebungen/ 301
+
+# Old WordPress structural pages
+/physio-one/ / 301
+/category/blog/ /ratgeber/ 301
+/category/uncategorized/ /ratgeber/ 301
+/author/admin/ /team/ 301
+
+# Catch-all for remaining WordPress paths
+/blog/* /ratgeber/ 301
+/category/* /ratgeber/ 301
+/author/* /team/ 301
+/uncategorized/* /ratgeber/ 301
