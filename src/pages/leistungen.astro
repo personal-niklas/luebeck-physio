@@ -12,7 +12,7 @@ const treatments = [
     description: "Gezielte Bewegungstherapie zur Wiederherstellung und Verbesserung Ihrer Beweglichkeit und Kraft. Wir erstellen einen individuellen Behandlungsplan — abgestimmt auf Ihre Beschwerden und Ziele.",
     ideal: ["Rückenschmerzen", "Nackenverspannungen", "Haltungsprobleme", "Nach Operationen", "Gelenkbeschwerden"],
     badge: "Kassenleistung",
-    image: "/images/krankengymnastik.jpg",
+    image: "/images/krankengymnastik.webp",
     imageAlt: "Physiotherapeut behandelt den Arm einer Patientin bei Krankengymnastik",
   },
   {
@@ -20,7 +20,7 @@ const treatments = [
     description: "Gezieltes Training an medizinischen Geräten unter therapeutischer Anleitung. Besonders effektiv für den Muskelaufbau nach Verletzungen und zur langfristigen Stabilisierung.",
     ideal: ["Nach Kreuzbandriss", "Bandscheibenvorfall", "Schulter-OPs", "Muskelaufbau", "Prävention"],
     badge: "Kassenleistung",
-    image: "/images/geraetegestuetzte-kg.jpg",
+    image: "/images/geraetegestuetzte-kg.webp",
     imageAlt: "Patientin trainiert mit Langhantel unter Anleitung des Therapeuten",
   },
   {
@@ -28,7 +28,7 @@ const treatments = [
     description: "Sanfte, rhythmische Grifftechniken zur Entstauung und Förderung des Lymphabflusses. Lindert Schwellungen und unterstützt die Heilung nach Operationen.",
     ideal: ["Lymphödeme", "Schwere Beine", "Schwellungen nach OPs", "Lipödeme", "Chronische Stauungen"],
     badge: "Kassenleistung",
-    image: "/images/nackenbehandlung.jpg",
+    image: "/images/nackenbehandlung.webp",
     imageAlt: "Physiotherapeut behandelt den Nackenbereich einer Patientin",
   },
   {
@@ -36,7 +36,7 @@ const treatments = [
     description: "Wärme bei chronischen Schmerzen und Muskelverhärtungen — Kälte bei akuten Entzündungen und Sportverletzungen. Häufig als Ergänzung zur Krankengymnastik verordnet.",
     ideal: ["Chronische Schmerzen", "Muskelverhärtungen", "Akute Entzündungen", "Sportverletzungen", "Gelenksteife"],
     badge: "Kassenleistung",
-    image: "/images/behandlung-praxis.jpg",
+    image: "/images/behandlung-praxis.webp",
     imageAlt: "Therapeut bei der Behandlung eines Patienten in der Praxis",
   },
   {
@@ -44,7 +44,7 @@ const treatments = [
     description: "Therapeutischer Strom zur Schmerzlinderung, Durchblutungsförderung und Heilungsunterstützung. Besonders wirksam bei Nervenreizungen und chronischen Beschwerden.",
     ideal: ["Ischias", "Nervenschmerzen", "Durchblutungsstörungen", "Muskelschwäche", "Chronische Schmerzen"],
     badge: "Kassenleistung",
-    image: "/images/elektrotherapie.jpg",
+    image: "/images/elektrotherapie.webp",
     imageAlt: "Therapeut bringt Elektroden am Arm einer Patientin an",
   },
   {
@@ -52,7 +52,7 @@ const treatments = [
     description: "Wohltuende Massage gegen Verspannungen und stressbedingte Beschwerden. Löst Verhärtungen, fördert die Durchblutung und hilft oft bei spannungsbedingten Kopfschmerzen.",
     ideal: ["Muskelverspannungen", "Stress", "Kopfschmerzen", "Verhärtungen", "Allgemeines Wohlbefinden"],
     badge: "Kassenleistung",
-    image: "/images/manuelle-therapie.jpg",
+    image: "/images/manuelle-therapie.webp",
     imageAlt: "Therapeut behandelt Hüfte und unteren Rücken eines Patienten",
   },
 ];
@@ -113,7 +113,7 @@ const extras = [
           <div class="extra-card card">
             <h3>{e.title}</h3>
             <p>{e.description}</p>
-            <a href={e.link} target="_blank" rel="noopener" class="btn btn--primary btn--small">{e.linkText}</a>
+            <a href={e.link} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">{e.linkText}</a>
           </div>
         ))}
       </div>
@@ -126,7 +126,7 @@ const extras = [
       <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
         Bringen Sie Ihre ärztliche Verordnung mit — wir kümmern uns um den Rest.
       </p>
-      <a href={bookingUrl} target="_blank" rel="noopener" class="btn btn--white">Jetzt Termin buchen</a>
+      <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="btn btn--white">Jetzt Termin buchen</a>
     </div>
   </section>
 
