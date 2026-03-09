@@ -1,0 +1,99 @@
+---
+/**
+ * Partner & Referenzen – dezente Logo-/Namensleiste
+ * Zeigt B2B-Kunden als Social Proof für Firmengesundheit.
+ */
+
+const partners = [
+  { name: "Deutsche Telekom", highlight: true },
+  { name: "Hansestadt Lübeck", highlight: true },
+  { name: "Colibris", highlight: false },
+  { name: "Hansabaubeschlag", highlight: false },
+  { name: "PVZ Lübeck", highlight: false },
+];
+---
+
+<div class="partners">
+  <div class="container">
+    <p class="partners__label">Vertrauen uns unter anderem</p>
+    <div class="partners__list">
+      {partners.map((partner) => (
+        <span class:list={["partners__name", { "partners__name--highlight": partner.highlight }]}>
+          {partner.name}
+        </span>
+      ))}
+      <span class="partners__more">+ Steuerkanzleien & Arztpraxen</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .partners {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .partners__label {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-light);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .partners__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm) var(--space-lg);
+  }
+
+  .partners__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: rgba(0, 0, 0, 0.25);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .partners__name--highlight {
+    font-size: var(--text-xl);
+    color: rgba(0, 0, 0, 0.35);
+  }
+
+  .partners__name:hover {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .partners__more {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    font-weight: 300;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .partners__list {
+      gap: var(--space-xs) var(--space-md);
+    }
+
+    .partners__name {
+      font-size: var(--text-base);
+    }
+
+    .partners__name--highlight {
+      font-size: var(--text-lg);
+    }
+  }
+</style>
