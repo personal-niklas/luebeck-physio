@@ -1,51 +1,47 @@
 ---
 /**
- * Partner & Referenzen – dezente Logo-/Namensleiste
- * Zeigt B2B-Kunden als Social Proof für Firmengesundheit.
+ * Referenzen – dezente Kundenleiste als Social Proof
  */
 
-const partners = [
-  { name: "Deutsche Telekom", highlight: true },
-  { name: "Hansestadt Lübeck", highlight: true },
-  { name: "Colibris", highlight: false },
-  { name: "Hansabaubeschlag", highlight: false },
-  { name: "PVZ Lübeck", highlight: false },
+const clients = [
+  "Telekom",
+  "Hansestadt Lübeck",
+  "Colibri",
+  "Colibris Eyewear",
+  "Hansa-Baubeschlag",
+  "PVZ Pressevertriebszentrale",
 ];
 ---
 
 <div class="partners">
   <div class="container">
-    <p class="partners__label">Vertrauen uns unter anderem</p>
+    <p class="partners__label">Arbeiten mit uns zusammen oder haben bereits mit uns gearbeitet</p>
     <div class="partners__list">
-      {partners.map((partner) => (
-        <span class:list={["partners__name", { "partners__name--highlight": partner.highlight }]}>
-          {partner.name}
-        </span>
+      {clients.map((name) => (
+        <span class="partners__name">{name}</span>
       ))}
-      <span class="partners__more">+ Steuerkanzleien & Arztpraxen</span>
+      <span class="partners__sep">u.a.</span>
     </div>
   </div>
 </div>
 
 <style>
   .partners {
-    padding: var(--space-lg) 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: var(--space-md) 0;
   }
 
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 0.375rem;
   }
 
   .partners__label {
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
     color: var(--color-text-light);
-    font-weight: 500;
+    font-weight: 400;
     margin: 0;
   }
 
@@ -54,46 +50,29 @@ const partners = [
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: var(--space-sm) var(--space-lg);
+    gap: 0.25rem var(--space-md);
   }
 
   .partners__name {
-    font-family: var(--font-heading);
-    font-size: var(--text-lg);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: rgba(0, 0, 0, 0.25);
-    transition: color 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .partners__name--highlight {
-    font-size: var(--text-xl);
-    color: rgba(0, 0, 0, 0.35);
-  }
-
-  .partners__name:hover {
-    color: rgba(0, 0, 0, 0.5);
-  }
-
-  .partners__more {
     font-size: var(--text-sm);
-    color: var(--color-text-light);
-    font-weight: 300;
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 400;
     white-space: nowrap;
+  }
+
+  .partners__sep {
+    font-size: var(--text-xs);
+    color: rgba(0, 0, 0, 0.2);
+    font-weight: 300;
   }
 
   @media (max-width: 768px) {
     .partners__list {
-      gap: var(--space-xs) var(--space-md);
+      gap: 0.125rem var(--space-sm);
     }
 
     .partners__name {
-      font-size: var(--text-base);
-    }
-
-    .partners__name--highlight {
-      font-size: var(--text-lg);
+      font-size: var(--text-xs);
     }
   }
 </style>
