@@ -5,3 +5,9 @@ dist/
 # Instagram images (fetched at build time)
 public/images/instagram/
 .DS_Store
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
