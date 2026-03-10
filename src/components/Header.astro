@@ -1,6 +1,7 @@
 ---
 const navItems = [
   { label: "Leistungen", href: "/leistungen/" },
+  { label: "Behandlungs-Check", href: "/fragebogen/", highlight: true },
   { label: "Team", href: "/team/" },
   { label: "Ratgeber", href: "/ratgeber/" },
   { label: "FAQ", href: "/faq/" },
@@ -22,7 +23,7 @@ const ctaLabel = "Termin buchen";
       <ul class="header__nav-list">
         {navItems.map((item) => (
           <li class="header__nav-item">
-            <a href={item.href} class="header__nav-link">{item.label}</a>
+            <a href={item.href} class={`header__nav-link ${item.highlight ? 'header__nav-link--highlight' : ''}`}>{item.label}</a>
           </li>
         ))}
       </ul>
@@ -120,6 +121,10 @@ const ctaLabel = "Termin buchen";
 
   .header__nav-link:hover::after {
     width: 100%;
+  }
+
+  .header__nav-link--highlight {
+    color: var(--color-accent);
   }
 
   .header__cta {

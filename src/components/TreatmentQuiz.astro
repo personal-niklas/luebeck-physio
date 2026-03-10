@@ -1,0 +1,701 @@
+---
+const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
+
+const treatments = [
+  {
+    id: 'kg',
+    icon: '01',
+    name: 'Krankengymnastik',
+    shortName: 'Krankengymnastik',
+    href: '/leistungen/krankengymnastik-luebeck/',
+  },
+  {
+    id: 'kgg',
+    icon: '02',
+    name: 'Gerätegestützte Krankengymnastik (KGG)',
+    shortName: 'Gerätegestützte KG',
+    href: '/leistungen/geraetegestuetzte-krankengymnastik-luebeck/',
+  },
+  {
+    id: 'mld',
+    icon: '03',
+    name: 'Manuelle Lymphdrainage',
+    shortName: 'Lymphdrainage',
+    href: '/leistungen/manuelle-lymphdrainage-luebeck/',
+  },
+  {
+    id: 'fango',
+    icon: '04',
+    name: 'Fango & Wärmetherapie',
+    shortName: 'Fango',
+    href: '/leistungen/fango-waermetherapie-luebeck/',
+  },
+  {
+    id: 'elektro',
+    icon: '05',
+    name: 'Elektrotherapie',
+    shortName: 'Elektrotherapie',
+    href: '/leistungen/elektrotherapie-luebeck/',
+  },
+  {
+    id: 'massage',
+    icon: '06',
+    name: 'Klassische Massagetherapie',
+    shortName: 'Massage',
+    href: '/leistungen/massage-luebeck/',
+  },
+];
+---
+
+<section class="tquiz section" id="behandlungs-check">
+  <div class="container">
+    <p class="tquiz__eyebrow">Behandlungs-Check</p>
+    <h2>Welche Therapie passt<br />zu Ihren Beschwerden?</h2>
+    <p class="tquiz__intro">
+      4 kurze Fragen — und Sie wissen, welche Behandlung für Sie empfehlenswert ist.
+    </p>
+
+    <div class="tquiz__card" id="tquiz-container">
+      <!-- Progress -->
+      <div class="tquiz__progress">
+        <div class="tquiz__progress-bar" id="tquiz-progress"></div>
+      </div>
+
+      <!-- Step 1: Versicherung -->
+      <div class="tquiz__step" data-step="1">
+        <p class="tquiz__step-count">Frage 1 von 4</p>
+        <h3 class="tquiz__question">Wie sind Sie versichert?</h3>
+        <div class="tquiz__options">
+          <button type="button" class="tquiz__option" data-value="gkv">
+            <span class="tquiz__option-title">Gesetzlich versichert (GKV)</span>
+            <span class="tquiz__option-desc">AOK, TK, Barmer, DAK und weitere gesetzliche Kassen</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="pkv">
+            <span class="tquiz__option-title">Privat versichert (PKV)</span>
+            <span class="tquiz__option-desc">Private Krankenversicherung oder Beihilfe</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="selbst">
+            <span class="tquiz__option-title">Selbstzahler</span>
+            <span class="tquiz__option-desc">Ohne ärztliche Verordnung, auf eigene Rechnung</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Beschwerden / Körperregion -->
+      <div class="tquiz__step" data-step="2" hidden>
+        <p class="tquiz__step-count">Frage 2 von 4</p>
+        <h3 class="tquiz__question">Wo liegen Ihre Beschwerden?</h3>
+        <div class="tquiz__options">
+          <button type="button" class="tquiz__option" data-value="ruecken">
+            <span class="tquiz__option-title">Rücken & Nacken</span>
+            <span class="tquiz__option-desc">Rückenschmerzen, Nackenverspannungen, Bandscheibenprobleme</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="schulter">
+            <span class="tquiz__option-title">Schulter & Arme</span>
+            <span class="tquiz__option-desc">Schulterschmerzen, Tennisarm, eingeschränkte Beweglichkeit</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="beine">
+            <span class="tquiz__option-title">Knie, Hüfte & Beine</span>
+            <span class="tquiz__option-desc">Knieschmerzen, Hüftprobleme, Sprunggelenk</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="lymph">
+            <span class="tquiz__option-title">Schwellungen & Lymphprobleme</span>
+            <span class="tquiz__option-desc">Ödeme, Schwellungen, Lymphstau nach OP</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="verspannung">
+            <span class="tquiz__option-title">Allgemeine Verspannungen & Stress</span>
+            <span class="tquiz__option-desc">Ganzkörper-Verspannungen, Kopfschmerzen, Stressbeschwerden</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Dauer -->
+      <div class="tquiz__step" data-step="3" hidden>
+        <p class="tquiz__step-count">Frage 3 von 4</p>
+        <h3 class="tquiz__question">Seit wann bestehen die Beschwerden?</h3>
+        <div class="tquiz__options">
+          <button type="button" class="tquiz__option" data-value="akut">
+            <span class="tquiz__option-title">Akut — weniger als 6 Wochen</span>
+            <span class="tquiz__option-desc">Plötzlich aufgetreten oder seit kurzem</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="monate">
+            <span class="tquiz__option-title">Seit einigen Monaten</span>
+            <span class="tquiz__option-desc">6 Wochen bis 6 Monate, wiederkehrend</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="chronisch">
+            <span class="tquiz__option-title">Chronisch — länger als 6 Monate</span>
+            <span class="tquiz__option-desc">Dauerhaft oder immer wiederkehrend</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="postop">
+            <span class="tquiz__option-title">Nach einer OP oder Verletzung</span>
+            <span class="tquiz__option-desc">Rehabilitation nach Eingriff, Unfall oder Sportverletzung</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Ziel -->
+      <div class="tquiz__step" data-step="4" hidden>
+        <p class="tquiz__step-count">Frage 4 von 4</p>
+        <h3 class="tquiz__question">Was ist Ihr wichtigstes Ziel?</h3>
+        <div class="tquiz__options">
+          <button type="button" class="tquiz__option" data-value="schmerz">
+            <span class="tquiz__option-title">Schmerzen loswerden</span>
+            <span class="tquiz__option-desc">Schmerzfrei werden und Ursache behandeln</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="beweglichkeit">
+            <span class="tquiz__option-title">Beweglichkeit verbessern</span>
+            <span class="tquiz__option-desc">Wieder volle Bewegungsfreiheit erlangen</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="kraft">
+            <span class="tquiz__option-title">Muskelkraft aufbauen</span>
+            <span class="tquiz__option-desc">Stärker werden, Stabilität verbessern</span>
+          </button>
+          <button type="button" class="tquiz__option" data-value="schwellung">
+            <span class="tquiz__option-title">Schwellungen reduzieren</span>
+            <span class="tquiz__option-desc">Ödeme lindern, Lymphfluss anregen</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="tquiz__result" id="tquiz-result" hidden>
+        <div class="tquiz__result-badge">Unsere Empfehlung</div>
+
+        <div class="tquiz__result-primary" id="result-primary">
+          <div class="tquiz__result-icon" id="result-icon"></div>
+          <h3 class="tquiz__result-title" id="result-title"></h3>
+          <p class="tquiz__result-desc" id="result-desc"></p>
+        </div>
+
+        <div class="tquiz__result-secondary" id="result-secondary">
+          <p class="tquiz__result-label">Ergänzend empfehlen wir:</p>
+          <div class="tquiz__result-secondary-item" id="result-secondary-item">
+            <span class="tquiz__result-secondary-icon" id="result-sec-icon"></span>
+            <span class="tquiz__result-secondary-name" id="result-sec-name"></span>
+          </div>
+        </div>
+
+        <div class="tquiz__result-insurance" id="result-insurance"></div>
+
+        <div class="tquiz__result-actions">
+          <a href={bookingUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary" id="result-cta">
+            Termin buchen
+          </a>
+          <a href="#" class="btn btn--outline" id="result-more">
+            Mehr erfahren
+          </a>
+          <button type="button" class="tquiz__restart" id="tquiz-restart">Quiz wiederholen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  var treatments = {
+    kg: { icon: '01', name: 'Krankengymnastik', href: '/leistungen/krankengymnastik-luebeck/' },
+    kgg: { icon: '02', name: 'Gerätegestützte Krankengymnastik (KGG)', href: '/leistungen/geraetegestuetzte-krankengymnastik-luebeck/' },
+    mld: { icon: '03', name: 'Manuelle Lymphdrainage', href: '/leistungen/manuelle-lymphdrainage-luebeck/' },
+    fango: { icon: '04', name: 'Fango & Wärmetherapie', href: '/leistungen/fango-waermetherapie-luebeck/' },
+    elektro: { icon: '05', name: 'Elektrotherapie', href: '/leistungen/elektrotherapie-luebeck/' },
+    massage: { icon: '06', name: 'Klassische Massagetherapie', href: '/leistungen/massage-luebeck/' }
+  };
+
+  var data = {};
+  var totalSteps = 4;
+  var stepIndex = 0;
+
+  var container = document.getElementById('tquiz-container');
+  var progressBar = document.getElementById('tquiz-progress');
+
+  if (!container || !progressBar) return;
+
+  function updateProgress() {
+    var pct = Math.min((stepIndex / totalSteps) * 100, 100);
+    progressBar.style.width = pct + '%';
+  }
+
+  function showStep(stepId) {
+    var steps = container.querySelectorAll('.tquiz__step');
+    for (var i = 0; i < steps.length; i++) {
+      steps[i].hidden = true;
+    }
+    var next = container.querySelector('[data-step="' + stepId + '"]');
+    if (next) next.hidden = false;
+  }
+
+  container.addEventListener('click', function(e) {
+    var btn = e.target.closest('.tquiz__option');
+    if (!btn) return;
+
+    var value = btn.dataset.value;
+    var currentStepEl = btn.closest('.tquiz__step');
+    var currentStepId = currentStepEl.dataset.step;
+
+    // Highlight selected
+    var opts = currentStepEl.querySelectorAll('.tquiz__option');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].classList.remove('tquiz__option--selected');
+    }
+    btn.classList.add('tquiz__option--selected');
+
+    // Store answer
+    data[currentStepId] = value;
+
+    setTimeout(function() {
+      var nextStep = parseInt(currentStepId) + 1;
+      stepIndex = parseInt(currentStepId);
+
+      if (nextStep > 4) {
+        // Show result
+        showStep('none');
+        showResult();
+      } else {
+        showStep(String(nextStep));
+      }
+      updateProgress();
+    }, 250);
+  });
+
+  function getRecommendation() {
+    var region = data['2'] || '';
+    var duration = data['3'] || '';
+    var goal = data['4'] || '';
+
+    var primary, secondary;
+
+    // Goal override: Kraft → always KGG primary
+    if (goal === 'kraft') {
+      primary = 'kgg';
+      secondary = 'kg';
+      return { primary: primary, secondary: secondary };
+    }
+
+    // Goal override: Schwellung → always MLD primary
+    if (goal === 'schwellung') {
+      primary = 'mld';
+      secondary = 'massage';
+      return { primary: primary, secondary: secondary };
+    }
+
+    // Region-based logic
+    if (region === 'lymph') {
+      primary = 'mld';
+      secondary = 'massage';
+    } else if (region === 'verspannung') {
+      primary = 'massage';
+      secondary = 'fango';
+    } else if (region === 'ruecken') {
+      primary = 'kg';
+      if (duration === 'postop') {
+        primary = 'kgg';
+        secondary = 'kg';
+      } else if (duration === 'chronisch' || duration === 'monate') {
+        secondary = 'fango';
+      } else {
+        secondary = 'elektro';
+      }
+    } else if (region === 'schulter') {
+      if (duration === 'postop') {
+        primary = 'kgg';
+        secondary = 'kg';
+      } else if (duration === 'akut') {
+        primary = 'kg';
+        secondary = 'elektro';
+      } else {
+        primary = 'kg';
+        secondary = 'fango';
+      }
+    } else if (region === 'beine') {
+      if (duration === 'postop') {
+        primary = 'kgg';
+        secondary = 'elektro';
+      } else if (duration === 'chronisch' || duration === 'monate') {
+        primary = 'kg';
+        secondary = 'kgg';
+      } else {
+        primary = 'kg';
+        secondary = 'elektro';
+      }
+    } else {
+      // Fallback
+      primary = 'kg';
+      secondary = 'massage';
+    }
+
+    return { primary: primary, secondary: secondary };
+  }
+
+  function getDescription(rec) {
+    var region = data['2'] || '';
+    var duration = data['3'] || '';
+    var insurance = data['1'] || '';
+
+    var regionLabels = {
+      ruecken: 'Rücken- und Nackenbeschwerden',
+      schulter: 'Schulter- und Armbeschwerden',
+      beine: 'Knie-, Hüft- oder Beinbeschwerden',
+      lymph: 'Schwellungen und Lymphprobleme',
+      verspannung: 'Verspannungen und Stressbeschwerden'
+    };
+    var regionText = regionLabels[region] || 'Ihre Beschwerden';
+
+    if (rec.primary === 'mld') {
+      return 'Bei ' + regionText + ' ist die Manuelle Lymphdrainage die wirksamste Methode. Durch sanfte, rhythmische Griffe wird der Lymphfluss angeregt und Schwellungen nachhaltig reduziert.';
+    }
+    if (rec.primary === 'kgg') {
+      if (duration === 'postop') {
+        return 'Nach Ihrer OP ist gezielter Muskelaufbau entscheidend für eine vollständige Genesung. An medizinischen Trainingsgeräten bauen wir Ihre Kraft systematisch wieder auf.';
+      }
+      return 'Bei ' + regionText + ' mit dem Ziel Muskelkraft aufzubauen, ist gerätegestützte Krankengymnastik ideal. Gezieltes Training an medizinischen Geräten für nachhaltige Stabilität.';
+    }
+    if (rec.primary === 'massage') {
+      return 'Bei ' + regionText + ' löst unsere therapeutische Massage Verspannungen gezielt auf und fördert die Durchblutung. In Kombination mit Wärme für tiefgehende Entspannung.';
+    }
+    if (rec.primary === 'kg') {
+      if (duration === 'akut') {
+        return 'Bei akuten ' + regionText + ' setzen wir auf gezielte Krankengymnastik. Durch individuell abgestimmte Übungen lindern wir Ihre Schmerzen und stellen die Funktion wieder her.';
+      }
+      if (duration === 'chronisch') {
+        return 'Bei chronischen ' + regionText + ' entwickeln wir ein nachhaltiges Übungsprogramm. Krankengymnastik kombiniert mit Wärmetherapie für langfristige Besserung.';
+      }
+      return 'Bei ' + regionText + ' ist Krankengymnastik die Therapie der Wahl. Durch gezielte Bewegungstherapie behandeln wir die Ursache und nicht nur die Symptome.';
+    }
+    return 'Basierend auf Ihren Angaben empfehlen wir Ihnen diese Behandlung für optimale Ergebnisse.';
+  }
+
+  function getInsuranceInfo() {
+    var insurance = data['1'] || '';
+    if (insurance === 'gkv') {
+      return '<strong>Gesetzlich versichert:</strong> Mit einer ärztlichen Verordnung (Rezept) übernimmt Ihre Krankenkasse den Großteil der Kosten. Die gesetzliche Zuzahlung beträgt 10\u20AC + 10% der Behandlungskosten.';
+    }
+    if (insurance === 'pkv') {
+      return '<strong>Privat versichert:</strong> Wir rechnen direkt mit Ihrer privaten Krankenversicherung ab. In der Regel werden alle verordneten Behandlungen vollständig erstattet.';
+    }
+    return '<strong>Selbstzahler:</strong> Sie benötigen kein Rezept. Wir beraten Sie gerne zu den Kosten und erstellen ein individuelles Behandlungskonzept für Sie.';
+  }
+
+  function showResult() {
+    progressBar.style.width = '100%';
+
+    var rec = getRecommendation();
+    var primary = treatments[rec.primary];
+    var secondary = treatments[rec.secondary];
+
+    // Primary
+    document.getElementById('result-icon').textContent = primary.icon;
+    document.getElementById('result-title').textContent = primary.name;
+    document.getElementById('result-desc').textContent = getDescription(rec);
+    document.getElementById('result-more').href = primary.href;
+
+    // Secondary
+    document.getElementById('result-sec-icon').textContent = secondary.icon;
+    document.getElementById('result-sec-name').textContent = secondary.name;
+    document.getElementById('result-secondary').dataset.href = secondary.href;
+
+    // Insurance info
+    document.getElementById('result-insurance').innerHTML = getInsuranceInfo();
+
+    // Show
+    document.getElementById('tquiz-result').hidden = false;
+  }
+
+  // Secondary treatment click
+  var secItem = document.getElementById('result-secondary-item');
+  if (secItem) {
+    secItem.addEventListener('click', function() {
+      var href = document.getElementById('result-secondary').dataset.href;
+      if (href) window.location.href = href;
+    });
+  }
+
+  // Restart
+  var restartBtn = document.getElementById('tquiz-restart');
+  if (restartBtn) {
+    restartBtn.addEventListener('click', function() {
+      data = {};
+      stepIndex = 0;
+      document.getElementById('tquiz-result').hidden = true;
+      var steps = container.querySelectorAll('.tquiz__step');
+      for (var i = 0; i < steps.length; i++) {
+        steps[i].hidden = i !== 0;
+        var opts = steps[i].querySelectorAll('.tquiz__option');
+        for (var j = 0; j < opts.length; j++) {
+          opts[j].classList.remove('tquiz__option--selected');
+        }
+      }
+      updateProgress();
+    });
+  }
+
+  updateProgress();
+})();
+</script>
+
+<style>
+  .tquiz {
+    padding: var(--space-3xl) 0;
+    background: var(--color-light-gray);
+  }
+
+  .tquiz__eyebrow {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tquiz h2 {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-sm);
+    font-size: var(--text-2xl);
+    color: var(--color-black);
+  }
+
+  .tquiz__intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    margin-bottom: var(--space-xl);
+  }
+
+  .tquiz__card {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Progress */
+  .tquiz__progress {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+    margin-bottom: var(--space-lg);
+    overflow: hidden;
+  }
+
+  .tquiz__progress-bar {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 2px;
+    width: 0;
+    transition: width 0.4s ease;
+  }
+
+  /* Steps */
+  .tquiz__step-count {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .tquiz__question {
+    font-size: var(--text-xl);
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
+    text-transform: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+
+  .tquiz__options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .tquiz__option {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: var(--space-md);
+    background: var(--color-light-gray);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-fast);
+    font-family: var(--font-body);
+  }
+
+  .tquiz__option:hover {
+    border-color: var(--color-accent);
+    background: rgba(234, 93, 28, 0.04);
+  }
+
+  .tquiz__option--selected {
+    border-color: var(--color-accent);
+    background: rgba(234, 93, 28, 0.08);
+  }
+
+  .tquiz__option-title {
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--color-black);
+  }
+
+  .tquiz__option-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
+
+  /* Result */
+  .tquiz__result {
+    text-align: center;
+  }
+
+  .tquiz__result-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    background: rgba(234, 93, 28, 0.1);
+    color: var(--color-accent);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tquiz__result-primary {
+    margin-bottom: var(--space-lg);
+  }
+
+  .tquiz__result-icon {
+    font-family: var(--font-headline);
+    font-size: var(--text-5xl);
+    color: var(--color-accent);
+    opacity: 0.3;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tquiz__result-title {
+    font-size: var(--text-2xl);
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .tquiz__result-desc {
+    color: var(--color-text-muted);
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  /* Secondary recommendation */
+  .tquiz__result-secondary {
+    text-align: left;
+    background: var(--color-light-gray);
+    border-radius: var(--border-radius);
+    padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .tquiz__result-label {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tquiz__result-secondary-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    padding: var(--space-xs) 0;
+    transition: color var(--transition-fast);
+  }
+
+  .tquiz__result-secondary-item:hover {
+    color: var(--color-accent);
+  }
+
+  .tquiz__result-secondary-icon {
+    font-family: var(--font-headline);
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+    opacity: 0.4;
+    min-width: 2rem;
+  }
+
+  .tquiz__result-secondary-name {
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  .tquiz__result-secondary-item:hover .tquiz__result-secondary-name {
+    color: var(--color-accent);
+  }
+
+  /* Insurance info */
+  .tquiz__result-insurance {
+    text-align: left;
+    background: var(--color-light-gray);
+    border-radius: var(--border-radius);
+    padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* Actions */
+  .tquiz__result-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .tquiz__result-actions .btn {
+    min-width: 220px;
+  }
+
+  .tquiz__restart {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: var(--space-xs);
+  }
+
+  .tquiz__restart:hover {
+    color: var(--color-black);
+  }
+
+  @media (max-width: 768px) {
+    .tquiz__card {
+      padding: var(--space-md);
+    }
+
+    .tquiz__result-secondary,
+    .tquiz__result-insurance {
+      padding: var(--space-sm) var(--space-md);
+    }
+  }
+</style>

@@ -182,6 +182,16 @@ const faqs = [
     </div>
   </section>
 
+  <!-- QUIZ TEASER -->
+  <section class="section section--light quiz-teaser">
+    <div class="container text-center">
+      <p class="quiz-teaser__eyebrow">Nicht sicher, welche Behandlung passt?</p>
+      <h2>Finden Sie es in 4 Fragen <span class="text-accent">heraus</span></h2>
+      <p class="quiz-teaser__desc">Unser Behandlungs-Check hilft Ihnen, die passende Therapie für Ihre Beschwerden zu finden — schnell und unverbindlich.</p>
+      <a href="/fragebogen/" class="btn btn--primary">Behandlungs-Check starten</a>
+    </div>
+  </section>
+
   <!-- BEWERTUNGEN -->
   <section class="section section--dark cross-pattern" id="bewertungen">
     <div class="container text-center">
@@ -519,6 +529,26 @@ const faqs = [
     padding-top: var(--space-sm);
     color: var(--color-text-muted);
     font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* --- Quiz Teaser --- */
+  .quiz-teaser__eyebrow {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .quiz-teaser__desc {
+    max-width: 520px;
+    margin: 0 auto var(--space-lg);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    font-size: var(--text-lg);
     line-height: 1.7;
   }
 

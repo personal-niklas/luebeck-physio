@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TreatmentQuiz from '../components/TreatmentQuiz.astro';
+import '../styles/global.css';
+---
+
+<Base title="Behandlungs-Check | Physio One Lübeck" description="Finden Sie in 4 kurzen Fragen heraus, welche Physiotherapie-Behandlung am besten zu Ihren Beschwerden passt. Kostenloser Behandlungs-Check von Physio One Lübeck.">
+  <Header />
+
+  <section class="section page-header cross-pattern">
+    <div class="container">
+      <h1>Behandlungs-<span class="text-accent">Check</span></h1>
+      <p class="page-header__subtitle">Finden Sie heraus, welche Behandlung zu Ihren Beschwerden passt — in nur 4 Fragen.</p>
+    </div>
+  </section>
+
+  <TreatmentQuiz />
+
+  <section class="section">
+    <div class="container">
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <div>
+            <strong>Alle Kassen</strong>
+            <p>GKV, PKV & Selbstzahler willkommen</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <div>
+            <strong>Schnelle Termine</strong>
+            <p>Online buchbar über Doctolib</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <div>
+            <strong>Zentrale Lage</strong>
+            <p>Mengstraße 40, Lübecker Innenstadt</p>
+          </div>
+        </div>
+      </div>
+      <p class="trust-note">
+        Dieser Check ersetzt keine ärztliche Diagnose. Für eine genaue Einschätzung empfehlen wir immer ein persönliches Gespräch.
+        <a href="/leistungen/">Alle unsere Leistungen ansehen</a> ·
+        <a href="/krankenkassen/">Infos zur Kostenübernahme</a>
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    position: relative;
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  .trust-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .trust-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-size: var(--text-base);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .trust-item strong {
+    font-family: var(--font-headline);
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .trust-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .trust-note {
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .trust-note a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  .trust-note a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .trust-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+</style>
