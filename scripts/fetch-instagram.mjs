@@ -43,7 +43,8 @@ async function main() {
 
   if (!token) {
     console.log('⚠️  INSTAGRAM_ACCESS_TOKEN not set — skipping Instagram fetch.');
-    writeEmptyData();
+    if (!existsSync(DATA_FILE)) writeEmptyData();
+    else console.log('   Using existing data.');
     return;
   }
 

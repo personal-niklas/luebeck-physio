@@ -2,6 +2,5 @@ node_modules/
 dist/
 .astro/
 .env
-# Instagram images (fetched at build time)
-public/images/instagram/
+# Instagram images are committed (no token needed at build time)
 .DS_Store
