@@ -101,6 +101,8 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
           <label for="message">Nachricht *</label>
           <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht an uns..."></textarea>
         </div>
+        <!-- Cloudflare Turnstile (unsichtbarer Spam-Schutz) -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAACo02teqIuxED6jM" data-theme="light"></div>
         <button type="submit" class="btn btn--primary">Nachricht senden</button>
         <p class="form-hint">* Pflichtfelder. Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet. <a href="/datenschutz/">Datenschutz</a></p>
       </form>
@@ -130,15 +132,21 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
   <Footer />
 </Base>
 
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script is:inline>
   // Error message display (from redirect ?error= param)
   (function() {
     var params = new URLSearchParams(window.location.search);
-    if (params.has('error')) {
+    var errorType = params.get('error');
+    if (errorType) {
       var form = document.getElementById('contact-form');
       var msg = document.createElement('div');
       msg.className = 'form-error';
-      msg.innerHTML = '<p>Ihre Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder rufen Sie uns an: <a href="tel:+4945116086640">0451 160 866 40</a></p>';
+      if (errorType === 'captcha') {
+        msg.innerHTML = '<p>Die Sicherheitsprüfung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.</p>';
+      } else {
+        msg.innerHTML = '<p>Ihre Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder rufen Sie uns an: <a href="tel:+4945116086640">0451 160 866 40</a></p>';
+      }
       form.prepend(msg);
     }
   })();

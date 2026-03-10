@@ -2,5 +2,6 @@ node_modules/
 dist/
 .astro/
 .env
+.dev.vars
 # Instagram images are committed (no token needed at build time)
 .DS_Store

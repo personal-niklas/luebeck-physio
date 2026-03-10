@@ -1,6 +1,7 @@
 interface Env {
   ASSETS: Fetcher;
   RESEND_API_KEY?: string;
+  TURNSTILE_SECRET_KEY?: string;
 }
 
 export default {
@@ -28,6 +29,30 @@ async function handleContactForm(request: Request, env: Env): Promise<Response> 
     if (honeypot) {
       // Bot detected — silently redirect as if successful
       return Response.redirect(`${origin}/danke/`, 302);
+    }
+
+    // Cloudflare Turnstile verification
+    if (env.TURNSTILE_SECRET_KEY) {
+      const turnstileToken = formData.get('cf-turnstile-response')?.toString();
+      if (!turnstileToken) {
+        return Response.redirect(`${origin}/kontakt/?error=captcha`, 302);
+      }
+
+      const ip = request.headers.get('CF-Connecting-IP') || '';
+      const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          secret: env.TURNSTILE_SECRET_KEY,
+          response: turnstileToken,
+          remoteip: ip,
+        }),
+      });
+
+      const verifyData = await verifyRes.json() as { success: boolean };
+      if (!verifyData.success) {
+        return Response.redirect(`${origin}/kontakt/?error=captcha`, 302);
+      }
     }
 
     const name = formData.get('name')?.toString().trim() || '';
