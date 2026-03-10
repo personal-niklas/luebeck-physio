@@ -69,7 +69,9 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
     <div class="container">
       <h2 class="text-center">Nachricht schreiben</h2>
       <p class="form-subtitle text-center">Sie haben eine Frage oder möchten einen Termin anfragen? Schreiben Sie uns — wir melden uns zeitnah.</p>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" action="/api/contact" method="POST">
+        <!-- Honeypot (Spam-Schutz, unsichtbar) -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name *</label>
@@ -129,26 +131,17 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
 </Base>
 
 <script is:inline>
-  // Contact form handler
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var phone = document.getElementById('phone').value;
-    var subject = document.getElementById('subject').value;
-    var message = document.getElementById('message').value;
-
-    var body = 'Name: ' + name + '\n';
-    if (phone) body += 'Telefon: ' + phone + '\n';
-    body += 'E-Mail: ' + email + '\n\n';
-    body += message;
-
-    var mailto = 'mailto:info@luebeck-physio.de'
-      + '?subject=' + encodeURIComponent(subject + ' — ' + name)
-      + '&body=' + encodeURIComponent(body);
-
-    window.location.href = mailto;
-  });
+  // Error message display (from redirect ?error= param)
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.has('error')) {
+      var form = document.getElementById('contact-form');
+      var msg = document.createElement('div');
+      msg.className = 'form-error';
+      msg.innerHTML = '<p>Ihre Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder rufen Sie uns an: <a href="tel:+4945116086640">0451 160 866 40</a></p>';
+      form.prepend(msg);
+    }
+  })();
 
   function initMap() {
     if (!document.querySelector('link[href*="leaflet.css"]')) {
@@ -366,6 +359,26 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     text-align: center;
+  }
+
+  .form-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .form-error p {
+    color: #991b1b;
+    font-size: var(--text-sm);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .form-error a {
+    color: #991b1b;
+    font-weight: 600;
   }
 
   @media (max-width: 768px) {
