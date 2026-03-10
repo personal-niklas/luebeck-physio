@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60" fill="none">
+  <!-- Hummingbird silhouette -->
+  <g fill="#333" transform="translate(5,10) scale(0.7)">
+    <path d="M30 5C25 5 18 10 15 18C12 26 14 35 20 40C24 43 28 42 30 38C32 42 36 43 40 40C46 35 48 26 45 18C42 10 35 5 30 5Z"/>
+    <path d="M15 18L2 22L15 25Z"/>
+  </g>
+  <text x="42" y="40" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="600" fill="#333">Colibri</text>
+</svg>
