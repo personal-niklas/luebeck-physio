@@ -1,0 +1,492 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const benefits = [
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    title: "Historischer Arbeitsplatz",
+    text: "Arbeiten in einem Kontor aus dem 12. Jahrhundert — mitten in der Lübecker Altstadt.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: "Kleines Team, gro\u00DFe Wirkung",
+    text: "Flache Hierarchien, kurze Wege und echtes Miteinander statt anonymem Klinikbetrieb.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+    title: "Therapie & Training verbunden",
+    text: "Unser Konzept verbindet Physiotherapie mit Personal Training — f\u00FCr dich bedeutet das vielseitige F\u00E4lle und spannende Arbeit.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+    title: "Weiterbildung",
+    text: "Wir investieren in dein Wissen — mit regelm\u00E4\u00DFigen Fortbildungen und internem Austausch.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: "Flexible Arbeitszeiten",
+    text: "Keine starren Schichten — wir planen gemeinsam, was zu deinem Leben passt.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    title: "Faire Verg\u00FCtung",
+    text: "Leistungsgerechte Bezahlung, die deine Qualifikation und dein Engagement widerspiegelt.",
+  },
+];
+
+const positions = [
+  {
+    title: "Physiotherapeut:in (m/w/d)",
+    type: "Voll- oder Teilzeit",
+    description: "Du behandelst eigenverantwortlich und begleitest unsere Patienten von der ersten Therapie bis zum eigenst\u00E4ndigen Training. Erfahrung in manueller Therapie oder Sportphysiotherapie ist ein Plus, aber kein Muss.",
+    requirements: [
+      "Abgeschlossene Ausbildung als Physiotherapeut:in",
+      "Freude an eigenverantwortlichem Arbeiten",
+      "Interesse an ger\u00E4tegest\u00FCtztem Training",
+      "Teamf\u00E4higkeit und Empathie",
+    ],
+  },
+  {
+    title: "Physiotherapeut:in in Ausbildung (m/w/d)",
+    type: "Praktikum / Duales Studium",
+    description: "Du bist mitten in der Ausbildung und suchst einen Praxisplatz, der dich fordert und f\u00F6rdert? Bei uns lernst du von Tag eins an echten Patienten \u2014 mit enger Begleitung durch unser Team.",
+    requirements: [
+      "Laufende Ausbildung zum/zur Physiotherapeut:in",
+      "Motivation und Lernbereitschaft",
+      "Zuverl\u00E4ssigkeit und Eigeninitiative",
+    ],
+  },
+];
+---
+
+<Base title="Karriere bei Physio One L\u00FCbeck | Jobs in der Physiotherapie" description="Werde Teil von Physio One in L\u00FCbeck. Wir suchen Physiotherapeut:innen und Auszubildende \u2014 modernes Konzept, tolles Team, historischer Arbeitsplatz.">
+  <Header />
+
+  <!-- HERO -->
+  <section class="section page-header">
+    <div class="container">
+      <p class="page-header__label">Karriere bei Physio One</p>
+      <h1>Werde Teil von <span class="text-accent">One</span> Team</h1>
+      <p class="page-header__subtitle">Wir suchen engagierte Therapeut:innen, die Physiotherapie genauso leben wie wir &mdash; mit Leidenschaft, Kompetenz und dem Anspruch, wirklich etwas zu bewegen.</p>
+    </div>
+  </section>
+
+  <!-- WARUM PHYSIO ONE -->
+  <section class="section section--light">
+    <div class="container">
+      <h2 class="text-center">Warum Physio <span class="text-accent">One</span>?</h2>
+      <p class="section__subtitle text-center">
+        Wir sind kein Flie&szlig;band. Bei uns bekommst du die Zeit, die deine Patienten brauchen &mdash; und die Freiheit, deinen eigenen Behandlungsstil zu entwickeln.
+      </p>
+      <div class="benefits-grid">
+        {benefits.map((b) => (
+          <div class="benefit-card card">
+            <div class="benefit-card__icon" set:html={b.icon} />
+            <h3 class="benefit-card__title">{b.title}</h3>
+            <p class="benefit-card__text">{b.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFENE STELLEN -->
+  <section class="section" id="stellen">
+    <div class="container">
+      <h2 class="text-center">Offene <span class="text-accent">Stellen</span></h2>
+      <p class="section__subtitle text-center">
+        Auch wenn aktuell keine passende Stelle dabei ist &mdash; wir freuen uns immer &uuml;ber Initiativbewerbungen.
+      </p>
+      <div class="positions">
+        {positions.map((pos) => (
+          <div class="position-card card">
+            <div class="position-card__header">
+              <h3 class="position-card__title">{pos.title}</h3>
+              <span class="position-card__type">{pos.type}</span>
+            </div>
+            <p class="position-card__desc">{pos.description}</p>
+            <h4 class="position-card__req-title">Was wir uns w&uuml;nschen:</h4>
+            <ul class="position-card__req">
+              {pos.requirements.map((r) => (
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  {r}
+                </li>
+              ))}
+            </ul>
+            <a href="#bewerbung" class="btn btn--primary btn--small">Jetzt bewerben</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BEWERBUNGSFORMULAR -->
+  <section class="section section--light" id="bewerbung">
+    <div class="container">
+      <h2 class="text-center">Jetzt <span class="text-accent">bewerben</span></h2>
+      <p class="form-subtitle text-center">
+        Klingt nach dir? Schick uns eine kurze Bewerbung &mdash; ganz unkompliziert &uuml;ber das Formular.
+      </p>
+      <form class="application-form" id="application-form" action="/api/bewerbung" method="POST">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Dein Name" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" required placeholder="deine@email.de" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="Optional" />
+          </div>
+          <div class="form-group">
+            <label for="position">Position</label>
+            <select id="position" name="position">
+              <option value="Physiotherapeut:in (VZ/TZ)">Physiotherapeut:in (Voll-/Teilzeit)</option>
+              <option value="Physiotherapeut:in in Ausbildung">Physiotherapeut:in in Ausbildung</option>
+              <option value="Initiativbewerbung">Initiativbewerbung</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="start">Fr&uuml;hester Start</label>
+            <input type="text" id="start" name="start" placeholder="z.B. sofort, ab Juli 2026" />
+          </div>
+          <div class="form-group"></div>
+        </div>
+        <div class="form-group">
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" rows="5" placeholder="Erz&auml;hl uns kurz etwas &uuml;ber dich..."></textarea>
+        </div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAACo02teqIuxED6jM" data-theme="light"></div>
+        <button type="submit" class="btn btn--primary">Bewerbung absenden</button>
+        <p class="form-hint">* Pflichtfelder. Deine Daten werden nur zur Bearbeitung deiner Bewerbung verwendet. <a href="/datenschutz/">Datenschutz</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--accent">
+    <div class="container text-center">
+      <h2>Lieber pers&ouml;nlich?</h2>
+      <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg); opacity: 0.9;">
+        Ruf uns einfach an &mdash; wir freuen uns, dich kennenzulernen.
+      </p>
+      <a href="tel:+4945116086640" class="btn btn--white">
+        0451 160 866 40
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .page-header {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-xl);
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header .text-accent {
+    color: var(--color-accent);
+  }
+
+  .page-header__label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header__subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-lg);
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  .section__subtitle {
+    max-width: 640px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+  }
+
+  /* Benefits */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .benefit-card {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .benefit-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: rgba(233, 93, 28, 0.08);
+    border-radius: 12px;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .benefit-card__title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-xs);
+  }
+
+  .benefit-card__text {
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Positions */
+  .positions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .position-card {
+    padding: var(--space-xl);
+  }
+
+  .position-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .position-card__title {
+    font-size: var(--text-2xl);
+    margin: 0;
+  }
+
+  .position-card__type {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(233, 93, 28, 0.08);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .position-card__desc {
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .position-card__req-title {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xs);
+  }
+
+  .position-card__req {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .position-card__req li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .position-card__req li svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  /* Application Form */
+  .form-subtitle {
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    font-weight: 300;
+  }
+
+  .application-form {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 300;
+    border: 1px solid var(--color-mid-gray);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .application-form .btn {
+    width: 100%;
+  }
+
+  .form-hint {
+    margin-top: var(--space-sm);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .form-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .form-error p {
+    color: #991b1b;
+    font-size: var(--text-sm);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .form-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .form-success p {
+    color: #166534;
+    font-size: var(--text-sm);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .position-card__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script is:inline>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var form = document.getElementById('application-form');
+    var status = params.get('status');
+    var errorType = params.get('error');
+
+    if (status === 'danke') {
+      var msg = document.createElement('div');
+      msg.className = 'form-success';
+      msg.innerHTML = '<p>Vielen Dank f\u00fcr deine Bewerbung! Wir melden uns zeitnah bei dir.</p>';
+      form.prepend(msg);
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    if (errorType) {
+      var msg = document.createElement('div');
+      msg.className = 'form-error';
+      if (errorType === 'captcha') {
+        msg.innerHTML = '<p>Die Sicherheitspr\u00fcfung konnte nicht abgeschlossen werden. Bitte versuche es erneut.</p>';
+      } else if (errorType === 'missing') {
+        msg.innerHTML = '<p>Bitte f\u00fclle alle Pflichtfelder aus.</p>';
+      } else {
+        msg.innerHTML = '<p>Deine Bewerbung konnte leider nicht gesendet werden. Bitte versuche es erneut oder ruf uns an: <a href="tel:+4945116086640">0451 160 866 40</a></p>';
+      }
+      form.prepend(msg);
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  })();
+</script>
