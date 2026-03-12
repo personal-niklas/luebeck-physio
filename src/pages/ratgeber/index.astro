@@ -128,6 +128,26 @@ const articles = [
     </div>
   </section>
 
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-box">
+        <div class="newsletter-box__content">
+          <span class="newsletter-box__badge">Newsletter</span>
+          <h2 class="newsletter-box__title">One Health Weekly</h2>
+          <p class="newsletter-box__text">Jeden Donnerstag: Gesundheitstipps, Übungen und Wissenswertes rund um Physiotherapie — direkt in Ihr Postfach.</p>
+        </div>
+        <form class="newsletter-box__form" id="newsletter-form" action="https://sendfox.com/form/m279ry/m2jz0q" method="post" target="_blank">
+          <div class="newsletter-box__inputs">
+            <input type="text" name="first_name" placeholder="Vorname" class="newsletter-input" required />
+            <input type="email" name="email" placeholder="E-Mail-Adresse" class="newsletter-input" required />
+          </div>
+          <button type="submit" class="newsletter-btn">Kostenlos anmelden</button>
+          <p class="newsletter-box__hint">Abmeldung jederzeit möglich. <a href="/datenschutz/">Datenschutz</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <div class="filter-bar" id="filter-bar">
@@ -347,6 +367,132 @@ const articles = [
   @media (max-width: 640px) {
     .articles-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* Newsletter Section */
+  .newsletter-section {
+    padding-top: var(--space-lg);
+    padding-bottom: 0;
+  }
+
+  .newsletter-box {
+    background: var(--color-black);
+    border-radius: var(--radius-lg, 12px);
+    padding: var(--space-xl) var(--space-2xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+    color: var(--color-white);
+  }
+
+  .newsletter-box__content {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .newsletter-box__badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(234, 93, 28, 0.15);
+    color: var(--color-accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+  }
+
+  .newsletter-box__title {
+    font-family: var(--font-headline);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--space-xs);
+    line-height: 1.1;
+  }
+
+  .newsletter-box__text {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .newsletter-box__form {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .newsletter-box__inputs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 0.85rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--text-base, 1rem);
+    transition: border-color 0.2s ease;
+  }
+
+  .newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .newsletter-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .newsletter-btn {
+    width: 100%;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-headline);
+    font-size: var(--text-lg, 1.125rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .newsletter-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .newsletter-box__hint {
+    margin-top: var(--space-xs);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+  }
+
+  .newsletter-box__hint a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .newsletter-box {
+      flex-direction: column;
+      padding: var(--space-lg);
+      text-align: center;
+    }
+
+    .newsletter-box__inputs {
+      flex-direction: column;
     }
   }
 </style>
