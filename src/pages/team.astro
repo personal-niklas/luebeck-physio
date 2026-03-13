@@ -17,9 +17,24 @@ const team = [
     description: "Niklas ist Gründer von Physio One und bringt über 5 Jahre Erfahrung im gesundheitsorientierten Personal Training mit. Er sorgt dafür, dass der Übergang von der Therapie zum eigenständigen Training nahtlos gelingt.",
   },
   {
+    name: "Timon K.",
+    role: "Medizinischer Personal Trainer",
+    description: "Timon verbindet medizinisches Wissen mit praxisnahem Fitnesstraining. Er betreut Patienten nach der Therapie und begleitet sie auf dem Weg zurück zu voller Leistungsfähigkeit.",
+  },
+  {
     name: "Marie T.",
     role: "Trainerin",
     description: "Marie unterstützt unsere Patienten beim gerätegestützten Training und begleitet den Aufbau von Kraft und Stabilität — mit Geduld, Fachkenntnis und einem Auge fürs Detail.",
+  },
+  {
+    name: "Lucas G.",
+    role: "Athletik- & Personal Trainer",
+    description: "Lucas bringt leistungsorientiertes Training in die Praxis. Als Athletik- und Personal Trainer hilft er Patienten und Kunden, ihre körperlichen Ziele durch gezieltes Training zu erreichen.",
+  },
+  {
+    name: "Maic O.",
+    role: "Physiotherapeut i.A. & Personal Trainer",
+    description: "Maic vereint Therapie und Training wie kein anderer im Team. Als angehender Physiotherapeut und erfahrener Personal Trainer bietet er eine einzigartige Kombination beider Welten.",
   },
   {
     name: "Laura S.",
@@ -29,7 +44,7 @@ const team = [
 ];
 ---
 
-<Base title="Unser Therapeuten-Team | Physio One Lübeck" description="Lernen Sie das Physio One Team in Lübeck kennen: Sportphysiotherapeut, Personal Trainer & Backoffice — engagiert für Ihre Gesundheit.">
+<Base title="Unser Therapeuten-Team | Physio One Lübeck" description="Lernen Sie das 7-köpfige Physio One Team in Lübeck kennen: Physiotherapeuten, Personal Trainer & Athletiktrainer — engagiert für Ihre Gesundheit.">
   <Header />
 
   <section class="section page-header">
@@ -108,7 +123,7 @@ const team = [
 
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-lg);
   }
 
@@ -163,7 +178,13 @@ const team = [
     line-height: 1.7;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
     .team-grid {
       grid-template-columns: 1fr;
     }
