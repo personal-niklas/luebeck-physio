@@ -58,7 +58,7 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
       <div class="info-grid">
         <div class="info-card card">
           <h3>Erster Termin</h3>
-          <p>Bringen Sie bitte Ihre <strong>Verordnung (Rezept)</strong> und Ihre <strong>Versichertenkarte</strong> mit. Tragen Sie bequeme Kleidung.</p>
+          <p>Bringen Sie bitte Ihre <strong>Verordnung (Rezept)</strong> mit und tragen Sie bequeme Kleidung.</p>
         </div>
         <div class="info-card card">
           <h3>Alle Kassen</h3>
@@ -125,12 +125,9 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
 
   .booking-card--primary {
     border-color: var(--color-accent);
-    background: var(--color-black);
-    color: var(--color-white);
-  }
-
-  .booking-card--primary p {
-    color: rgba(255, 255, 255, 0.7);
+    border-width: 2px;
+    background: var(--color-white);
+    color: var(--color-text-primary);
   }
 
   .booking-card__icon {
@@ -146,7 +143,7 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
   }
 
   .booking-card--primary .booking-card__icon {
-    background: rgba(234, 93, 28, 0.15);
+    background: rgba(234, 93, 28, 0.1);
   }
 
   .booking-card h2 {
