@@ -181,8 +181,8 @@
     async function tryLogin() {
       const pw = document.getElementById("pw").value;
       const hash = await sha256(pw);
-      // Einfacher Vergleich — Passwort ist "PhysioOne2026!"
-      if (pw === "PhysioOne2026!") {
+      // Einfacher Vergleich — Passwort ist "Ph1s!o-Team#Mengstr40"
+      if (pw === "Ph1s!o-Team#Mengstr40") {
         sessionStorage.setItem("tw_auth", "1");
         showApp();
       } else {
