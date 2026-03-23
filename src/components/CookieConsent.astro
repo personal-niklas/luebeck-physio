@@ -4,9 +4,10 @@
  *
  * Architektur:
  * 1. Consent Default Script setzt alle Signale auf 'denied' (in Base.astro <head>)
- * 2. Cookie-Banner zeigt sich dem User
- * 3. Erst nach explizitem Consent wird GTM geladen
- * 4. Ohne Consent: Kein GTM, kein Google, keine Cookies
+ * 2. GTM lädt immer (in Base.astro) — Consent Mode V2 steuert was passiert
+ * 3. Cookie-Banner zeigt sich dem User
+ * 4. Nach Consent: Signale auf 'granted' → volles Tracking mit Cookies
+ * 5. Ohne Consent: Cookieless Pings (keine Cookies, keine personenbezogenen Daten, DSGVO-konform)
  *
  * Cloudflare Web Analytics braucht KEINEN Consent (cookie-free, DSGVO-konform)
  */
@@ -18,26 +19,9 @@
     await import('vanilla-cookieconsent/dist/cookieconsent.css');
     const CookieConsent = await import('vanilla-cookieconsent');
 
-    const GTM_ID = 'GTM-NRMXS648';
-
-    /**
-     * GTM dynamisch laden – nur nach Consent
-     */
-    function loadGTM() {
-      if (!GTM_ID) return;
-      if (document.querySelector(`script[src*="googletagmanager.com/gtm.js?id=${GTM_ID}"]`)) return;
-
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-      document.head.appendChild(script);
-    }
-
     /**
      * Google Consent Mode V2 Signale updaten
+     * GTM lädt immer (in Base.astro) — hier werden nur die Consent-Signale gesteuert
      */
     function updateConsentSignals(granted: boolean) {
       window.dataLayer = window.dataLayer || [];
@@ -95,35 +79,18 @@
       },
 
       onFirstConsent: ({ cookie }) => {
-        const analyticsAccepted = cookie.categories.includes('analytics');
-        const marketingAccepted = cookie.categories.includes('marketing');
-
-        if (analyticsAccepted || marketingAccepted) {
-          updateConsentSignals(true);
-          loadGTM();
-        }
+        const granted = cookie.categories.includes('analytics') || cookie.categories.includes('marketing');
+        updateConsentSignals(granted);
       },
 
       onChange: ({ cookie }) => {
-        const analyticsAccepted = cookie.categories.includes('analytics');
-        const marketingAccepted = cookie.categories.includes('marketing');
-
-        if (analyticsAccepted || marketingAccepted) {
-          updateConsentSignals(true);
-          loadGTM();
-        } else {
-          updateConsentSignals(false);
-        }
+        const granted = cookie.categories.includes('analytics') || cookie.categories.includes('marketing');
+        updateConsentSignals(granted);
       },
 
       onConsent: ({ cookie }) => {
-        const analyticsAccepted = cookie.categories.includes('analytics');
-        const marketingAccepted = cookie.categories.includes('marketing');
-
-        if (analyticsAccepted || marketingAccepted) {
-          updateConsentSignals(true);
-          loadGTM();
-        }
+        const granted = cookie.categories.includes('analytics') || cookie.categories.includes('marketing');
+        updateConsentSignals(granted);
       },
 
       language: {
