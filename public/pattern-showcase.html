@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plus-Muster Varianten — Physio One</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', sans-serif; background: #111; color: #fff; }
+  h1 { text-align: center; padding: 2.5rem 1rem 0.5rem; font-size: 2rem; font-weight: 300; letter-spacing: 0.05em; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 2.5rem; font-size: 0.9rem; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  .card { border-radius: 16px; overflow: hidden; position: relative; }
+  .card__preview { position: relative; height: 300px; overflow: hidden; }
+  .card__pattern { position: absolute; inset: -30%; background-repeat: repeat; }
+  .card__info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.25rem; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%); }
+  .card__number { display: inline-block; background: #ea5d1c; color: white; font-weight: 700; font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 6px; margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+  .card__title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
+  .card__desc { font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.4; }
+  .section-label { grid-column: 1 / -1; text-align: center; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 1rem; padding: 0.6rem; color: #ea5d1c; border: 1px solid rgba(234,93,28,0.3); border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>Plus-Muster — Neue Richtungen</h1>
+<p class="subtitle">Kreative Varianten. Gleiche Farbe, komplett andere Ansätze.</p>
+
+<div class="grid">
+
+  <div class="section-label">Hell — Orange auf Weiß/Grau</div>
+
+  <!-- V1: Soft Filled — Premium Watermark -->
+  <div class="card">
+    <div class="card__preview" style="background: #f5f5f5;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect x='32' y='10' width='16' height='60' rx='5' fill='%23ea5d1c' fill-opacity='0.12'/%3E%3Crect x='10' y='32' width='60' height='16' rx='5' fill='%23ea5d1c' fill-opacity='0.12'/%3E%3C/svg%3E&quot;);
+        background-size: 80px 80px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V1</span>
+      <div class="card__title">Soft Rounded — Watermark</div>
+      <div class="card__desc">Abgerundete gefüllte Kreuze, sehr dezent. Premium-Wasserzeichen-Effekt.</div>
+    </div>
+  </div>
+
+  <!-- V2: Bold Filled — Modern Grid -->
+  <div class="card">
+    <div class="card__preview" style="background: #f5f5f5;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M22,5 h16 v17 h17 v16 h-17 v17 h-16 v-17 h-17 v-16 h17z' fill='%23ea5d1c' fill-opacity='0.18'/%3E%3C/svg%3E&quot;);
+        background-size: 60px 60px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V2</span>
+      <div class="card__title">Bold Grid — Flächig</div>
+      <div class="card__desc">Gefüllte Kreuze im Raster, sanfte Transparenz. Modern und clean.</div>
+    </div>
+  </div>
+
+  <!-- V3: Scattered Sizes -->
+  <div class="card">
+    <div class="card__preview" style="background: #f5f5f5;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cpath d='M55,10 h10 v35 h35 v10 h-35 v35 h-10 v-35 h-35 v-10 h35z' fill='%23ea5d1c' fill-opacity='0.15'/%3E%3Cpath d='M115,80 h6 v20 h20 v6 h-20 v20 h-6 v-20 h-20 v-6 h20z' fill='%23ea5d1c' fill-opacity='0.10'/%3E%3Cpath d='M20,100 h4 v14 h14 v4 h-14 v14 h-4 v-14 h-14 v-4 h14z' fill='%23ea5d1c' fill-opacity='0.08'/%3E%3C/svg%3E&quot;);
+        background-size: 140px 140px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V3</span>
+      <div class="card__title">Multi-Size — Organisch</div>
+      <div class="card__desc">Verschiedene Größen, unterschiedliche Deckkraft. Dynamisch und lebendig.</div>
+    </div>
+  </div>
+
+  <!-- V4: Thick Outline, Lots of Space -->
+  <div class="card">
+    <div class="card__preview" style="background: #fff;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M48,15 h24 v33 h33 v24 h-33 v33 h-24 v-33 h-33 v-24 h33z' fill='none' stroke='%23ea5d1c' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E&quot;);
+        background-size: 120px 120px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V4</span>
+      <div class="card__title">Clean Outline — Viel Raum</div>
+      <div class="card__desc">Ein Kreuz pro Tile, 3px Stroke, viel Weißraum. Reduziert und elegant.</div>
+    </div>
+  </div>
+
+  <!-- V5: Dotted/Dashed Plus -->
+  <div class="card">
+    <div class="card__preview" style="background: #f5f5f5;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M37,10 h16 v27 h27 v16 h-27 v27 h-16 v-27 h-27 v-16 h27z' fill='none' stroke='%23ea5d1c' stroke-width='2' stroke-dasharray='6 4' stroke-linejoin='round'/%3E%3C/svg%3E&quot;);
+        background-size: 90px 90px;
+        transform: rotate(-6deg);
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V5</span>
+      <div class="card__title">Dashed — Gestrichelt</div>
+      <div class="card__desc">Gestrichelte Linie, leicht gedreht. Verspielt aber strukturiert.</div>
+    </div>
+  </div>
+
+  <!-- V6: Corner Accent with Strong Gradient -->
+  <div class="card">
+    <div class="card__preview" style="background: #fff;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3E%3Crect x='19' y='5' width='12' height='40' rx='4' fill='%23ea5d1c' fill-opacity='0.2'/%3E%3Crect x='5' y='19' width='40' height='12' rx='4' fill='%23ea5d1c' fill-opacity='0.2'/%3E%3C/svg%3E&quot;);
+        background-size: 50px 50px;
+        transform: rotate(-12deg);
+        -webkit-mask-image: radial-gradient(ellipse at top left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 30%, transparent 60%);
+        mask-image: radial-gradient(ellipse at top left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 30%, transparent 60%);
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V6</span>
+      <div class="card__title">Corner Accent — Ecke betont</div>
+      <div class="card__desc">Radialer Gradient, Muster fließt aus Ecke. Perfekt als Website-Deko.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Dunkel — auf Schwarz</div>
+
+  <!-- V7: Orange Glow on Dark -->
+  <div class="card">
+    <div class="card__preview" style="background: #111;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70'%3E%3Crect x='27' y='8' width='16' height='54' rx='5' fill='%23ea5d1c' fill-opacity='0.15'/%3E%3Crect x='8' y='27' width='54' height='16' rx='5' fill='%23ea5d1c' fill-opacity='0.15'/%3E%3C/svg%3E&quot;);
+        background-size: 70px 70px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V7</span>
+      <div class="card__title">Orange Glow — Dunkel</div>
+      <div class="card__desc">Gefüllte Kreuze, leuchten dezent auf Schwarz. Warm und einladend.</div>
+    </div>
+  </div>
+
+  <!-- V8: White Outline on Dark, Large -->
+  <div class="card">
+    <div class="card__preview" style="background: #0a0a0a;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M40,12 h20 v28 h28 v20 h-28 v28 h-20 v-28 h-28 v-20 h28z' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.12' stroke-linejoin='round'/%3E%3C/svg%3E&quot;);
+        background-size: 100px 100px;
+        transform: rotate(-8deg);
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V8</span>
+      <div class="card__title">Ghost Outline — Dunkel</div>
+      <div class="card__desc">Weiße Outline, kaum sichtbar. Edel und zurückhaltend auf dunklem Grund.</div>
+    </div>
+  </div>
+
+  <!-- V9: Overlapping Double Layer -->
+  <div class="card">
+    <div class="card__preview" style="background: #f8f8f8;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M38,8 h24 v30 h30 v24 h-30 v30 h-24 v-30 h-30 v-24 h30z' fill='%23ea5d1c' fill-opacity='0.06'/%3E%3Cpath d='M42,14 h16 v28 h28 v16 h-28 v28 h-16 v-28 h-28 v-16 h28z' fill='none' stroke='%23ea5d1c' stroke-width='1.5' stroke-opacity='0.2'/%3E%3C/svg%3E&quot;);
+        background-size: 100px 100px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V9</span>
+      <div class="card__title">Double Layer — Schatten</div>
+      <div class="card__desc">Gefüllte Fläche + Outline überlagert. Gibt Tiefe und Dimension.</div>
+    </div>
+  </div>
+
+  <!-- V10: Tiny Dense Pattern -->
+  <div class="card">
+    <div class="card__preview" style="background: #fff;">
+      <div class="card__pattern" style="
+        background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='9' y='3' width='6' height='18' rx='2' fill='%23ea5d1c' fill-opacity='0.12'/%3E%3Crect x='3' y='9' width='18' height='6' rx='2' fill='%23ea5d1c' fill-opacity='0.12'/%3E%3C/svg%3E&quot;);
+        background-size: 24px 24px;
+      "></div>
+    </div>
+    <div class="card__info">
+      <span class="card__number">V10</span>
+      <div class="card__title">Micro Texture — Stoff-Effekt</div>
+      <div class="card__desc">Winzig kleine Kreuze als Hintergrund-Textur. Wirkt wie Stoff oder Tapete.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
