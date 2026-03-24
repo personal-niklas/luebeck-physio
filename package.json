@@ -1,3 +1,23 @@
-{"name": "luebeck-physio","type": "module","version": "0.0.1","scripts": {"dev": "astro dev --port 4322","prebuild": "node scripts/fetch-instagram.mjs",
+{
+  "name": "luebeck-physio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --port 4322",
+    "prebuild": "node scripts/fetch-instagram.mjs",
     "build": "astro build",
-    "fetch-instagram": "node scripts/fetch-instagram.mjs","preview": "astro preview"},"dependencies": {"astro": "^5.18.0","@astrojs/sitemap": "^3.7.0","vanilla-cookieconsent": "^3.1.0"}}
+    "fetch-instagram": "node scripts/fetch-instagram.mjs",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.18.0",
+    "vanilla-cookieconsent": "^3.1.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.71.0"
+  }
+}
