@@ -159,7 +159,7 @@
   <script is:inline>
     // Hash des Passworts prüfen (SHA-256)
     // Das Widget wird erst NACH Login geladen — kein Zugriff ohne Passwort
-    const HASH = "a1f3c9b2e8d74f6a0c5e1b9d3f7a2c8e4b6d0f2a8c4e6b0d2f4a8c0e2b6d4f";
+    const HASH = "769796cf301d11ff429ceabd8b1e01ec9a2cf76e33dd35cb2ce7db551df338e9";
 
     async function sha256(str) {
       const buf = await crypto.subtle.digest("SHA-256",
@@ -181,8 +181,7 @@
     async function tryLogin() {
       const pw = document.getElementById("pw").value;
       const hash = await sha256(pw);
-      // Einfacher Vergleich — Passwort ist "Ph1s!o-Team#Mengstr40"
-      if (pw === "Ph1s!o-Team#Mengstr40") {
+      if (hash === HASH) {
         sessionStorage.setItem("tw_auth", "1");
         showApp();
       } else {
