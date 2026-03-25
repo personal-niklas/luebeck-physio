@@ -81,6 +81,13 @@ const ctaLabel = "Termin buchen";
     align-items: center;
     justify-content: space-between;
     height: var(--header-height);
+    max-width: 1400px;
+    padding: 0 var(--space-lg);
+  }
+
+  .header__logo {
+    flex-shrink: 0;
+    margin-right: 1.5rem;
   }
 
   .header__logo-img {
@@ -88,10 +95,16 @@ const ctaLabel = "Termin buchen";
     width: auto;
   }
 
+  .header__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
   .header__nav-list {
     display: flex;
     list-style: none;
-    gap: 1.25rem;
+    gap: clamp(1rem, 1.5vw, 2rem);
   }
 
   .header__nav-link {
@@ -131,6 +144,8 @@ const ctaLabel = "Termin buchen";
 
   .header__cta {
     white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 1.5rem;
   }
 
   /* Burger Menu */
