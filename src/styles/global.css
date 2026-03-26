@@ -529,3 +529,11 @@ img {
   .reveal-animate { animation: none; }
   .card-lift:hover { transform: none; }
 }
+
+/* ── Accessibility: Focus Styles ── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+::-moz-focus-inner { border: 0; }
