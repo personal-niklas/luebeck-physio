@@ -1,5 +1,7 @@
 ---
 import CookieConsent from '../components/CookieConsent.astro';
+import OfferBanner from '../components/OfferBanner.astro';
+import ExitIntent from '../components/ExitIntent.astro';
 
 interface Props {
   title: string;
@@ -248,16 +250,18 @@ const breadcrumbs = [
   <body>
     <!-- GTM noscript fallback -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRMXS648" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <OfferBanner />
     <main>
       <slot />
     </main>
+    <ExitIntent />
 
     <!-- Cookie Consent Banner (DSGVO + Google Consent Mode V2) -->
     <CookieConsent />
 
     <!-- DOCTOLIB FLOATING WIDGET (site-wide) -->
     <nav class="doctolib-widget" aria-label="Doctolib Schnellzugriff">
-      <img src="https://www.doctolib.de/external_button/doctolib-white-transparent.png" alt="Doctolib" width="100" height="20" loading="lazy" />
+      <img src="/images/doctolib-white-transparent.png" alt="Doctolib" width="100" height="20" loading="lazy" />
       <a href="https://www.doctolib.de/praxis/luebeck/physio-one?utm_campaign=website-button&utm_source=online-booking&utm_medium=referral" target="_blank" rel="noopener noreferrer">Termin</a>
       <a href="https://www.doctolib.de/praxis/luebeck/physio-one/patient-request?utm_campaign=website-button&utm_source=patient-messaging&utm_medium=referral" target="_blank" rel="noopener noreferrer">Nachricht</a>
     </nav>
@@ -347,7 +351,19 @@ const breadcrumbs = [
 
         // Fix bfcache: back-navigation restores page from cache without re-running JS
         window.addEventListener('pageshow', function(e) {
-          if (e.persisted) forceShowAll();
+          if (e.persisted) {
+            requestAnimationFrame(function() { forceShowAll(); });
+          }
+        });
+
+        // Safari bfcache safety: visibilitychange catches cases persisted misses
+        document.addEventListener('visibilitychange', function() {
+          if (document.visibilityState === 'visible') {
+            document.querySelectorAll('.stagger-in:not(.visible)').forEach(function(el) {
+              var r = el.getBoundingClientRect();
+              if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible');
+            });
+          }
         });
       })();
     </script>

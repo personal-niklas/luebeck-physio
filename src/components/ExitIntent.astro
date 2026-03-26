@@ -1,0 +1,179 @@
+---
+---
+
+<!-- Exit Intent Overlay -->
+<div class="exit-overlay" id="exit-overlay" hidden>
+  <div class="exit-overlay__backdrop" id="exit-backdrop"></div>
+  <div class="exit-overlay__card">
+    <button class="exit-overlay__close" id="exit-close" aria-label="Schließen">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <span class="exit-overlay__eyebrow">Bevor du gehst...</span>
+    <h3 class="exit-overlay__title">Brauchst du einen Termin?</h3>
+    <p class="exit-overlay__text">Bei Physio One bekommst du schnelle Termine — ganz einfach online über Doctolib buchen.</p>
+    <div class="exit-overlay__ctas">
+      <a href="https://www.doctolib.de/praxis/luebeck/physio-one-luebeck" target="_blank" rel="noopener" class="btn btn--primary exit-overlay__btn">Bei Doctolib buchen</a>
+      <a href="tel:+4945116086640" class="exit-overlay__link">Oder direkt anrufen: 0451 160 866 40 &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .exit-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+  }
+
+  .exit-overlay[hidden] { display: none !important; }
+
+  .exit-overlay__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .exit-overlay__card {
+    position: relative;
+    background: var(--color-bg, #fff);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    animation: exitSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes exitSlideIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .exit-overlay__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+
+  .exit-overlay__close:hover { background: #f5f5f5; color: #000; }
+
+  .exit-overlay__eyebrow {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #ea5d1c;
+    margin-bottom: 0.75rem;
+  }
+
+  .exit-overlay__title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .exit-overlay__text {
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .exit-overlay__ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .exit-overlay__btn {
+    width: 100%;
+    text-align: center;
+    background: #ea5d1c;
+    color: #fff;
+    padding: 0.875rem 2rem;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+  }
+
+  .exit-overlay__btn:hover { background: #d4521a; color: #fff; }
+
+  .exit-overlay__link {
+    font-size: 0.875rem;
+    color: #ea5d1c;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .exit-overlay__link:hover { opacity: 0.7; }
+</style>
+
+<script is:inline>
+(function() {
+  var overlay = document.getElementById('exit-overlay');
+  if (!overlay) return;
+
+  var shown = false;
+  var storageKey = 'po_exit_ts';
+
+  var lastShown = localStorage.getItem(storageKey);
+  if (lastShown && (Date.now() - parseInt(lastShown)) < 86400000) return;
+
+  var path = window.location.pathname;
+  if (path.includes('/impressum') || path.includes('/datenschutz')) return;
+
+  var pageLoadTime = Date.now();
+
+  function showOverlay() {
+    if (shown) return;
+    if (Date.now() - pageLoadTime < 15000) return;
+    shown = true;
+    localStorage.setItem(storageKey, String(Date.now()));
+    overlay.hidden = false;
+  }
+
+  function hideOverlay() { overlay.hidden = true; }
+
+  if (!('ontouchstart' in window)) {
+    var hasScrolled = false;
+    window.addEventListener('scroll', function() {
+      if (window.scrollY / (document.body.scrollHeight - window.innerHeight) > 0.25) hasScrolled = true;
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY <= 5 && hasScrolled && !shown) showOverlay();
+    });
+  }
+
+  if ('ontouchstart' in window) {
+    setTimeout(function() {
+      if (window.scrollY / (document.body.scrollHeight - window.innerHeight) > 0.4 && !shown) showOverlay();
+    }, 60000);
+  }
+
+  document.getElementById('exit-close').addEventListener('click', hideOverlay);
+  document.getElementById('exit-backdrop').addEventListener('click', hideOverlay);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') hideOverlay(); });
+  overlay.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', hideOverlay); });
+})();
+</script>

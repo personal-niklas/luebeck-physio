@@ -116,6 +116,7 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
   overflow-x: hidden;
+  padding-top: var(--banner-height, 0px);
 }
 
 /* --- Typography --- */
