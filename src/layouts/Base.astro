@@ -331,12 +331,23 @@ const breadcrumbs = [
           obs.observe(el);
         });
 
+        function forceShowAll() {
+          document.querySelectorAll('.stagger-in:not(.visible)').forEach(function(el) {
+            el.classList.add('visible');
+          });
+        }
+
         window.addEventListener('load', function() {
           var vH = window.innerHeight;
           document.querySelectorAll('.stagger-in:not(.visible)').forEach(function(el) {
             var r = el.getBoundingClientRect();
             if (r.top < vH && r.bottom > 0) el.classList.add('visible');
           });
+        });
+
+        // Fix bfcache: back-navigation restores page from cache without re-running JS
+        window.addEventListener('pageshow', function(e) {
+          if (e.persisted) forceShowAll();
         });
       })();
     </script>
