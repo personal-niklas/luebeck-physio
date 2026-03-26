@@ -148,7 +148,7 @@ const faqs = [
       </p>
     </div>
     <div class="container">
-      <div class="principles">
+      <div class="principles stagger-in">
         {principles.map(p => (
           <div class="principle-card">
             <span class="principle-card__letter">{p.letter}</span>
@@ -170,9 +170,9 @@ const faqs = [
     <div class="container">
       <h2 class="text-center">Physiotherapie-Leistungen <span class="text-accent">bei Physio One</span></h2>
       <p class="section__subtitle text-center">Krankengymnastik, Gerätetraining, Lymphdrainage und mehr — alles aus einer Hand in Lübeck.</p>
-      <div class="services-grid">
+      <div class="services-grid stagger-in">
         {services.map(s => (
-          <a href={s.link} class="service-card card">
+          <a href={s.link} class="service-card card card-lift">
             <span class="service-card__number">{s.icon}</span>
             <h3>{s.title}</h3>
             <p set:html={s.text} />
@@ -205,7 +205,7 @@ const faqs = [
         <span class="rating__text">5.0 von 5 &mdash; basierend auf Google-Bewertungen</span>
       </div>
       <a href="https://www.google.com/maps/place/Physio+One" target="_blank" rel="noopener noreferrer" class="reviews-link">Alle Bewertungen auf Google ansehen &rarr;</a>
-      <div class="reviews-grid">
+      <div class="reviews-grid stagger-in">
         {reviews.map(r => (
           <blockquote class="review-card">
             <p>&bdquo;{r.text}&ldquo;</p>

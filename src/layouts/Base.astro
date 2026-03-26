@@ -303,6 +303,44 @@ const breadcrumbs = [
       }
     </style>
 
+    <!-- Scroll-Reveal Animations -->
+    <script is:inline>
+      (function(){
+        var staggers = document.querySelectorAll('.stagger-in');
+        if(!('IntersectionObserver' in window)) {
+          staggers.forEach(function(el){ el.classList.add('visible'); });
+          return;
+        }
+        var viewH = window.innerHeight;
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){
+              if(e.target.classList.contains('stagger-in')) e.target.classList.add('visible');
+              e.target.classList.add('reveal-animate');
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.01, rootMargin: '0px 0px 50px 0px' });
+
+        staggers.forEach(function(el){
+          var rect = el.getBoundingClientRect();
+          if(rect.top < viewH && rect.bottom > 0) {
+            el.classList.add('visible');
+            return;
+          }
+          obs.observe(el);
+        });
+
+        window.addEventListener('load', function() {
+          var vH = window.innerHeight;
+          document.querySelectorAll('.stagger-in:not(.visible)').forEach(function(el) {
+            var r = el.getBoundingClientRect();
+            if (r.top < vH && r.bottom > 0) el.classList.add('visible');
+          });
+        });
+      })();
+    </script>
+
     <!-- Cloudflare Web Analytics (DSGVO-konform, cookie-free, kein Consent nötig) -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "678094f717df4789b600a3624ae3461b"}' is:inline></script>
   </body>
