@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "physio-one-dev",
+      "name": "luebeck-physio-dev",
       "runtimeExecutable": "/Users/niklas/.nvm/versions/node/v24.14.0/bin/npx",
       "runtimeArgs": ["astro", "dev", "--port", "4322"],
       "port": 4322
