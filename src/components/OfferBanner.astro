@@ -9,13 +9,6 @@
   <div class="offer-banner__inner container">
     <span class="offer-banner__emoji" id="offer-emoji"></span>
     <span class="offer-banner__text" id="offer-text"></span>
-    <span class="offer-banner__countdown" id="offer-countdown">
-      <span class="offer-banner__cd-item"><span id="cd-days">0</span><small>T</small></span>
-      <span class="offer-banner__cd-sep">:</span>
-      <span class="offer-banner__cd-item"><span id="cd-hours">0</span><small>Std</small></span>
-      <span class="offer-banner__cd-sep">:</span>
-      <span class="offer-banner__cd-item"><span id="cd-mins">0</span><small>Min</small></span>
-    </span>
     <a href="https://www.doctolib.de/praxis/luebeck/physio-one-luebeck" target="_blank" rel="noopener" class="offer-banner__cta" id="offer-cta">Termin buchen</a>
     <button class="offer-banner__close" id="offer-close" aria-label="Banner schließen" type="button">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -64,35 +57,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
-  .offer-banner__countdown {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.125rem;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .offer-banner__cd-item {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 1px;
-    background: rgba(234, 93, 28, 0.2);
-    padding: 0.15rem 0.375rem;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.8125rem;
-    letter-spacing: 0.02em;
-  }
-
-  .offer-banner__cd-item small {
-    font-size: 0.5625rem;
-    font-weight: 400;
-    opacity: 0.7;
-    text-transform: uppercase;
-  }
-
-  .offer-banner__cd-sep { opacity: 0.4; font-weight: 300; font-size: 0.75rem; }
 
   .offer-banner__cta {
     display: inline-block;
@@ -179,40 +143,24 @@
     var dismissed = localStorage.getItem('po-offer-dismissed');
     if (dismissed && Date.now() - parseInt(dismissed, 10) < 86400000) return;
 
-    var now = new Date();
-    var day = now.getDate();
-    var month = now.getMonth();
-    var year = now.getFullYear();
-
-    var offer, deadline;
+    var day = new Date().getDate();
     var doctolib = 'https://www.doctolib.de/praxis/luebeck/physio-one-luebeck';
-    if (day <= 15) {
-      offer = { text: 'Jetzt Termin buchen: Kurze Wartezeiten dank flexibler Terminvergabe', cta: 'Termin buchen', emoji: '\u2705', href: doctolib };
-      deadline = new Date(year, month, 15, 23, 59, 59);
+
+    // 3 rotating CTAs based on day of month
+    var offer;
+    if (day <= 10) {
+      offer = { text: 'Schmerzen? Wir helfen \u2014 oft noch diese Woche Termine frei', cta: 'Jetzt buchen', emoji: '\uD83D\uDC4B' };
+    } else if (day <= 20) {
+      offer = { text: 'Rezept vom Arzt? Direkt online Termin sichern \u2014 ohne Wartezeit', cta: 'Termin buchen', emoji: '\u2705' };
     } else {
-      offer = { text: 'Noch freie Termine diese Woche: Jetzt online bei Doctolib buchen', cta: 'Jetzt buchen', emoji: '\uD83D\uDCC5', href: doctolib };
-      deadline = new Date(year, month + 1, 0, 23, 59, 59);
+      offer = { text: 'Physiotherapie + Training unter einem Dach \u2014 starte jetzt', cta: 'Termin buchen', emoji: '\uD83C\uDFE5' };
     }
 
     document.getElementById('offer-emoji').textContent = offer.emoji;
     document.getElementById('offer-text').textContent = offer.text;
     var ctaEl = document.getElementById('offer-cta');
     ctaEl.textContent = offer.cta;
-    ctaEl.href = offer.href;
-
-    function updateCountdown() {
-      var diff = deadline.getTime() - Date.now();
-      if (diff <= 0) { banner.style.display = 'none'; return; }
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      document.getElementById('cd-days').textContent = d;
-      document.getElementById('cd-hours').textContent = h < 10 ? '0' + h : h;
-      document.getElementById('cd-mins').textContent = m < 10 ? '0' + m : m;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
+    ctaEl.href = doctolib;
 
     banner.classList.add('active');
 
