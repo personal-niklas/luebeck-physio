@@ -35,9 +35,17 @@ import '../styles/global.css';
     document.addEventListener('DOMContentLoaded', function() {
       new ChatWidget({
         widgetId: "01993dc7-4efb-7ac2-9314-df4f40a2f339",
-        deployType: "inline",
-        containerElement: document.getElementById("chat-widget"),
       }).init();
+
+      // Move widget into inline container (v2 widget ignores deployType/containerElement)
+      requestAnimationFrame(function() {
+        var widget = document.getElementById('chatWidgetRagify');
+        var container = document.getElementById('chat-widget');
+        if (widget && container) {
+          container.appendChild(widget);
+          widget.classList.add('chat__widgetOpen');
+        }
+      });
     });
   </script>
 </Base>
@@ -93,6 +101,25 @@ import '../styles/global.css';
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     border: 1px solid #e0e0e0;
+    position: relative;
+  }
+
+  /* Override Insighto widget positioning for inline embed */
+  .chat-container :global(#chatWidgetRagify) {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 600px !important;
+    z-index: auto !important;
+  }
+
+  .chat-container :global(#chatWidgetRagify iframe) {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
   }
 
   @media (max-width: 768px) {
