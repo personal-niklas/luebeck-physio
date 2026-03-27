@@ -22,19 +22,24 @@ import '../styles/global.css';
           <div class="chat-info__badge">24/7 verfügbar</div>
           <p>Unser KI-Assistent beantwortet häufige Fragen rund um Physiotherapie, unsere Leistungen und die Terminbuchung. Für eine persönliche Beratung erreichen Sie uns telefonisch unter <a href="tel:+4945116086640">0451 160 866 40</a> oder per <a href="https://wa.me/4917640471528">WhatsApp</a>.</p>
         </div>
-        <div class="chat-container">
-          <iframe
-            src="https://cdn.insighto.ai/chat-widget-v2/index.html?widgetId=01993dc7-4efb-7ac2-9314-df4f40a2f339"
-            allow="microphone"
-            style="border: none; display: block; width: 100%; height: 100%;"
-            title="Physio One KI-Assistent"
-          ></iframe>
-        </div>
+        <div class="chat-container" id="chat-widget"></div>
       </div>
     </div>
   </section>
 
   <Footer />
+
+  <link rel="stylesheet" href="https://cdn.insighto.ai/chat-widget-v2/style.css" />
+  <script is:inline src="https://cdn.insighto.ai/chat-widget-v2/script.js"></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      new ChatWidget({
+        widgetId: "01993dc7-4efb-7ac2-9314-df4f40a2f339",
+        deployType: "inline",
+        containerElement: document.getElementById("chat-widget"),
+      }).init();
+    });
+  </script>
 </Base>
 
 <style>
@@ -68,7 +73,7 @@ import '../styles/global.css';
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--color-text-light, #555);
+    color: #333;
   }
 
   .chat-info a {
@@ -83,7 +88,7 @@ import '../styles/global.css';
 
   .chat-container {
     width: 100%;
-    height: 600px;
+    min-height: 600px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
@@ -92,7 +97,7 @@ import '../styles/global.css';
 
   @media (max-width: 768px) {
     .chat-container {
-      height: 500px;
+      min-height: 500px;
       border-radius: 8px;
     }
   }
