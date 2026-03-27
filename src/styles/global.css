@@ -85,6 +85,7 @@
   /* Layout */
   --max-width: 1200px;
   --header-height: 80px;
+  --banner-height: 40px;
   --border-radius: 8px;
 
   /* Transitions */
@@ -348,6 +349,7 @@ img {
     --text-3xl: 1.5rem;
     --space-3xl: 5rem;
     --space-2xl: 3.5rem;
+    --banner-height: 56px;
   }
 
   .grid--2,

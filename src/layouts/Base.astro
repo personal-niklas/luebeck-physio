@@ -70,6 +70,10 @@ const breadcrumbs = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CLS fix: set banner height before first paint -->
+    <script is:inline>
+      (function(){var d=localStorage.getItem('po-offer-dismissed');if(d&&Date.now()-parseInt(d,10)<864e5){document.documentElement.style.setProperty('--banner-height','0px')}})();
+    </script>
     <meta name="description" content={description} />
     <meta name="author" content="Physio One" />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />

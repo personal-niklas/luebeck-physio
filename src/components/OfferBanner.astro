@@ -27,12 +27,20 @@
     right: 0;
     z-index: 1001;
     overflow: hidden;
-    display: none;
+    transform: translateY(-100%);
+    opacity: 0;
   }
 
   .offer-banner.active {
-    display: block;
+    transform: translateY(0);
+    opacity: 1;
     animation: offerSlideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .offer-banner.dismissed {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
   }
 
   @keyframes offerSlideDown {
@@ -87,7 +95,7 @@
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     cursor: pointer;
     padding: 0.25rem;
     line-height: 0;
@@ -141,7 +149,12 @@
     if (!banner) return;
 
     var dismissed = localStorage.getItem('po-offer-dismissed');
-    if (dismissed && Date.now() - parseInt(dismissed, 10) < 86400000) return;
+    if (dismissed && Date.now() - parseInt(dismissed, 10) < 86400000) {
+      // Banner was dismissed — collapse reserved space immediately
+      document.documentElement.style.setProperty('--banner-height', '0px');
+      banner.classList.add('dismissed');
+      return;
+    }
 
     var day = new Date().getDate();
     var doctolib = 'https://www.doctolib.de/praxis/luebeck/physio-one-luebeck';
@@ -171,7 +184,7 @@
 
     function hideBanner() {
       banner.classList.remove('active');
-      banner.style.display = 'none';
+      banner.classList.add('dismissed');
       document.documentElement.style.setProperty('--banner-height', '0px');
     }
 
