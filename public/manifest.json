@@ -1,0 +1,11 @@
+{
+  "name": "Physio One - Physiotherapie Lübeck",
+  "short_name": "Physio One",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ea5d1c",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ]
+}

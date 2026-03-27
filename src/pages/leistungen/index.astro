@@ -80,6 +80,114 @@ const extras = [
 ---
 
 <Base title="Physiotherapie-Leistungen Lübeck | Krankengymnastik, KGG & mehr" description="Unsere Kassenleistungen in Lübeck: Krankengymnastik, KGG, Lymphdrainage, Fango, Elektrotherapie & Massage. Alle Kassen. Jetzt Termin buchen!">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "name": "Physiotherapie-Leistungen Lübeck",
+        "description": "Übersicht aller Kassenleistungen bei Physio One in Lübeck: Krankengymnastik, KGG, Lymphdrainage, Fango, Elektrotherapie und Massage.",
+        "url": "https://luebeck-physio.de/leistungen/",
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Physiotherapie-Leistungen",
+          "numberOfItems": 6,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "MedicalTherapy",
+                "name": "Krankengymnastik (KG)",
+                "description": "Gezielte Bewegungstherapie zur Wiederherstellung und Verbesserung der Beweglichkeit und Kraft bei Rückenschmerzen, Nackenverspannungen und Haltungsproblemen.",
+                "url": "https://luebeck-physio.de/leistungen/krankengymnastik-luebeck/",
+                "provider": {
+                  "@type": "Physiotherapist",
+                  "name": "Physio One",
+                  "url": "https://luebeck-physio.de"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "MedicalTherapy",
+                "name": "Gerätegestützte Krankengymnastik (KGG)",
+                "description": "Gezieltes Training an medizinischen Geräten unter therapeutischer Anleitung. Besonders effektiv für Muskelaufbau nach Verletzungen und langfristige Stabilisierung.",
+                "url": "https://luebeck-physio.de/leistungen/geraetegestuetzte-krankengymnastik-luebeck/",
+                "provider": {
+                  "@type": "Physiotherapist",
+                  "name": "Physio One",
+                  "url": "https://luebeck-physio.de"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "MedicalTherapy",
+                "name": "Manuelle Lymphdrainage (MLD)",
+                "description": "Sanfte, rhythmische Grifftechniken zur Entstauung und Förderung des Lymphabflusses bei Lymphödemen und Schwellungen nach Operationen.",
+                "url": "https://luebeck-physio.de/leistungen/manuelle-lymphdrainage-luebeck/",
+                "provider": {
+                  "@type": "Physiotherapist",
+                  "name": "Physio One",
+                  "url": "https://luebeck-physio.de"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "MedicalTherapy",
+                "name": "Fango & Wärme-/Kältetherapie",
+                "description": "Wärmebehandlung bei chronischen Schmerzen und Muskelverhärtungen, Kältetherapie bei akuten Entzündungen und Sportverletzungen.",
+                "url": "https://luebeck-physio.de/leistungen/fango-waermetherapie-luebeck/",
+                "provider": {
+                  "@type": "Physiotherapist",
+                  "name": "Physio One",
+                  "url": "https://luebeck-physio.de"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "MedicalTherapy",
+                "name": "Elektrotherapie (ET)",
+                "description": "Therapeutischer Strom zur Schmerzlinderung, Durchblutungsförderung und Heilungsunterstützung bei Nervenreizungen und chronischen Beschwerden.",
+                "url": "https://luebeck-physio.de/leistungen/elektrotherapie-luebeck/",
+                "provider": {
+                  "@type": "Physiotherapist",
+                  "name": "Physio One",
+                  "url": "https://luebeck-physio.de"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "item": {
+                "@type": "MedicalTherapy",
+                "name": "Klassische Massagetherapie",
+                "description": "Therapeutische Massage zur Lösung von Verspannungen, Förderung der Durchblutung und Linderung von spannungsbedingten Kopfschmerzen.",
+                "url": "https://luebeck-physio.de/leistungen/massage-luebeck/",
+                "provider": {
+                  "@type": "Physiotherapist",
+                  "name": "Physio One",
+                  "url": "https://luebeck-physio.de"
+                }
+              }
+            }
+          ]
+        }
+      }
+    </script>
+  </Fragment>
   <Header />
 
   <section class="section page-header">
@@ -132,6 +240,12 @@ const extras = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="cross-link-hint">🏋️ Nach der Therapie: Präventives <a href="https://personaltrainingluebeck.de/personaltraining/" target="_blank" rel="noopener">Personal Training</a> für langfristigen Erfolg — im selben Gebäude, Mengstraße 40.</p>
     </div>
   </section>
 

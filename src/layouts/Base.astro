@@ -85,8 +85,9 @@ const breadcrumbs = [
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Favicon -->
+    <!-- Favicon & PWA -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -247,6 +248,8 @@ const breadcrumbs = [
         }))
       })} />
     )}
+
+    <slot name="head" />
 
     <title>{title}</title>
   </head>

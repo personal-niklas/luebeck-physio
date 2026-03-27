@@ -581,3 +581,65 @@ img {
 }
 
 ::-moz-focus-inner { border: 0; }
+
+/* ── Cross-Link Hints ── */
+.cross-link-hint {
+  margin-top: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-alt, #f5f5f5);
+  border-radius: var(--radius-sm, 8px);
+  border-left: 3px solid var(--color-accent, #ea5d1c);
+  font-size: var(--text-sm, 0.875rem);
+}
+.cross-link-hint a {
+  color: var(--color-accent, #ea5d1c);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cross-link-hint a:hover {
+  text-decoration: underline;
+}
+
+/* ============================
+   Print Stylesheet
+   ============================ */
+@media print {
+  header, footer, .floating-cta, .offer-banner, .cookie-consent,
+  .exit-intent, .social-proof-toast, .sticky-cta-bar,
+  nav, .header, .footer, [class*="banner"], [class*="toast"] {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  main {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^="#"]::after,
+  a[href^="tel:"]::after,
+  a[href^="javascript:"]::after {
+    content: none;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}
