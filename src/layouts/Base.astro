@@ -51,6 +51,9 @@ const breadcrumbLabels: Record<string, string> = {
   'datenschutz': 'Datenschutz',
   'danke': 'Vielen Dank',
   'fragebogen': 'Behandlungs-Check',
+  'karriere': 'Karriere',
+  'termin': 'Termin',
+  'chat': 'Chat',
 };
 
 const breadcrumbs = [
@@ -251,7 +254,7 @@ const breadcrumbs = [
     <!-- GTM noscript fallback -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRMXS648" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <OfferBanner />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <ExitIntent />

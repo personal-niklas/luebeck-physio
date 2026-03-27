@@ -524,11 +524,54 @@ img {
   opacity: 1;
 }
 
+/* --- Inline Icon helper --- */
+.icon-inline {
+  vertical-align: -4px;
+  margin-right: 6px;
+  color: var(--color-accent);
+}
+
+/* --- CTA Section reusable classes --- */
+.cta-subtitle {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-lg);
+  opacity: 0.9;
+}
+
+.btn--outline-white {
+  border-color: white;
+  color: white;
+}
+
+.btn--outline-white:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .stagger-in > * { opacity: 1; transform: none; transition: none; }
   .reveal-animate { animation: none; }
   .card-lift:hover { transform: none; }
+}
+
+/* ── Accessibility: Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: #ea5d1c;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: top 150ms ease;
+}
+.skip-link:focus {
+  top: 1rem;
 }
 
 /* ── Accessibility: Focus Styles ── */

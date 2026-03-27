@@ -1,4 +1,5 @@
 ---
+import { contact } from '../data/contact';
 ---
 
 <!-- Exit Intent Overlay -->
@@ -6,14 +7,14 @@
   <div class="exit-overlay__backdrop" id="exit-backdrop"></div>
   <div class="exit-overlay__card">
     <button class="exit-overlay__close" id="exit-close" aria-label="Schließen">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <span class="exit-overlay__eyebrow">Bevor du gehst...</span>
     <h3 class="exit-overlay__title">Brauchst du einen Termin?</h3>
     <p class="exit-overlay__text">Bei Physio One bekommst du schnelle Termine — ganz einfach online über Doctolib buchen.</p>
     <div class="exit-overlay__ctas">
-      <a href="https://www.doctolib.de/praxis/luebeck/physio-one-luebeck" target="_blank" rel="noopener" class="btn btn--primary exit-overlay__btn">Bei Doctolib buchen</a>
-      <a href="tel:+4945116086640" class="exit-overlay__link">Oder direkt anrufen: 0451 160 866 40 &rarr;</a>
+      <a href={contact.bookingUrl} target="_blank" rel="noopener" class="btn btn--primary exit-overlay__btn">Bei Doctolib buchen</a>
+      <a href={`tel:${contact.phone}`} class="exit-overlay__link">Oder direkt anrufen: {contact.phoneDisplay} &rarr;</a>
     </div>
   </div>
 </div>

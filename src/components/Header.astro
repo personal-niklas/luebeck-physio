@@ -1,4 +1,6 @@
 ---
+import { contact } from '../data/contact';
+
 const navItems = [
   { label: "Leistungen", href: "/leistungen/" },
   { label: "Behandlungs-Check", href: "/fragebogen/", highlight: true },
@@ -10,10 +12,11 @@ const navItems = [
   { label: "Kontakt", href: "/kontakt/" },
 ];
 
-const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
+const bookingUrl = contact.bookingUrl;
 const ctaLabel = "Termin buchen";
 ---
 
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
 <header class="header" id="header">
   <div class="header__inner container">
     <a href="/" class="header__logo" aria-label="Physio One - Startseite">
