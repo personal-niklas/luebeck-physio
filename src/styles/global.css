@@ -370,7 +370,30 @@ img {
   }
 
   .container {
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
+  }
+
+  .section {
+    padding: var(--space-xl) 0;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  .btn--small {
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+/* Touch-active feedback for mobile */
+@media (hover: none) {
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .card:active {
+    transform: translateY(-2px);
   }
 }
 

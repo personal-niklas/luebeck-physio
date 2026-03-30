@@ -127,6 +127,20 @@ import { contact } from '../data/contact';
   }
 
   .exit-overlay__link:hover { opacity: 0.7; }
+
+  @media (max-width: 480px) {
+    .exit-overlay__card {
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+    }
+    .exit-overlay__close {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 </style>
 
 <script is:inline>
