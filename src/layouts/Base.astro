@@ -72,7 +72,7 @@ const breadcrumbs = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CLS fix: set banner height before first paint -->
     <script is:inline>
-      (function(){var d=localStorage.getItem('po-offer-dismissed');if(d&&Date.now()-parseInt(d,10)<864e5){document.documentElement.style.setProperty('--banner-height','0px')}})();
+      (function(){try{var d=localStorage.getItem('po-offer-dismissed');if(d&&Date.now()-parseInt(d,10)<864e5){document.documentElement.style.setProperty('--banner-height','0px')}}catch(e){}})();
     </script>
     <meta name="description" content={description} />
     <meta name="author" content="Physio One" />
@@ -122,23 +122,23 @@ const breadcrumbs = [
       gtag('set', 'ads_data_redaction', true);
     </script>
 
-    <!-- GTM laden (Consent Mode V2 steuert was passiert — cookieless Pings ohne Consent, volles Tracking mit Consent) -->
+    <!-- GTM: defer load until idle to reduce TBT & unused JS -->
     <script is:inline>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-NRMXS648');
+      (function(){
+        function loadGTM(){
+          if(window.__gtmLoaded)return;window.__gtmLoaded=true;
+          var w=window,d=document,l='dataLayer',i='GTM-NRMXS648';
+          w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+          var f=d.getElementsByTagName('script')[0],j=d.createElement('script');
+          j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;
+          f.parentNode.insertBefore(j,f);
+        }
+        if('requestIdleCallback' in window){requestIdleCallback(loadGTM,{timeout:3500})}
+        else{setTimeout(loadGTM,3500)}
+      })();
     </script>
 
-    <!-- Google Ads Tag (AW-11509829919) — für Conversion-Tracking -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-11509829919"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-11509829919');
-    </script>
+    <!-- Google Ads (AW-11509829919) wird über GTM geladen — kein separates Tag nötig -->
 
     <!-- Structured Data: MedicalBusiness -->
     <script type="application/ld+json" is:inline>

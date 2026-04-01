@@ -122,7 +122,10 @@ const faqs = [
 
   <!-- HERO -->
   <section class="hero">
-    <img src="/images/hero-behandlung.webp" alt="Physiotherapeut behandelt Patientin in der Physio One Praxis in Lübeck" class="hero__bg" width="1920" height="1280" loading="eager" fetchpriority="high" />
+    <picture>
+      <source srcset="/images/hero-behandlung-mobile.webp" media="(max-width: 768px)" width="960" height="640" />
+      <img src="/images/hero-behandlung.webp" alt="Physiotherapeut behandelt Patientin in der Physio One Praxis in Lübeck" class="hero__bg" width="1920" height="1280" loading="eager" fetchpriority="high" />
+    </picture>
     <div class="container hero__inner">
       <div class="hero__content">
         <p class="hero__label">One Way To Physical Health</p>

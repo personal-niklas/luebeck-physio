@@ -151,8 +151,10 @@ import { contact } from '../data/contact';
   var shown = false;
   var storageKey = 'po_exit_ts';
 
-  var lastShown = localStorage.getItem(storageKey);
-  if (lastShown && (Date.now() - parseInt(lastShown)) < 86400000) return;
+  try {
+    var lastShown = localStorage.getItem(storageKey);
+    if (lastShown && (Date.now() - parseInt(lastShown)) < 86400000) return;
+  } catch(e) {}
 
   var path = window.location.pathname;
   if (path.includes('/impressum') || path.includes('/datenschutz')) return;
@@ -163,7 +165,7 @@ import { contact } from '../data/contact';
     if (shown) return;
     if (Date.now() - pageLoadTime < 15000) return;
     shown = true;
-    localStorage.setItem(storageKey, String(Date.now()));
+    try { localStorage.setItem(storageKey, String(Date.now())); } catch(e) {}
     overlay.hidden = false;
   }
 
