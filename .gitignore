@@ -5,3 +5,9 @@ dist/
 .dev.vars
 # Instagram images are committed (no token needed at build time)
 .DS_Store
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
