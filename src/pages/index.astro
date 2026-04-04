@@ -617,4 +617,18 @@ const faqs = [
       align-items: center;
     }
   }
+
+  @media (max-width: 480px) {
+    .hero__text {
+      font-size: var(--text-base);
+    }
+
+    .faq-item__question {
+      font-size: var(--text-lg);
+    }
+
+    .faq-item__question::after {
+      font-size: var(--text-xl);
+    }
+  }
 </style>
