@@ -410,4 +410,16 @@ const bookingUrl = "https://www.doctolib.de/praxis/luebeck/physio-one";
       grid-template-columns: 1fr;
     }
   }
+
+  @media (max-width: 480px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      padding: 0.875rem 0.75rem;
+      font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+  }
 </style>
